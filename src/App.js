@@ -1,16 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
 import SideBar from './layout/Sidebar/SideBar';
-import ListUsers from './components/ListUsers/ListUsers';
+import ListInpector from './components/ListInspector/ListInpector';
 import Footer from './layout/Footer/Footer';
 import AppBar from './components/AppBar/AppBar';
+import ScanCheck from './components/ScanCheck/ScanCheck';
+import RegulaInfo from './components/RegulaInfo/RegulaInfo';
+import UserInfo from './components/UserTaxfree/UserInfo';
+import QRGenetator from './components/QRGenerator/QRGenerator'
+import Taxfree from './components/UserTaxfree/Taxfree';
 function App() {
   return (
     <div className="App">
-        <SideBar/>
+         {/* <SideBar/>
         <AppBar/>
-        <ListUsers/>
-        <Footer/>
+        <ListInpector/>
+        <Footer/>  */}
+        {/* <ScanCheck/> */}
+        {/* <RegulaInfo/> */}
+        {/* <UserInfo/>
+        <Taxfree/> */}
+        {/* <QRGenetator/> */}
     </div>
   );
 }
