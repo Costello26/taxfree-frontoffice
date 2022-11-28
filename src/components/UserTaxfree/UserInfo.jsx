@@ -10,8 +10,8 @@ import UserIcons from '../../assets/Png/UserIcons.png'
 const UserInfo = () => {
     return (
         <Card sx={{
-            width: "550px", height: "220px", display: 'flex', boxShadow: "0px 0px 15px rgba(160, 160, 160, 0.3)",
-            borderRadius: "30px"
+            width: "500px", height: "180px", display: 'flex', boxShadow: "0px 0px 15px rgba(160, 160, 160, 0.3)",
+            borderRadius: "30px" , padding:"25px"
         }}>
             <Avatar
                 src={UserIcons}
