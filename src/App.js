@@ -5,27 +5,31 @@ import AppBar from './components/AppBar/AppBar';
 import ScanCheck from './components/ScanCheck/ScanCheck';
 import RegulaInfo from './components/RegulaInfo/RegulaInfo';
 import UserInfo from './components/UserTaxfree/UserInfo';
-import QRGenetator from './components/QRGenerator/QRGenerator'
+import QRGenetator from './components/QRGenerator/QRGenerator';
 import Taxfree from './components/UserTaxfree/Taxfree';
 import ListCheck from './components/ListCheck/ListCheck';
-import TaxfreeStatisticsTable from './components/TaxFreeStatisticsTable/TaxFreeStatisticsTable'
+import TaxfreeStatisticsTable from './components/TaxFreeStatisticsTable/TaxFreeStatisticsTable';
 import { useEffect } from 'react';
-import axios from 'axios'
+import axios from 'axios';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 function App() {
-
   return (
     <div className="App">
-         {/* <SideBar/>
-        <AppBar/>
-        <ListInpector/>
-        <Footer/>  */}
-        {/* <ScanCheck/> */}
-        {/* <RegulaInfo/> */}
-        {/* <QRGenetator/> */}
+      <SideBar />
+      <Router>
+        <Routes>
+          <Route path="/" element={<ListInpector />} />
+          <Route path="/register" element={<></>} />
+        </Routes>
+      </Router>
+      <Footer />
+      {/* <ScanCheck/> */}
+      {/* <RegulaInfo/> */}
+      {/* <QRGenetator/> */}
       {/* <UserInfo/> */}
-        {/* <Taxfree/> */}
-        {/* <ListCheck/> */}
-        <TaxfreeStatisticsTable/>
+      {/* <Taxfree/> */}
+      {/* <ListCheck/> */}
+      {/* <TaxfreeStatisticsTable /> */}
     </div>
   );
 }
