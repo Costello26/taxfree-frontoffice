@@ -1,7 +1,7 @@
 import React from 'react';
 import AppBar from '../../components/AppBar/AppBar';
 import RegulaInfo from '../../components/RegulaInfo/RegulaInfo';
-import classes from './ScanPassport.scss';
+import classes from './ScanPassport.module.scss';
 
 const ScanPassport = () => {
   return (
