@@ -12,6 +12,7 @@ import TaxfreeStatisticsTable from './components/TaxFreeStatisticsTable/TaxFreeS
 import { useEffect } from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Registration from './layout/Registration/Registration';
 function App() {
   return (
     <div className="App">
@@ -19,7 +20,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<ListInpector />} />
-          <Route path="/register" element={<></>} />
+          <Route path="/register" element={<Registration />} />
         </Routes>
       </Router>
       <Footer />
