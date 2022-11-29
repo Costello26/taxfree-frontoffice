@@ -16,21 +16,21 @@ import Registration from './layout/Registration/Registration';
 function App() {
   return (
     <div className="App">
-      <SideBar />
+      {/* <SideBar />
       <Router>
         <Routes>
           <Route path="/" element={<ListInpector />} />
           <Route path="/register" element={<Registration />} />
         </Routes>
       </Router>
-      <Footer />
+      <Footer /> */}
       {/* <ScanCheck/> */}
       {/* <RegulaInfo/> */}
       {/* <QRGenetator/> */}
       {/* <UserInfo/> */}
       {/* <Taxfree/> */}
       {/* <ListCheck/> */}
-      {/* <TaxfreeStatisticsTable /> */}
+      <TaxfreeStatisticsTable />
     </div>
   );
 }

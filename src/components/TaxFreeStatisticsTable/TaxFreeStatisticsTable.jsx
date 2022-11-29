@@ -10,6 +10,9 @@ import { Container, Grid, List, ListItem, ListSubheader, Checkbox, TableSortLabe
 import { Box } from '@mui/system';
 import { pink } from '@mui/material/colors';
 import { AccountCircle, Search } from '@mui/icons-material';
+import Card from './Card';
+import StatisticsSearch from './StatisticsSearch';
+import Bar from './Bar';
 
 const ListCheck = () => {
     let head = {
@@ -50,113 +53,63 @@ const ListCheck = () => {
             event: "doing"
         },
     ];
+
     function Event(prams) {
         if (prams.params.event == "new") {
-            return <Button
+            return <Box
                 sx={{
                     background: "rgba(50, 94, 205, 0.25)",
                     borderRadius: "26px",
-                    padding: "5px 20px",
-                    color: "#325ECD"
+                    width:'100px',
+                    height:"28px",
+                    color: "#325ECD",
+                    fontSize:"14px",
+                    fontWeight:600,
+                    textAlign:"center",
+                    padding:"5px 15px"
                 }}
-            >Yangi</Button>
+            >Yangi</Box>
         } else if (prams.params.event == "doing") {
-            return <Button
+            return <Box
                 sx={{
                     background: "rgba(253, 151, 23, 0.25)",
                     borderRadius: "26px",
-                    padding: "5px 20px",
-                    color: "#FD9717"
+                    width:'100px',
+                    height:"28px",
+                    color: "#FD9717",
+                    fontSize:"14px",
+                    fontWeight:600,
+                    textAlign:"center",
+                    padding:"5px 15px"
                 }}
-            >Jarayonda</Button>
+            >Jarayonda</Box>
         }
         else if (prams.params.event == 'success') {
-            return <Button
+            return <Box
                 sx={{
                     background: "rgba(18, 185, 3, 0.25)",
                     borderRadius: "26px",
-                    padding: "5px 20px",
+                    width:'100px',
+                    height:"28px",
                     color: "#12B903",
+                    fontSize:"14px",
+                    fontWeight:600,
+                    textAlign:"center",
+                    padding:"5px 15px"
                 }}
-            >Tastiqlangan</Button>
+            >Tastiqlangan</Box>
         }
     }
 
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
     return (
+        <>
+        <Bar/>
+          <Card/>
+          <StatisticsSearch/>
         <Container maxWidth="xl">
-
-            <Grid container columns={12}>
-                <Grid item xs={8}>
-                    <TextField
-                        id="outlined-required"
-                        label="Telefon raqam"
-                        sx={{
-                            width: "100%",
-                            margin: "15px 0",
-                            borderRadius: "20px",
-                            border: " 1px solid rgba(50, 94, 205, 0.2",
-                            paddign: "0",
-                            height:"52px"
-                        }}
-                        InputProps={{
-                            endAdornment: (
-                                <InputAdornment position="end">
-                                    <Search />
-                                </InputAdornment>
-                            ),
-                        }}
-
-                    />
-                </Grid>
-                <Grid item xs={4} sx={{ display: "flex", alignItems:"center" }} >
-                    <FormControl fullWidth sx={{ margin: "5px" }}>
-                        <InputLabel id="demo-simple-select-label">Yil</InputLabel>
-                        <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                            value={null}
-                            label="Yil"
-                        // onChange={handleChange}  
-                        >
-                            <MenuItem value={10}>Ten</MenuItem>
-                            <MenuItem value={20}>Twenty</MenuItem>
-                            <MenuItem value={30}>Thirty</MenuItem>
-                        </Select>
-                    </FormControl>
-                    <FormControl fullWidth sx={{ margin: "5px" }}>
-                        <InputLabel id="demo-simple-select-label">Oy</InputLabel>
-                        <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                            value={null}
-                            label="Oy"
-                        // onChange={handleChange}  
-                        >
-                            <MenuItem value={10}>Ten</MenuItem>
-                            <MenuItem value={20}>Twenty</MenuItem>
-                            <MenuItem value={30}>Thirty</MenuItem>
-                        </Select>
-                    </FormControl>
-                    <FormControl fullWidth sx={{ margin: "5px" }}>
-                        <InputLabel id="demo-simple-select-label">Kun</InputLabel>
-                        <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                            value={null}
-                            label="Kun"
-                        // onChange={handleChange}  
-                        >
-                            <MenuItem value={10}>Ten</MenuItem>
-                            <MenuItem value={20}>Twenty</MenuItem>
-                            <MenuItem value={30}>Thirty</MenuItem>
-                        </Select>
-                    </FormControl>
-                </Grid>
-            </Grid>
-
             <List
-                sx={{ width: '100%', bgcolor: 'background.paper' }}
+                sx={{ width: '100%', bgcolor: '' }}
                 component="nav"
                 aria-labelledby="nested-list-subheader"
             >
@@ -164,10 +117,11 @@ const ListCheck = () => {
                     sx={{
                         width: "100%",
                         border: "1px solid #D3E0FF",
-                        margin: "10px 0",
+                        margin: "5px 0",
                         padding: "5px 10px",
                         borderRadius: "18px",
-                        bgColor: "#F1F1F1"
+                        background:"#FFFFFF",
+                        boxShadow:"0px 0px 15px rgba(160, 160, 160, 0.1)"
                     }}
                 >
                     <Grid spacing={2} container columns={20}>
@@ -211,7 +165,9 @@ const ListCheck = () => {
                 }
             </List>
         </Container>
-    );
+ 
+        </>
+       );      
 }
 
 export default ListCheck;
