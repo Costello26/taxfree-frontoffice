@@ -100,12 +100,14 @@ const ScanCheck = () => {
                 id="outlined-basic"
                 label="Telefon raqam"
                 variant="outlined"
-                borderRadius="25px"
                 sx={{
                   width: '100%',
                   height: '56px',
-                  bgcolor: 'rgba(50, 94, 205, 0.05)',
                   margin: '38px 0',
+                  '& fieldset': {
+                    borderRadius: '20px',
+                    backgroundColor: 'rgba(50, 94, 205, 0.05)',
+                  },
                 }}
               />
             </Container>
@@ -117,9 +119,10 @@ const ScanCheck = () => {
                   height: '56px',
                   borderRadius: '25px',
                   bgColor: '#325ECD',
+                  textTransform: 'none',
                 }}
               >
-                Contained
+                Davom etish
               </Button>
             </Container>
           </Box>

@@ -1,9 +1,9 @@
 import React from 'react';
 import { ButtonGroup, Button, Container } from '@mui/material';
-import classes from './appBar.module.scss';
+
 const AppBar = () => {
   return (
-    <Container className={classes.tabs}>
+    <Container disableGutters={true} maxWidth={false}>
       <ButtonGroup
         variant="contained"
         aria-label="button group"
@@ -15,8 +15,11 @@ const AppBar = () => {
             width: '50%',
             padding: '12px 0px',
             borderRadius: '20px',
-            fontWeight: '700',
-            fontSize: '20px',
+            fontWeight: 500,
+            fontSize: '25px',
+            border: '1px solid #D3E0FF',
+            textTransform: 'none',
+            lineHeight: '28px',
           }}
         >
           Ro’yxatga olish
@@ -25,11 +28,14 @@ const AppBar = () => {
           variant="outline"
           sx={{
             width: '50%',
-            padding: '12px 0px',
+            padding: '16px 0px',
             borderRadius: '20px',
-            fontWeight: '700',
-            fontSize: '20px',
+            fontWeight: 600,
+            fontSize: '25px',
             background: '#FFF',
+            border: '1px solid #D3E0FF',
+            textTransform: 'none',
+            lineHeight: '28px',
           }}
         >
           Statistika
