@@ -6,7 +6,8 @@ import { Box, Button, Container } from '@mui/material';
 const Bar = () => {
     const [userCountBtn , setUserCountBtn] = useState("outlined")
     const [taxFreeSummaBtn , setTaxFreeSumma] = useState("contained")
-    const [USD , setUSD]= useState()
+    const [USD , setUSD]= useState("outlined")
+    const [UZB , setUZB] = useState("contained")
 
     function handleBtn(){
         setUserCountBtn("contained")
@@ -15,6 +16,14 @@ const Bar = () => {
     function handleBtn2(){
         setTaxFreeSumma("contained")
         setUserCountBtn("outlined")
+    }
+    function ChangeCurrency1(){
+        setUSD("contained")
+        setUZB("outlined")
+    }
+    function ChangeCurrency2(){
+        setUSD("outlined")
+        setUZB("contained")
     }
     return (
         <Container maxWidth="xl" sx={{ marginTop: "25px", marginBottom: "25px", display:"flex", justifyContent:"space-between" }}>
@@ -35,19 +44,22 @@ const Bar = () => {
                     }}
                 >Foydalanuvchilar soni</Button>
             </Box>
-            <Box>
-                <Button variant={taxFreeSummaBtn}
-                onClick={handleBtn2}
+            <Box sx={{
+              border:"1px solid #325ECD",
+              borderRadius:"26px"
+            }}>
+                <Button variant={USD}
+                onClick={ChangeCurrency1}
                     sx={{
-                        boxShadow: "0px 0px 11px rgba(0, 0, 0, 0.05)",
                         borderRadius: "26px",
+                        border:"none"
                     }}
                 >USD</Button>
-                  <Button variant={userCountBtn}
-                  onClick={handleBtn}
+                  <Button variant={UZB}
+                  onClick={ChangeCurrency2}
                     sx={{
-                        boxShadow: "0px 0px 11px rgba(0, 0, 0, 0.05)",
                         borderRadius: "26px",
+                        border:"none"
                     }}
                 >UZS</Button>
             </Box>
