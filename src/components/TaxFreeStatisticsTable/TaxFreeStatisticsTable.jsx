@@ -6,10 +6,13 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Container, Grid, List, ListItem, ListSubheader, Checkbox, TableSortLabel, Button, TextField, FormControl, InputAdornment } from '@mui/material';
+import { Container, Grid, List, ListItem, ListSubheader, Checkbox, TableSortLabel, Button, TextField, FormControl, InputAdornment, Select, MenuItem, InputLabel } from '@mui/material';
 import { Box } from '@mui/system';
 import { pink } from '@mui/material/colors';
-import { AccountCircle , Search } from '@mui/icons-material';
+import { AccountCircle, Search } from '@mui/icons-material';
+import Card from './Card';
+import StatisticsSearch from './StatisticsSearch';
+import Bar from './Bar';
 
 const ListCheck = () => {
     let head = {
@@ -28,7 +31,7 @@ const ListCheck = () => {
             MXIK: "+44-7871234567",
             price: "4000 1234 5678 9010",
             taxFreeSumma: 1256300,
-            productCount:126,
+            productCount: 126,
             event: "new"
         },
         {
@@ -37,7 +40,7 @@ const ListCheck = () => {
             MXIK: "8 800 444 55 55",
             price: "4000 1234 5678 9010",
             taxFreeSumma: 1654789,
-            productCount:126,
+            productCount: 126,
             event: "success"
         },
         {
@@ -46,105 +49,67 @@ const ListCheck = () => {
             MXIK: "8 800 444 55 55",
             price: "4000 1234 5678 9010",
             taxFreeSumma: 1654789,
-            productCount:126,
+            productCount: 126,
             event: "doing"
         },
     ];
 
-    let btns = [
-        {
-            label: "Hammasi",
-            event: "all"
-        },
-        {
-            label: "Tasdiqlangan",
-            event: "success"
-        },
-        {
-            label: "Rad etilgan",
-            event: "failed"
+    function Event(prams) {
+        if (prams.params.event == "new") {
+            return <Box
+                sx={{
+                    background: "rgba(50, 94, 205, 0.25)",
+                    borderRadius: "26px",
+                    width:'100px',
+                    height:"28px",
+                    color: "#325ECD",
+                    fontSize:"14px",
+                    fontWeight:600,
+                    textAlign:"center",
+                    padding:"5px 15px"
+                }}
+            >Yangi</Box>
+        } else if (prams.params.event == "doing") {
+            return <Box
+                sx={{
+                    background: "rgba(253, 151, 23, 0.25)",
+                    borderRadius: "26px",
+                    width:'100px',
+                    height:"28px",
+                    color: "#FD9717",
+                    fontSize:"14px",
+                    fontWeight:600,
+                    textAlign:"center",
+                    padding:"5px 15px"
+                }}
+            >Jarayonda</Box>
         }
-    ]
-
-    function Event(prams){
-         if(prams.params.event == "new"){
-           return <Button
-            sx={{
-                background: "rgba(50, 94, 205, 0.25)",
-                borderRadius: "26px",
-                padding:"5px 20px",
-                color:"#325ECD"
-            }}
-           >Yangi</Button>
-        }else if(prams.params.event== "doing"){
-           return <Button
-           sx={{
-            background: "rgba(253, 151, 23, 0.25)",
-            borderRadius: "26px",
-            padding:"5px 20px",
-            color:"#FD9717"
-        }}
-           >Jarayonda</Button>
-        }
-        else if(prams.params.event == 'success'){
-          return  <Button
-          sx={{
-            background: "rgba(18, 185, 3, 0.25)",
-            borderRadius: "26px",
-            padding:"5px 20px",
-            color:"#12B903",
-        }}
-          >Tastiqlangan</Button>
+        else if (prams.params.event == 'success') {
+            return <Box
+                sx={{
+                    background: "rgba(18, 185, 3, 0.25)",
+                    borderRadius: "26px",
+                    width:'100px',
+                    height:"28px",
+                    color: "#12B903",
+                    fontSize:"14px",
+                    fontWeight:600,
+                    textAlign:"center",
+                    padding:"5px 15px"
+                }}
+            >Tastiqlangan</Box>
         }
     }
 
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
     return (
+        <>
+        <Bar/>
+          <Card/>
+          <StatisticsSearch/>
         <Container maxWidth="xl">
-             
-            <Grid container columns={12}>
-                <Grid item xs={8}>
-            <TextField
-                id="outlined-required"
-                label="Telefon raqam"
-                sx={{
-                    width: "100%",
-                    margin: "15px 0",
-                    borderRadius: "20px",
-                    border: " 1px solid rgba(50, 94, 205, 0.2",
-                    paddign:"0"
-                }}
-                InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <Search />
-                      </InputAdornment>
-                    ),
-                  }}
-                
-            />
-            <Grid item xs={4}></Grid>
-                </Grid>
-            {
-                btns.map((vl, ky) => {
-                    return (
-                       <div style={{display:"flex" , alignItems:"center"}}>
-                         <Button key={ky} variant='outlined'
-                            sx={{
-                                background: "#F8F8F8",
-                                border: "1px solid #B6BCCD",
-                                borderRadius: "20px",
-                                m: "5px"
-                            }}
-                        >{vl.label}</Button>
-                       </div>
-                    )
-                })
-            }
-            </Grid>
-           
             <List
-                sx={{ width: '100%', bgcolor: 'background.paper' }}
+                sx={{ width: '100%', bgcolor: '' }}
                 component="nav"
                 aria-labelledby="nested-list-subheader"
             >
@@ -152,10 +117,11 @@ const ListCheck = () => {
                     sx={{
                         width: "100%",
                         border: "1px solid #D3E0FF",
-                        margin: "10px 0",
+                        margin: "5px 0",
                         padding: "5px 10px",
                         borderRadius: "18px",
-                        bgColor: "#F1F1F1"
+                        background:"#FFFFFF",
+                        boxShadow:"0px 0px 15px rgba(160, 160, 160, 0.1)"
                     }}
                 >
                     <Grid spacing={2} container columns={20}>
@@ -190,7 +156,7 @@ const ListCheck = () => {
                                     <Grid item xs={3} sx={{ display: "flex", alignItems: "center" }}>{vl.taxFreeSumma}</Grid>
                                     <Grid item xs={3} sx={{ display: "flex", alignItems: "center" }}>{vl.productCount}</Grid>
                                     <Grid item xs={3} sx={{ display: "flex", alignItems: "center" }}>
-                                        <Event params={{event: vl.event}}/>
+                                        <Event params={{ event: vl.event }} />
                                     </Grid>
                                 </Grid>
                             </ListItem>
@@ -199,7 +165,9 @@ const ListCheck = () => {
                 }
             </List>
         </Container>
-    );
+ 
+        </>
+       );      
 }
 
 export default ListCheck;

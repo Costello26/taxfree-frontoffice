@@ -12,7 +12,7 @@ import ScanPassport from './layout/ScanPassport/ScanPassport';
 function App() {
   return (
     <div className="App">
-      <SideBar />
+      {/* <SideBar />
       <Router>
         <Routes>
           <Route path="/" element={<ListInpector />} />
@@ -20,7 +20,7 @@ function App() {
           <Route path="/scan-passport" element={<ScanPassport />} />
         </Routes>
       </Router>
-      <Footer />
+      <Footer /> */}
       {/* <ScanCheck/> */}
       {/* <QRGenetator/> */}
       {/* <UserInfo/> */}
