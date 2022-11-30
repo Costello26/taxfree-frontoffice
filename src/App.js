@@ -9,18 +9,21 @@ import TaxfreeStatisticsTable from './components/TaxFreeStatisticsTable/TaxFreeS
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Registration from './layout/Registration/Registration';
 import ScanPassport from './layout/ScanPassport/ScanPassport';
+import ProductFormalization from './layout/ProductFormalization/ProductFormalization';
 function App() {
   return (
     <div className="App">
-      {/* <SideBar />
+      <SideBar />
       <Router>
         <Routes>
           <Route path="/" element={<ListInpector />} />
           <Route path="/register" element={<Registration />} />
           <Route path="/scan-passport" element={<ScanPassport />} />
+          <Route path="/talon" element={<></>} />
+          <Route path="/product-formalization" element={<ProductFormalization />} />
         </Routes>
       </Router>
-      <Footer /> */}
+      <Footer />
       {/* <ScanCheck/> */}
       {/* <QRGenetator/> */}
       {/* <UserInfo/> */}
