@@ -23,9 +23,9 @@ const RegulaInfo = () => {
               fontSize: '25px',
             }}
           >
-            Shaxsingizni tasdiqlovchi xujjatni scaner qurilmasiga ochiq holda
-            joylashtiring
+            Shaxsingizni tasdiqlovchi xujjatni ochiq holda skanerlash qurilmasiga qo'ying
           </Typography>
+          <br />
           <Typography
             sx={{
               fontFamily: 'Montserrat',
@@ -34,8 +34,8 @@ const RegulaInfo = () => {
               fontSize: '25px',
             }}
           >
-            Положите в открытом виде документ подтверждающий <br />
-            Вашу личность на устройство сканирование
+            Положите документ, подтверждающий вашу личность в открытом виде <br /> на
+            устройство сканирования
           </Typography>
           <Box
             sx={{
