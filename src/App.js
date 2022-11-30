@@ -9,6 +9,11 @@ import TaxfreeStatisticsTable from './components/TaxFreeStatisticsTable/TaxFreeS
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Registration from './layout/Registration/Registration';
 import ScanPassport from './layout/ScanPassport/ScanPassport';
+import Modal from './components/Modal/Modal';
+import { Box, Typography } from '@mui/material';
+import { lazy } from 'react';
+import CheckBox from './assets/Png/CheckBox.png'
+// const CheckBox = lazy(() => import('./assets/Png/CheckBox.png'))
 function App() {
   return (
     <div className="App">
@@ -27,6 +32,33 @@ function App() {
       {/* <Taxfree/> */}
       {/* <ListCheck/> */}
       {/* <TaxfreeStatisticsTable /> */}
+      {/* <Modal>
+        <Box sx={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: "540px",
+          height: "500px",
+          background: "#FFFFFF",
+          borderRadius: "40px",
+          boxShadow: 24,
+          p: 4,
+          display: "flex",
+          flexDirection:"column",
+          justifyContent: "center",
+          alignItems: "center"
+        }}>
+          <img src={CheckBox} alt="CheckBox" style={{ width: "150px", height: "150px" }} />
+          <Typography
+          sx={{fontSize:"24px", fontWeight:600, textAlign:"center", mt:"55px"}}
+          >Shaxsga doir ma`lumotlar tasdiqlandi!</Typography>
+          <Typography
+          sx={{fontSize:"24px", fontWeight:600, textAlign:"center", mt:"35px"}}
+          >Личные данные подтверждены!
+          </Typography>
+        </Box>
+      </Modal> */}
     </div>
   );
 }
