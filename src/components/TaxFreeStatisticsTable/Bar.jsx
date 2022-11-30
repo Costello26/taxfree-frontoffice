@@ -49,6 +49,7 @@ const Bar = () => {
               borderRadius:"26px"
             }}>
                 <Button variant={USD}
+                onMouseOver={(e)=>{e.target.style.border="none"}}
                 onClick={ChangeCurrency1}
                     sx={{
                         borderRadius: "26px",
@@ -56,6 +57,7 @@ const Bar = () => {
                     }}
                 >USD</Button>
                   <Button variant={UZB}
+                  onMouseOver={(e)=>{e.target.style.border="none"}}
                   onClick={ChangeCurrency2}
                     sx={{
                         borderRadius: "26px",

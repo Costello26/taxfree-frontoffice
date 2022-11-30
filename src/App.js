@@ -26,7 +26,7 @@ function App() {
       {/* <UserInfo/> */}
       {/* <Taxfree/> */}
       {/* <ListCheck/> */}
-      <TaxfreeStatisticsTable />
+      {/* <TaxfreeStatisticsTable /> */}
     </div>
   );
 }
