@@ -9,23 +9,20 @@ import TaxfreeStatisticsTable from './components/TaxFreeStatisticsTable/TaxFreeS
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Registration from './layout/Registration/Registration';
 import ScanPassport from './layout/ScanPassport/ScanPassport';
-import Modal from './components/Modal/Modal';
-import { Box, Typography } from '@mui/material';
-import { lazy } from 'react';
-import CheckBox from './assets/Png/CheckBox.png'
-// const CheckBox = lazy(() => import('./assets/Png/CheckBox.png'))
 function App() {
   return (
     <div className="App">
-      {/* <SideBar />
+      <SideBar />
       <Router>
         <Routes>
           <Route path="/" element={<ListInpector />} />
           <Route path="/register" element={<Registration />} />
           <Route path="/scan-passport" element={<ScanPassport />} />
+          <Route path="/talon" element={<></>} />
+          <Route path="/product-formalization" element={<ProductFormalization />} />
         </Routes>
       </Router>
-      <Footer /> */}
+      <Footer />
       {/* <ScanCheck/> */}
       {/* <QRGenetator/> */}
       {/* <UserInfo/> */}

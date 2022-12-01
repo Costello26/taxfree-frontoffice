@@ -50,7 +50,6 @@ const StatisticsSearch = () => {
                             id="demo-simple-select"
                             value={null}
                             label="Oy"
-                        // onChange={handleChange}  
                         >
                             <MenuItem value={10}>Ten</MenuItem>
                             <MenuItem value={20}>Twenty</MenuItem>
@@ -63,8 +62,7 @@ const StatisticsSearch = () => {
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
                             value={null}
-                            label="Kun"
-                        // onChange={handleChange}  
+                            label="Kun" 
                         >
                             <MenuItem value={10}>Ten</MenuItem>
                             <MenuItem value={20}>Twenty</MenuItem>
