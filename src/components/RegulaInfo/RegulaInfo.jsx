@@ -1,14 +1,17 @@
 import React from 'react';
 import { Container, Box, Typography, Avatar } from '@mui/material';
 import Regula from '../../assets/Png/Regula.png';
-const RegulaInfo = () => {
+import LupIcon from '../../assets/Png/lupIcon.png'
+const RegulaInfo = (props) => {
+  let prop= props.state
+  console.log(props );
   return (
     <Container maxWidth="xl" disableGutters>
       <Box sx={{ flexGrow: 1, height: '700px' }}>
         <Box
           sx={{
             width: '100%',
-            height: '700px',
+            height: '800px',
             borderRadius: '40px',
             textAlign: 'center',
             backgroundColor: '#FFF',
@@ -23,7 +26,7 @@ const RegulaInfo = () => {
               fontSize: '25px',
             }}
           >
-            Shaxsingizni tasdiqlovchi xujjatni ochiq holda skanerlash qurilmasiga qo'ying
+            {prop.textUZ}
           </Typography>
           <br />
           <Typography
@@ -34,31 +37,31 @@ const RegulaInfo = () => {
               fontSize: '25px',
             }}
           >
-            Положите документ, подтверждающий вашу личность в открытом виде <br /> на
-            устройство сканирования
+          {prop.textRU}
           </Typography>
-          <Box
-            sx={{
+          <div
+            style={{
               width: '527px',
               height: '527px',
-              background: '#F3F6FF',
-              border: '2px solid rgba(50, 94, 205, 0.1)',
-              borderRadius: '50%',
+              backgroundImage:{LupIcon},
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              margin: '25px auto',
+              margin: '55px auto',
+              position:"relative"
             }}
           >
-            <Avatar
-              src={Regula}
-              alt="regula"
-              sx={{
-                width: '482px',
-                height: '320px',
-              }}
-            />
-          </Box>
+            <img src={LupIcon} alt="" style={{width:"600px", height:"600px" , position:"absolute", top:"25px", left:"40px"}} />
+              <img
+                src={prop.imgSrc}
+                alt="regula"
+                style={{
+                  width: '242px',
+                  height: '210px',
+                  borderRadius:"0"
+                }}
+              />
+          </div>
         </Box>
       </Box>
     </Container>

@@ -21,6 +21,8 @@ import {
   Select,
   MenuItem,
   InputLabel,
+  Stack,
+  Pagination,
 } from '@mui/material';
 import { Box } from '@mui/system';
 import { pink } from '@mui/material/colors';
@@ -212,6 +214,12 @@ const ListCheck = () => {
             );
           })}
         </List>
+        <div>
+         <Stack sx={{mt:"5px", mb:"15px"}}>
+          <Pagination count={10} color="primary" shape="rounded" size='large'/>
+        </Stack> 
+        </div>
+        
       </Container>
     </>
   );

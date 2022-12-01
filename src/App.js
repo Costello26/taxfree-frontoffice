@@ -9,6 +9,10 @@ import TaxfreeStatisticsTable from './components/TaxFreeStatisticsTable/TaxFreeS
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Registration from './layout/Registration/Registration';
 import ScanPassport from './layout/ScanPassport/ScanPassport';
+import ScanTalon from './layout/ScanTalon/ScanTalon';
+
+import ProductFormalization from './layout/ProductFormalization/ProductFormalization'
+import UsersFormalition from './layout/UserFormalization/UsersFormalition'
 function App() {
   return (
     <div className="App">
@@ -18,8 +22,9 @@ function App() {
           <Route path="/" element={<ListInpector />} />
           <Route path="/register" element={<Registration />} />
           <Route path="/scan-passport" element={<ScanPassport />} />
-          <Route path="/talon" element={<></>} />
+          <Route path="/scan-talon" element={<ScanTalon />} />
           <Route path="/product-formalization" element={<ProductFormalization />} />
+          <Route path="/users-formalization" element={<UsersFormalition />} />
         </Routes>
       </Router>
       <Footer />
