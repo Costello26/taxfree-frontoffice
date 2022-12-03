@@ -1,18 +1,13 @@
 import SideBar from './layout/Sidebar/SideBar';
 import ListInpector from './components/ListInspector/ListInpector';
 import Footer from './layout/Footer/Footer';
-import UserInfo from './components/UserTaxfree/UserInfo';
-import QRGenetator from './components/QRGenerator/QRGenerator';
-import Taxfree from './components/UserTaxfree/Taxfree';
-import ListCheck from './components/ListCheck/ListCheck';
-import TaxfreeStatisticsTable from './components/TaxFreeStatisticsTable/TaxFreeStatisticsTable';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Registration from './layout/Registration/Registration';
 import ScanPassport from './layout/ScanPassport/ScanPassport';
 import ScanTalon from './layout/ScanTalon/ScanTalon';
-
 import ProductFormalization from './layout/ProductFormalization/ProductFormalization'
 import UsersFormalition from './layout/UserFormalization/UsersFormalition'
+import StatisticsPage from "./layout/StatisticsPage/Statistics"
 function App() {
   return (
     <div className="App">
@@ -20,6 +15,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<ListInpector />} />
+          <Route path='/statistic' element={<StatisticsPage/>}/>
           <Route path="/register" element={<Registration />} />
           <Route path="/scan-passport" element={<ScanPassport />} />
           <Route path="/scan-talon" element={<ScanTalon />} />
