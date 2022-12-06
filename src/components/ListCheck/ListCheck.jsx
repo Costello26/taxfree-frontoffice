@@ -117,7 +117,7 @@ const ListCheck = () => {
         );
       })}
       <List
-        sx={{ width: '100%', bgcolor: 'background.paper' }}
+        sx={{ width: '100%' }}
         component="nav"
         aria-labelledby="nested-list-subheader"
       >

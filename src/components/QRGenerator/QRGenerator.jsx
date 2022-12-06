@@ -1,43 +1,11 @@
-import { useState } from "react";
-import { QRCodeCanvas } from "qrcode.react";
+import React from 'react';
+import { QRCodeCanvas } from 'qrcode.react';
 
-const QrCode = () => {
-  const [url, setUrl] = useState("");
-
-  const downloadQRCode = (e) => {
-    e.preventDefault();
-    setUrl("");
-  };
-
-  const qrCodeEncoder = (e) => {
-    setUrl(e.target.value);
-  };
-
-  const qrcode = (
-    <QRCodeCanvas
-      id="qrCode"
-      value={url}
-      size={332}
-    //   bgColor={"#00ff00"}
-      level={"H"}
-    />
-  );
+const QrCode = (props) => {
   return (
     <div className="qrcode__container">
-      <div>{qrcode}</div>
-      <div className="input__group">
-        {/* <form onSubmit={downloadQRCode}>
-          <label>Enter URL</label>
-          <input
-            type="text"
-            value={url}
-            onChange={qrCodeEncoder}
-            placeholder="https://hackernoon.com"
-          />
-          <button type="submit" disabled={!url}>
-            Download QR code
-          </button>
-        </form> */}
+      <div>
+        {<QRCodeCanvas id="qrCode" value={props.qrCode} size={332} level={'H'} />}
       </div>
     </div>
   );

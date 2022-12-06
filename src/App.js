@@ -8,7 +8,21 @@ import ScanTalon from './layout/ScanTalon/ScanTalon';
 import ProductFormalization from './layout/ProductFormalization/ProductFormalization';
 import UsersFormalition from './layout/UserFormalization/UsersFormalition';
 import StatisticsPage from './layout/StatisticsPage/Statistics';
+import * as StompJs from '@stomp/stompjs';
+
+const SOCKET_URL = 'ws://10.255.53.91:14069/tax-free-api/websocket-server';
+
 function App() {
+  const stompClient = new StompJs.Client({
+    brokerURL: SOCKET_URL,
+    debug: function (str) {
+      console.log(str);
+    },
+    reconnectDelay: 5000,
+    heartbeatIncoming: 4000,
+    heartbeatOutgoing: 4000,
+  });
+  stompClient.activate();
   return (
     <div className="App">
       <SideBar />
@@ -16,7 +30,7 @@ function App() {
         <Routes>
           <Route path="/" element={<ListInpector />} />
           <Route path="/statistic" element={<StatisticsPage />} />
-          <Route path="/register" element={<Registration />} />
+          <Route path="/register" element={<Registration stompClient={stompClient} />} />
           <Route path="/scan-passport" element={<ScanPassport />} />
           <Route path="/scan-talon" element={<ScanTalon />} />
           <Route path="/product-formalization" element={<ProductFormalization />} />

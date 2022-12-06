@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { Box, Container, Avatar, Typography, TextField, Button } from '@mui/material';
 import ScanBtn from '../../assets/Png/Scanme.png';
 import User from '../../assets/Png/User.png';
 import QRGenerator from '../QRGenerator/QRGenerator';
 import classes from './scanCheck.module.scss';
-const ScanCheck = () => {
+const ScanCheck = (props) => {
+  const sendPhoneHandler = () => {
+    console.log(phoneNumberRef.current.value);
+    props.onContinue(phoneNumberRef.current.value);
+  };
+  const phoneNumberRef = useRef(null);
   return (
     <Container
       className={classes['registration__container']}
@@ -59,7 +64,7 @@ const ScanCheck = () => {
               отсканировать QR код с помощью <br />
               приложения Soliq
             </Typography>
-            <QRGenerator />
+            <QRGenerator qrCode={props.qrCode} />
             <Avatar
               src={ScanBtn}
               alt="Tax Free"
@@ -97,9 +102,10 @@ const ScanCheck = () => {
 
             <Container maxWidth="sm">
               <TextField
-                id="outlined-basic"
+                type="number"
                 label="Telefon raqam"
                 variant="outlined"
+                inputRef={phoneNumberRef}
                 sx={{
                   width: '100%',
                   height: '56px',
@@ -121,6 +127,7 @@ const ScanCheck = () => {
                   bgColor: '#325ECD',
                   textTransform: 'none',
                 }}
+                onClick={sendPhoneHandler}
               >
                 Davom etish
               </Button>
