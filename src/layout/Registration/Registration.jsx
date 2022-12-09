@@ -13,7 +13,7 @@ const Registration = (props) => {
     navigate('/scan-passport');
   };
   useEffect(() => {
-    props.stompClient.onConnect = (frame) => {
+    props.stompClient.onConnect = () => {
       props.stompClient.publish({
         destination: '/tax-free/set-connection',
         body: 'something',
