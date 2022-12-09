@@ -39,6 +39,10 @@ export default function TemporaryDrawer() {
             name: "Users Formalization",
             link: "/users-formalization"
         },
+        {
+           name:"print check",
+           link:"/statistics"
+        }
     ]
 
     const toggleDrawer = (anchor, open) => (event) => {

@@ -36,7 +36,7 @@ function App() {
           <Route path="/scan-talon" element={<ScanTalon />} />
           <Route path="/product-formalization" element={<ProductFormalization />} />
           <Route path="/users-formalization" element={<UsersFormalition />} />
-          <Route path="/statistics" element={<></>} />
+          <Route path="/statistics" element={<PrintCheck/> } />
         </Routes>
         <Footer />
       </Router>
