@@ -4,6 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { Avatar, Box } from '@mui/material';
 import UserIcons from '../../assets/Png/UserIcons.png';
+import successIcon from '../../assets/Png/Success.png';
 import cls from './User.module.scss';
 
 const UserInfo = () => {
@@ -49,13 +50,28 @@ const UserInfo = () => {
               Visa FISh: {lastName} {firstName}
             </Typography>
             <Typography
-              sx={{ fontSize: '18px', fontWeight: '500', display: 'flex' }}
+              sx={{
+                fontSize: '18px',
+                fontWeight: '500',
+                display: 'flex',
+                alignItems: 'center',
+              }}
               gutterBottom
               component="div"
             >
               Holati:
-              <Typography sx={{ color: '#12B903', fontSize: '18px', fontWeight: '500' }}>
+              <Typography
+                sx={{
+                  color: '#12B903',
+                  fontSize: '18px',
+                  fontWeight: '500',
+                  display: 'flex',
+                  gap: '6px',
+                  alignItems: 'center',
+                }}
+              >
                 Shaxsi tasdiqlangan
+                <img src={successIcon} width={16.25} height={16.25} alt="success" />
               </Typography>
             </Typography>
           </CardContent>

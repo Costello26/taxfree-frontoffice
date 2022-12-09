@@ -7,36 +7,14 @@ import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
-
 import SelectLanguage from '../../components/SelectLanguage/SelectLang';
-
 import SoliqLogo from '../../assets/Png/SoliqLogo.png';
-import { Link } from 'react-router-dom';
 
-const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 const SideBar = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
   const firstName = localStorage.getItem('firstName');
   const lastName = localStorage.getItem('lastName');
   const jshshir = localStorage.getItem('jshshir');
   const image = localStorage.getItem('image');
-
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
   return (
     <AppBar
       position="static"
@@ -58,13 +36,11 @@ const SideBar = () => {
               alignItems: 'center',
             }}
           >
-            {/* <Link to="/"> */}
             <img
               src={SoliqLogo}
               alt="Soliq Logo"
               style={{ width: '70px', height: '62px', margin: '25px 10px' }}
             />
-            {/* </Link> */}
 
             <Box sx={{ lineHeight: '20px' }}>
               <Typography
@@ -93,7 +69,6 @@ const SideBar = () => {
               </Typography>
               <Typography
                 sx={{
-                  display: { xs: 'none', md: 'flex' },
                   fontFamily: 'Nunito',
                   color: 'black',
                   fontSize: '16px',
@@ -106,7 +81,7 @@ const SideBar = () => {
             </Box>
           </Box>
           <Box sx={{ flexGrow: 0, display: 'flex', alignItems: 'center' }}>
-            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+            <IconButton sx={{ p: 0 }}>
               <Avatar
                 alt="Olimov Asqarali"
                 src={`${image}` || '/static/images/avatar/2.jpg'}
