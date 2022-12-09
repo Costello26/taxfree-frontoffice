@@ -104,6 +104,7 @@ const ListCheck = () => {
       {btns.map((vl, ky) => {
         return (
           <Button
+          key ={ky}
             variant="outlined"
             sx={{
               background: '#F8F8F8',
@@ -155,6 +156,7 @@ const ListCheck = () => {
         {headCells.map((vl, ky) => {
           return (
             <ListItem
+            key={ky}
               sx={{
                 width: '100%',
                 border: '1px solid #D3E0FF',

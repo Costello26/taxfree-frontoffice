@@ -8,6 +8,7 @@ import ScanTalon from './layout/ScanTalon/ScanTalon';
 import ProductFormalization from './layout/ProductFormalization/ProductFormalization';
 import UsersFormalition from './layout/UserFormalization/UsersFormalition';
 import StatisticsPage from './layout/StatisticsPage/Statistics';
+import PrintCheck from './components/printCheck/PrintCheck';
 import * as StompJs from '@stomp/stompjs';
 
 const SOCKET_URL = 'ws://10.255.53.91:14069/tax-free-api/websocket-server';
@@ -25,8 +26,8 @@ function App() {
   stompClient.activate();
   return (
     <div className="App">
-      <SideBar />
       <Router>
+        <SideBar />
         <Routes>
           <Route path="/" element={<ListInpector />} />
           <Route path="/statistic" element={<StatisticsPage />} />
@@ -37,8 +38,11 @@ function App() {
           <Route path="/users-formalization" element={<UsersFormalition />} />
           <Route path="/statistics" element={<></>} />
         </Routes>
+        <Footer />
       </Router>
-      <Footer />
+
+
+      {/* <PrintCheck/> */}
       {/* <ScanCheck/> */}
       {/* <QRGenetator/> */}
       {/* <UserInfo/> */}

@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
-
+import RightDashboard from '../../components/RightDashboard/RightDashboard'
 import SelectLanguage from '../../components/SelectLanguage/SelectLang';
 
 import SoliqLogo from '../../assets/Png/SoliqLogo.png';
@@ -120,7 +120,7 @@ const SideBar = () => {
           </Box>
           <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
             <SelectLanguage />
-            <MenuIcon sx={{ fontSize: '45px' }} />
+            <RightDashboard/>
           </Box>
         </Toolbar>
       </Container>
