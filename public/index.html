@@ -78,6 +78,12 @@
 
         function getLastResults() {
           //Getting scanned images
+          let firstName,
+            lastName,
+            passportJSHR,
+            passportImage,
+            passportIssuedDate,
+            passportNumber;
           IsReaderResultTypeAvailable(
             eRPRM_ResultType.RPRM_ResultType_RawImage,
             function (count) {
@@ -135,17 +141,11 @@
                   function (data) {
                     data = JSON.parse(data);
                     console.log(data);
-                    const lastName = data.ListVerifiedFields.pFieldMaps[8].Field_MRZ;
-                    const firstName = data.ListVerifiedFields.pFieldMaps[9].Field_MRZ;
-                    const jshshir = data.ListVerifiedFields.pFieldMaps[7].Field_MRZ;
-                    localStorage.setItem('firstName', firstName);
-                    localStorage.setItem('lastName', lastName);
-                    localStorage.setItem('jshshir', jshshir);
-                    // localStorage.setItem()
-                    // fetch('http://10.255.53.91:14069/tax-free-api/passport/save', {
-                    //   method: 'POST',
-                    //   body: 'Khurmatillo',
-                    // });
+                    lastName = data.ListVerifiedFields.pFieldMaps[8].Field_MRZ;
+                    firstName = data.ListVerifiedFields.pFieldMaps[9].Field_MRZ;
+                    passportJSHR = data.ListVerifiedFields.pFieldMaps[7].Field_MRZ;
+                    passportNumber = data.ListVerifiedFields.pFieldMaps[2].Field_MRZ;
+                    passportIssuedDate = data.ListVerifiedFields.pFieldMaps[4].Field_MRZ;
                   }
                 );
               }
@@ -236,9 +236,8 @@
                   0,
                   function (data) {
                     data = JSON.parse(data);
-                    // console.log(data);
-                    let image = 'data:image/png;base64,';
-                    image += data.DocGraphicsInfo.pArrayFields[0].image.image;
+                    passportImage = 'data:image/png;base64,';
+                    passportImage += data.DocGraphicsInfo.pArrayFields[0].image.image;
                     localStorage.setItem('image', image);
                   }
                 );
@@ -306,6 +305,19 @@
             }
           );
 
+          if (firstName) {
+            fetch('http://10.255.53.91:14069/tax-free-api/passport/save', {
+              method: 'POST',
+              body: JSON.stringify({
+                passportNumber: passportNumber,
+                firstName: firstName,
+                lastName: lastName,
+                passportJSHR: passportJSHR,
+                passportImage: passportImage,
+                passportDate: passportIssuedDate,
+              }),
+            });
+          }
           //Getting summary
           GetStatuses();
 
