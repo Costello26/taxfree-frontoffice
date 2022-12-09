@@ -7,32 +7,15 @@ import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
-import RightDashboard from '../../components/RightDashboard/RightDashboard'
+
 import SelectLanguage from '../../components/SelectLanguage/SelectLang';
-
 import SoliqLogo from '../../assets/Png/SoliqLogo.png';
-import { Link } from 'react-router-dom';
 
-const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 const SideBar = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
-
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+  const firstName = localStorage.getItem('firstName');
+  const lastName = localStorage.getItem('lastName');
+  const jshshir = localStorage.getItem('jshshir');
+  const image = localStorage.getItem('image');
   return (
     <AppBar
       position="static"
@@ -54,13 +37,11 @@ const SideBar = () => {
               alignItems: 'center',
             }}
           >
-            {/* <Link to="/"> */}
-              <img
-                src={SoliqLogo}
-                alt="Soliq Logo"
-                style={{ width: '70px', height: '62px', margin: '25px 10px' }}
-              />
-            {/* </Link> */}
+            <img
+              src={SoliqLogo}
+              alt="Soliq Logo"
+              style={{ width: '70px', height: '62px', margin: '25px 10px' }}
+            />
 
             <Box sx={{ lineHeight: '20px' }}>
               <Typography
@@ -89,7 +70,6 @@ const SideBar = () => {
               </Typography>
               <Typography
                 sx={{
-                  display: { xs: 'none', md: 'flex' },
                   fontFamily: 'Nunito',
                   color: 'black',
                   fontSize: '16px',
@@ -102,19 +82,21 @@ const SideBar = () => {
             </Box>
           </Box>
           <Box sx={{ flexGrow: 0, display: 'flex', alignItems: 'center' }}>
-            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+            <IconButton sx={{ p: 0 }}>
               <Avatar
                 alt="Olimov Asqarali"
-                src="/static/images/avatar/2.jpg"
+                src={`${image}` || '/static/images/avatar/2.jpg'}
                 style={{ width: '56px', height: '56px' }}
               />
             </IconButton>
             <Box>
               <Typography sx={{ pl: 2, fontWeight: '600', fontSize: '16px' }}>
-                Olimov Asqarali
+                {lastName[0].toUpperCase() + lastName.slice(1).toLowerCase() || 'Olimov'}{' '}
+                {firstName[0].toUpperCase() + firstName.slice(1).toLowerCase() ||
+                  'Asqarali'}
               </Typography>
               <Typography sx={{ pl: 2, fontWeight: '400', fontSize: '16px' }}>
-                JShShIR:12345678901234
+                JShShIR:{jshshir || 12345678910111}
               </Typography>
             </Box>
           </Box>

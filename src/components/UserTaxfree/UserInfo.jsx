@@ -4,9 +4,13 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { Avatar, Box } from '@mui/material';
 import UserIcons from '../../assets/Png/UserIcons.png';
+import successIcon from '../../assets/Png/Success.png';
 import cls from './User.module.scss';
 
 const UserInfo = () => {
+  const userImage = localStorage.getItem('image');
+  const firstName = localStorage.getItem('firstName');
+  const lastName = localStorage.getItem('lastName');
   return (
     <Card
       sx={{
@@ -20,7 +24,7 @@ const UserInfo = () => {
     >
       <div className={cls['user-info']}>
         <Avatar
-          src={UserIcons}
+          src={userImage || UserIcons}
           sx={{
             width: '158px',
             height: '164px',
@@ -30,7 +34,7 @@ const UserInfo = () => {
         <Box>
           <CardContent>
             <Typography sx={{ fontSize: '18px', fontWeight: '500' }} component="div">
-              FISh: Hellen Mirren
+              FISh: {lastName} {firstName}
             </Typography>
             <Typography sx={{ fontSize: '18px', fontWeight: '500' }} component="div">
               Telefon: +44-7871234567
@@ -43,16 +47,31 @@ const UserInfo = () => {
               gutterBottom
               component="div"
             >
-              Visa FISh: Hellen Mirren
+              Visa FISh: {lastName} {firstName}
             </Typography>
             <Typography
-              sx={{ fontSize: '18px', fontWeight: '500', display: 'flex' }}
+              sx={{
+                fontSize: '18px',
+                fontWeight: '500',
+                display: 'flex',
+                alignItems: 'center',
+              }}
               gutterBottom
               component="div"
             >
               Holati:
-              <Typography sx={{ color: '#12B903', fontSize: '18px', fontWeight: '500' }}>
+              <Typography
+                sx={{
+                  color: '#12B903',
+                  fontSize: '18px',
+                  fontWeight: '500',
+                  display: 'flex',
+                  gap: '6px',
+                  alignItems: 'center',
+                }}
+              >
                 Shaxsi tasdiqlangan
+                <img src={successIcon} width={16.25} height={16.25} alt="success" />
               </Typography>
             </Typography>
           </CardContent>

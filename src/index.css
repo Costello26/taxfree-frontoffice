@@ -1,3 +1,6 @@
+#root {
+  width: 100vw;
+}
 body {
   margin: 0;
   font-family: 'Nunito', sans-serif;

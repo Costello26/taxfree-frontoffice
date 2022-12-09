@@ -3,32 +3,41 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-const languages = ['Uzb', 'Eng', 'Ru'];
+const languages = ["O'ZB", 'ENG', 'RU'];
 export default function SelectSmall() {
-  const [age, setAge] = React.useState('Uzb');
+  const [lang, setLang] = React.useState("O'ZB");
 
   const handleChange = (event) => {
-    setAge(event.target.value);
+    setLang(event.target.value);
   };
 
   return (
-    <FormControl sx={{ mr: 3, minWidth: 120, borderColor: 'white' }} size="small">
-      {/* <InputLabel id="demo-select-small">Age</InputLabel> */}
+    <FormControl
+      sx={{
+        mr: 3,
+        minWidth: 94,
+        boxShadow: '0px -1px 11px rgba(0, 0, 0, 0.15)',
+        backgroundColor: '#FFF',
+        borderRadius: '20px',
+        height: '42px',
+      }}
+    >
       <Select
-        labelId="demo-select-small"
-        id="demo-select-small"
-        value={age}
+        value={lang}
         onChange={handleChange}
         sx={{
           borderRadius: '20px',
-          boxShadow: '0 0 10px rgba(128, 128, 128, 0.567)',
-          borderColor: 'white',
+          border: 'none',
+          height: '42px',
+          textAlign: 'center',
+          fontSize: '14px',
+          fontWeight: 600,
         }}
       >
-        {languages.map((vl, index) => {
+        {languages.map((val, index) => {
           return (
-            <MenuItem value={vl} key={index}>
-              {vl}
+            <MenuItem value={val} key={index}>
+              {val}
             </MenuItem>
           );
         })}
