@@ -7,6 +7,9 @@ import UserIcons from '../../assets/Png/UserIcons.png';
 import cls from './User.module.scss';
 
 const UserInfo = () => {
+  const userImage = localStorage.getItem('image');
+  const firstName = localStorage.getItem('firstName');
+  const lastName = localStorage.getItem('lastName');
   return (
     <Card
       sx={{
@@ -20,7 +23,7 @@ const UserInfo = () => {
     >
       <div className={cls['user-info']}>
         <Avatar
-          src={UserIcons}
+          src={userImage || UserIcons}
           sx={{
             width: '158px',
             height: '164px',
@@ -30,7 +33,7 @@ const UserInfo = () => {
         <Box>
           <CardContent>
             <Typography sx={{ fontSize: '18px', fontWeight: '500' }} component="div">
-              FISh: Hellen Mirren
+              FISh: {lastName} {firstName}
             </Typography>
             <Typography sx={{ fontSize: '18px', fontWeight: '500' }} component="div">
               Telefon: +44-7871234567
@@ -43,7 +46,7 @@ const UserInfo = () => {
               gutterBottom
               component="div"
             >
-              Visa FISh: Hellen Mirren
+              Visa FISh: {lastName} {firstName}
             </Typography>
             <Typography
               sx={{ fontSize: '18px', fontWeight: '500', display: 'flex' }}

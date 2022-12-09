@@ -18,6 +18,10 @@ const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 const SideBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const firstName = localStorage.getItem('firstName');
+  const lastName = localStorage.getItem('lastName');
+  const jshshir = localStorage.getItem('jshshir');
+  const image = localStorage.getItem('image');
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -55,11 +59,11 @@ const SideBar = () => {
             }}
           >
             {/* <Link to="/"> */}
-              <img
-                src={SoliqLogo}
-                alt="Soliq Logo"
-                style={{ width: '70px', height: '62px', margin: '25px 10px' }}
-              />
+            <img
+              src={SoliqLogo}
+              alt="Soliq Logo"
+              style={{ width: '70px', height: '62px', margin: '25px 10px' }}
+            />
             {/* </Link> */}
 
             <Box sx={{ lineHeight: '20px' }}>
@@ -105,16 +109,18 @@ const SideBar = () => {
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
               <Avatar
                 alt="Olimov Asqarali"
-                src="/static/images/avatar/2.jpg"
+                src={`${image}` || '/static/images/avatar/2.jpg'}
                 style={{ width: '56px', height: '56px' }}
               />
             </IconButton>
             <Box>
               <Typography sx={{ pl: 2, fontWeight: '600', fontSize: '16px' }}>
-                Olimov Asqarali
+                {lastName[0].toUpperCase() + lastName.slice(1).toLowerCase() || 'Olimov'}{' '}
+                {firstName[0].toUpperCase() + firstName.slice(1).toLowerCase() ||
+                  'Asqarali'}
               </Typography>
               <Typography sx={{ pl: 2, fontWeight: '400', fontSize: '16px' }}>
-                JShShIR:12345678901234
+                JShShIR:{jshshir || 12345678910111}
               </Typography>
             </Box>
           </Box>

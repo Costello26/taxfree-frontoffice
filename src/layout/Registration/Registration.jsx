@@ -13,15 +13,6 @@ const Registration = (props) => {
     navigate('/scan-passport');
   };
   useEffect(() => {
-    // const stompClient = new StompJs.Client({
-    //   brokerURL: SOCKET_URL,
-    //   debug: function (str) {
-    //     console.log(str);
-    //   },
-    //   reconnectDelay: 5000,
-    //   heartbeatIncoming: 4000,
-    //   heartbeatOutgoing: 4000,
-    // });
     props.stompClient.onConnect = (frame) => {
       props.stompClient.publish({
         destination: '/tax-free/set-connection',
@@ -30,7 +21,6 @@ const Registration = (props) => {
       props.stompClient.subscribe('/topic/qr-information', (msg) => {
         const receivedData = JSON.parse(msg.body);
         const qr_code = receivedData.data['qr_code'];
-        // console.log(qr_code);
         setQrCode(qr_code);
       });
 
@@ -62,7 +52,6 @@ const Registration = (props) => {
     props.stompClient.onStompError = (err) => {
       console.log('Stomp error', err);
     };
-    // stompClient.activate();
   }, []);
   return (
     <div className="container">

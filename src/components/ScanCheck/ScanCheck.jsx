@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { Box, Container, Avatar, Typography, TextField, Button } from '@mui/material';
 import ScanBtn from '../../assets/Png/Scanme.png';
 import User from '../../assets/Png/User.png';

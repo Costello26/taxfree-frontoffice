@@ -1,40 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Container, Box, Typography } from '@mui/material';
 import LupIcon from '../../assets/Png/lupIcon.png';
-// import { io } from 'socket.io-client';
 
 const RegulaInfo = (props) => {
-  let prop = props.state;
-  let url = window.location.protocol + '//' + window.location.hostname + ':5000';
-  // if (window.location.port != null) {
-  //   url += ':' + window.location.port;
-  // }
-  url += '/Regula.SDK.Api';
-  const regulaReaderConnect = () => {
-    // fetch(url + '/signalr/hubs')
-    //   .then((res) => res.body)
-    //   .then((body) => console.log(body));
-    // const socket = io('http://localhost:3000');
-    // console.log(socket);
-    fetch(url + '/Methods/Connect', {
-      method: 'POST',
-    });
-    // socket.on('OnImageReady', function (ALight, APageIndex) {
-    //   console.log(ALight, APageIndex);
-    //   // if (OnImageReadyCallback != null)
-    //   //     OnImageReadyCallback(ALight, APageIndex);
-    // });
-    // socket.on('onResultReady', (AType) => {
-    //   console.log('Atype: ', AType);
-    // });
-    setTimeout(() => {
-      window.open('http://127.0.0.1:5500/Index.html', '_blank');
-      props.onProcessProducts();
-    }, 5000);
-  };
-  useEffect(() => {
-    regulaReaderConnect();
-  });
   return (
     <Container maxWidth="xl" disableGutters>
       <Box sx={{ flexGrow: 1, height: '700px' }}>
@@ -56,7 +24,7 @@ const RegulaInfo = (props) => {
               fontSize: '25px',
             }}
           >
-            {prop.textUZ}
+            {props.textUZ}
           </Typography>
           <br />
           <Typography
@@ -67,7 +35,7 @@ const RegulaInfo = (props) => {
               fontSize: '25px',
             }}
           >
-            {prop.textRU}
+            {props.textRU}
           </Typography>
           <div
             style={{
@@ -93,7 +61,7 @@ const RegulaInfo = (props) => {
               }}
             />
             <img
-              src={prop.imgSrc}
+              src={props.imgSrc}
               alt="regula"
               style={{
                 width: '242px',
