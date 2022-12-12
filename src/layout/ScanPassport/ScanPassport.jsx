@@ -13,7 +13,7 @@ const ScanPassport = (props) => {
   useEffect(() => {
     props.stompClient.subscribe('/topic/passport-response', (msg) => {
       const data = JSON.parse(msg.body);
-      if (data.first_name) {
+      if (data.first_name && data.last_name && data.passport_image) {
         dispatch(
           passportActions.receive({
             firstName: data.first_name,
@@ -23,8 +23,8 @@ const ScanPassport = (props) => {
             passportJSHR: data.passport_JSHR,
           })
         );
+        navigate('/product-formalization');
       }
-      navigate('/product-formalization');
     });
   }, []);
   return (

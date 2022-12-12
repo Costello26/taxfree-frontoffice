@@ -4,7 +4,6 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 
@@ -94,11 +93,11 @@ const SideBar = () => {
               />
             </IconButton>
             <Box>
-              {/* <Typography sx={{ pl: 2, fontWeight: '600', fontSize: '16px' }}>
+              <Typography sx={{ pl: 2, fontWeight: '600', fontSize: '16px' }}>
                 {lastName[0].toUpperCase() + lastName.slice(1).toLowerCase() || 'Olimov'}{' '}
                 {firstName[0].toUpperCase() + firstName.slice(1).toLowerCase() ||
                   'Asqarali'}
-              </Typography> */}
+              </Typography>
               <Typography sx={{ pl: 2, fontWeight: '400', fontSize: '16px' }}>
                 JShShIR:{passportJSHR || 123456789}
               </Typography>

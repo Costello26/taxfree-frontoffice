@@ -13,28 +13,26 @@ const Registration = (props) => {
     navigate('/scan-passport');
   };
   useEffect(() => {
-    props.stompClient.onConnect = () => {
-      props.stompClient.publish({
-        destination: '/tax-free/set-connection',
-        body: 'something',
-      });
-      props.stompClient.subscribe('/topic/qr-information', (msg) => {
-        const receivedData = JSON.parse(msg.body);
-        const qr_code = receivedData.data['qr_code'];
-        setQrCode(qr_code);
-      });
+    props.stompClient.publish({
+      destination: '/tax-free/set-connection',
+      body: 'something',
+    });
+    props.stompClient.subscribe('/topic/qr-information', (msg) => {
+      const receivedData = JSON.parse(msg.body);
+      const qr_code = receivedData.data['qr_code'];
+      setQrCode(qr_code);
+    });
 
-      props.stompClient.publish({
-        destination: '/tax-free/by-phone-number',
-        body: phoneNumber,
-      });
-      props.stompClient.subscribe('/topic/get-phone-number-response', (message) => {
-        console.log(message.body);
-        if (message.body) {
-          navigate('/scan-passport');
-        }
-      });
-    };
+    props.stompClient.publish({
+      destination: '/tax-free/by-phone-number',
+      body: phoneNumber,
+    });
+    props.stompClient.subscribe('/topic/get-phone-number-response', (message) => {
+      console.log(message.body);
+      if (message.body) {
+        navigate('/scan-passport');
+      }
+    });
     props.stompClient.onError = (frame) => {
       console.log(frame.headers['message']);
       console.log(frame);
