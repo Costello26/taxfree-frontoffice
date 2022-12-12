@@ -39,11 +39,10 @@ function App() {
           <Route path="/scan-talon" element={<ScanTalon />} />
           <Route path="/product-formalization" element={<ProductFormalization />} />
           <Route path="/users-formalization" element={<UsersFormalition />} />
-          <Route path="/printCheck" element={<PrintCheck/> } />
+          <Route path="/printCheck" element={<PrintCheck />} />
         </Routes>
         <Footer />
       </Router>
-      <Footer />
     </div>
   );
 }

@@ -4,20 +4,13 @@ import RegulaInfo from '../../components/RegulaInfo/RegulaInfo';
 import classes from './ScanPassport.module.scss';
 import sloy from '../../assets/Png/sloy.png';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { passportActions } from '../../store/passport';
 
-// const passportData = {
-//   firstName: localStorage.getItem('firstName'),
-//   lastName: localStorage.getItem('lastName'),
-//   passportJSHR: localStorage.getItem('jshshir'),
-//   passportImage: localStorage.getItem('image'),
-// };
 const ScanPassport = (props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  // const passportData = useSelector((state) => state.passport);
-  props.stompClient.onConnect = () => {
+  useEffect(() => {
     props.stompClient.subscribe('/topic/passport-response', (msg) => {
       const data = JSON.parse(msg.body);
       if (data.first_name) {
@@ -31,10 +24,9 @@ const ScanPassport = (props) => {
           })
         );
       }
-      // navigate('/product-formalization');
+      navigate('/product-formalization');
     });
-  };
-  useEffect(() => {}, [dispatch]);
+  }, []);
   return (
     <div className="container">
       <AppBar />
