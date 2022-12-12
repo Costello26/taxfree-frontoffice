@@ -24,19 +24,19 @@ export default function TemporaryDrawer() {
       link: '/register',
     },
     {
-      name: 'Passport Scan',
+      name: 'Passport skanerlash',
       link: '/scan-passport',
     },
     {
-      name: 'Talon Scan',
+      name: 'Talon',
       link: '/scan-talon',
     },
     {
-      name: 'Product Formalization',
+      name: 'Mahsulot rasmiylashtirish',
       link: '/product-formalization',
     },
     {
-      name: 'Users Formalization',
+      name: 'status',
       link: '/users-formalization',
     },
     {

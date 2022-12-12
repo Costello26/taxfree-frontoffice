@@ -36,7 +36,7 @@
       var passportImage;
       var passportIssuedDate;
       var passportNumber;
-      var url = window.location.protocol + '//' + 'localhost' + ':5000';
+      var url = 'http:' + '//' + 'localhost' + ':5000';
       // if (window.location.port != null) {
       //   url += ':' + window.location.port;
       // }
@@ -232,20 +232,22 @@
                   passportImage = 'data:image/png;base64,';
                   passportImage += data.DocGraphicsInfo.pArrayFields[0].image.image;
                   console.log(passportNumber, firstName, lastName, passportIssuedDate);
-                  fetch('http://10.255.53.91:14069/tax-free-api/passport/save', {
-                    method: 'POST',
-                    headers: {
-                      'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                      passportNumber: passportNumber,
-                      firstName: firstName,
-                      lastName: lastName,
-                      passportJSHR: passportJSHR,
-                      passportImage: passportImage,
-                      passportDate: passportIssuedDate,
-                    }),
-                  });
+                  if (localStorage.getItem('userId')) {
+                    fetch('https://mobile.soliq.uz/my3-api/tax-free-api/passport/save', {
+                      method: 'POST',
+                      headers: {
+                        'Content-Type': 'application/json',
+                      },
+                      body: JSON.stringify({
+                        passportNumber: passportNumber,
+                        fullName: `${firstName} ${lastName}`,
+                        passportJSHR: passportJSHR,
+                        passportImage: passportImage,
+                        passportDate: passportIssuedDate,
+                        userId: localStorage.getItem('userId'),
+                      }),
+                    });
+                  }
                 }
               );
             }
