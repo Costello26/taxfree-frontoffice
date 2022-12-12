@@ -7,9 +7,11 @@ import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
+
 import SelectLanguage from '../../components/SelectLanguage/SelectLang';
 import SoliqLogo from '../../assets/Png/SoliqLogo.png';
 import { useSelector } from 'react-redux';
+import RightDashboard from '../../components/RightDashboard/RightDashboard';
 
 const SideBar = () => {
   const firstName = useSelector((state) => state.passport.firstName);
@@ -92,11 +94,11 @@ const SideBar = () => {
               />
             </IconButton>
             <Box>
-              <Typography sx={{ pl: 2, fontWeight: '600', fontSize: '16px' }}>
+              {/* <Typography sx={{ pl: 2, fontWeight: '600', fontSize: '16px' }}>
                 {lastName[0].toUpperCase() + lastName.slice(1).toLowerCase() || 'Olimov'}{' '}
                 {firstName[0].toUpperCase() + firstName.slice(1).toLowerCase() ||
                   'Asqarali'}
-              </Typography>
+              </Typography> */}
               <Typography sx={{ pl: 2, fontWeight: '400', fontSize: '16px' }}>
                 JShShIR:{passportJSHR || 123456789}
               </Typography>
@@ -104,7 +106,7 @@ const SideBar = () => {
           </Box>
           <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
             <SelectLanguage />
-            <MenuIcon sx={{ fontSize: '45px' }} />
+            <RightDashboard />
           </Box>
         </Toolbar>
       </Container>

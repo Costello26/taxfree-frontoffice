@@ -104,8 +104,8 @@ const ListCheck = () => {
       {btns.map((vl, ky) => {
         return (
           <Button
-            variant="outlined"
             key={ky}
+            variant="outlined"
             sx={{
               background: '#F8F8F8',
               border: '1px solid #B6BCCD',
