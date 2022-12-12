@@ -9,12 +9,15 @@ import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import SelectLanguage from '../../components/SelectLanguage/SelectLang';
 import SoliqLogo from '../../assets/Png/SoliqLogo.png';
+import { useSelector } from 'react-redux';
 
 const SideBar = () => {
-  const firstName = localStorage.getItem('firstName');
-  const lastName = localStorage.getItem('lastName');
-  const jshshir = localStorage.getItem('jshshir');
-  const image = localStorage.getItem('image');
+  const firstName = useSelector((state) => state.passport.firstName);
+  const lastName = useSelector((state) => state.passport.lastName);
+  const passportImage = useSelector((state) => state.passport.passportImage);
+  const passportJSHR = useSelector((state) => state.passport.passportJSHR);
+  console.log(firstName, lastName);
+
   return (
     <AppBar
       position="static"
@@ -84,7 +87,7 @@ const SideBar = () => {
             <IconButton sx={{ p: 0 }}>
               <Avatar
                 alt="Olimov Asqarali"
-                src={`${image}` || '/static/images/avatar/2.jpg'}
+                src={`${passportImage}` || '/static/images/avatar/2.jpg'}
                 style={{ width: '56px', height: '56px' }}
               />
             </IconButton>
@@ -95,7 +98,7 @@ const SideBar = () => {
                   'Asqarali'}
               </Typography>
               <Typography sx={{ pl: 2, fontWeight: '400', fontSize: '16px' }}>
-                JShShIR:{jshshir || 12345678910111}
+                JShShIR:{passportJSHR || 123456789}
               </Typography>
             </Box>
           </Box>

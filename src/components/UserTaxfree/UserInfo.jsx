@@ -6,11 +6,10 @@ import { Avatar, Box } from '@mui/material';
 import UserIcons from '../../assets/Png/UserIcons.png';
 import successIcon from '../../assets/Png/Success.png';
 import cls from './User.module.scss';
+import { useSelector } from 'react-redux';
 
-const UserInfo = () => {
-  const userImage = localStorage.getItem('image');
-  const firstName = localStorage.getItem('firstName');
-  const lastName = localStorage.getItem('lastName');
+const UserInfo = (props) => {
+  const { passportImage, firstName, lastName } = useSelector((state) => state.passport);
   return (
     <Card
       sx={{
@@ -24,7 +23,7 @@ const UserInfo = () => {
     >
       <div className={cls['user-info']}>
         <Avatar
-          src={userImage || UserIcons}
+          src={passportImage || UserIcons}
           sx={{
             width: '158px',
             height: '164px',

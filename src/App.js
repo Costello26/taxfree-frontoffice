@@ -42,12 +42,6 @@ function App() {
         </Routes>
       </Router>
       <Footer />
-      {/* <ScanCheck/> */}
-      {/* <QRGenetator/> */}
-      {/* <UserInfo/> */}
-      {/* <Taxfree/> */}
-      {/* <ListCheck/> */}
-      {/* <TaxfreeStatisticsTable /> */}
     </div>
   );
 }

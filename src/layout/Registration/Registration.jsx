@@ -34,13 +34,6 @@ const Registration = (props) => {
           navigate('/scan-passport');
         }
       });
-      props.stompClient.subscribe('/topic/passport-response', (msg) => {
-        console.log(JSON.parse(msg.body));
-      });
-      props.stompClient.publish({
-        destination: '/tax-free-api/passport/save',
-        body: 'something',
-      });
     };
     props.stompClient.onError = (frame) => {
       console.log(frame.headers['message']);

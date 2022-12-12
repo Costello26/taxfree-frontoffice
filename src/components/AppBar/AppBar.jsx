@@ -36,7 +36,7 @@ const AppBar = () => {
             borderRight: '0',
             textTransform: 'none',
             lineHeight: '28px',
-            borderColor: '#D3E0FF',
+            borderColor: '#D3E0FF !important',
             backgroundColor: isRegActive ? '#325ECD' : '#fff',
             color: isRegActive ? '#fff' : '#000',
             ':hover': {
