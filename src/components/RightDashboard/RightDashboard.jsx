@@ -41,7 +41,7 @@ export default function TemporaryDrawer() {
         },
         {
            name:"print check",
-           link:"/statistics"
+           link:"/printCheck"
         }
     ]
 

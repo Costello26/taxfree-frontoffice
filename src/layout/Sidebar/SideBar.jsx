@@ -10,7 +10,7 @@ import Avatar from '@mui/material/Avatar';
 
 import SelectLanguage from '../../components/SelectLanguage/SelectLang';
 import SoliqLogo from '../../assets/Png/SoliqLogo.png';
-
+import RightDashboard from '../../components/RightDashboard/RightDashboard'
 const SideBar = () => {
   const firstName = localStorage.getItem('firstName');
   const lastName = localStorage.getItem('lastName');
@@ -90,11 +90,11 @@ const SideBar = () => {
               />
             </IconButton>
             <Box>
-              <Typography sx={{ pl: 2, fontWeight: '600', fontSize: '16px' }}>
+              {/* <Typography sx={{ pl: 2, fontWeight: '600', fontSize: '16px' }}>
                 {lastName[0].toUpperCase() + lastName.slice(1).toLowerCase() || 'Olimov'}{' '}
                 {firstName[0].toUpperCase() + firstName.slice(1).toLowerCase() ||
                   'Asqarali'}
-              </Typography>
+              </Typography> */}
               <Typography sx={{ pl: 2, fontWeight: '400', fontSize: '16px' }}>
                 JShShIR:{jshshir || 12345678910111}
               </Typography>
@@ -102,7 +102,7 @@ const SideBar = () => {
           </Box>
           <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
             <SelectLanguage />
-            <RightDashboard/>
+            <RightDashboard />
           </Box>
         </Toolbar>
       </Container>
