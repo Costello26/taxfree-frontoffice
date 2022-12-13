@@ -17,7 +17,6 @@ const SideBar = () => {
   const lastName = useSelector((state) => state.passport.lastName);
   const passportImage = useSelector((state) => state.passport.passportImage);
   const passportJSHR = useSelector((state) => state.passport.passportJSHR);
-  console.log(firstName, lastName);
 
   return (
     <AppBar
@@ -94,12 +93,12 @@ const SideBar = () => {
             </IconButton>
             <Box>
               <Typography sx={{ pl: 2, fontWeight: '600', fontSize: '16px' }}>
-                {lastName[0].toUpperCase() + lastName.slice(1).toLowerCase() || 'Olimov'}{' '}
+                {lastName[0].toUpperCase() + lastName.slice(1).toLowerCase() || ''}{' '}
                 {firstName[0].toUpperCase() + firstName.slice(1).toLowerCase() ||
-                  'Asqarali'}
+                  ''}
               </Typography>
               <Typography sx={{ pl: 2, fontWeight: '400', fontSize: '16px' }}>
-                JShShIR:{passportJSHR || 123456789}
+                JShShIR:{passportJSHR || ""}
               </Typography>
             </Box>
           </Box>

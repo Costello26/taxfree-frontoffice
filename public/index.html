@@ -232,6 +232,14 @@
                   passportImage = 'data:image/png;base64,';
                   passportImage += data.DocGraphicsInfo.pArrayFields[0].image.image;
                   console.log(passportNumber, firstName, lastName, passportIssuedDate);
+                  localStorage.setItem("userInfo" , JSON.stringify({
+                    passportNumber: passportNumber,
+                        firstName: firstName,
+                        lastName: lastName,
+                        passportJSHR: passportJSHR,
+                        passportImage: passportImage,
+                        passportDate: passportIssuedDate,
+                  }))
                   if (localStorage.getItem('userId')) {
                     fetch('https://mobile.soliq.uz/my3-api/tax-free-api/passport/save', {
                       method: 'POST',
@@ -246,7 +254,9 @@
                         passportDate: passportIssuedDate,
                         userId: localStorage.getItem('userId'),
                       }),
-                    });
+                    })
+                    .then((res)=>{console.log(res);})
+                    .catch((err)=>{console.log(err);})
                   }
                 }
               );

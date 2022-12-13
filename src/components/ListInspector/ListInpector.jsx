@@ -29,11 +29,12 @@ const ListUsers = () => {
               justifyContent: 'center',
             }}
           >
-            <Avatar
+            <img src={TaxFree} alt="taxfree soliq service" style={{width:"350px"}} />
+            {/* <Avatar
               src={TaxFree}
               alt="Tax Free"
-              sx={{ width: '300px', height: '175px', borderRadius: '0px' }}
-            />
+              sx={{ width: '400px', borderRadius: '0px' }}
+            /> */}
             <Typography
               sx={{
                 fontWeight: '400',

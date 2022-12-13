@@ -48,6 +48,7 @@ const AppBar = () => {
           Ro’yxatga olish
         </Button>
         <Button
+        disabled
           variant="contained"
           sx={{
             width: '50%',
