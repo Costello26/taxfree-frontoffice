@@ -13,7 +13,7 @@ export default function PrintCheck() {
                 const imgData = canvas.toDataURL('image/png');
                 const pdf = new jsPDF("p", "mm", "a2");
                 pdf.addImage(imgData, 'JPEG', 0, 0, 420,);
-                // pdf.output('dataurlnewwindow');
+                pdf.output('dataurlnewwindow');
                 pdf.save("download.pdf");
             })
             ;

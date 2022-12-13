@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux';
 
 const UserInfo = (props) => {
   const { passportImage, firstName, lastName } = useSelector((state) => state.passport);
+  console.log(firstName, lastName);
   return (
     <Card
       sx={{
