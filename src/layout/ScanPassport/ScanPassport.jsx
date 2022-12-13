@@ -5,36 +5,29 @@ import classes from './ScanPassport.module.scss';
 import sloy from '../../assets/Png/sloy.png';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { passportActions } from '../../store/passport';
-import Modal from "../../components/Modal/Modal"
 
 import { Box, Typography } from '@mui/material';
 const ScanPassport = (props) => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [modalActive , setModalActive] = useState(false)
-    useEffect(() => {
-      props.stompClient.subscribe('/topic/passport-response', (msg) => {
-        const data = JSON.parse(msg.body);
-        if (data.first_name) {
-          dispatch(
-            passportActions.receive({
-              firstName: data.first_name,
-              lastName: data.last_name,
-              passportImage: data.passport_image,
-              passportDate: data.passport_date,
-              passportJSHR: data.passport_JSHR,
-            })
-          );
-        }
-        setModalActive(true)
-        setTimeout(()=>{
-          setModalActive(false)
-          navigate('/users-formalization')
-        } , 1000)
-      });
-    }, []);
+  useEffect(() => {
+    // props.stompClient.subscribe('/topic/passport-response', (msg) => {
+    //   const data = JSON.parse(msg.body);
+    //   if (data.first_name && data.last_name && data.passport_image) {
+    //     dispatch(
+    //       passportActions.receive({
+    //         firstName: data.first_name,
+    //         lastName: data.last_name,
+    //         passportImage: data.passport_image,
+    //         passportDate: data.passport_date,
+    //         passportJSHR: data.passport_JSHR,
+    //       })
+    //     );
+    //     navigate('/product-formalization');
+    //   }
+    // });
+  }, []);
   return (
     <div className="container">
       <AppBar />

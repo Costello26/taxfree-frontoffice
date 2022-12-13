@@ -36,7 +36,7 @@
       var passportImage;
       var passportIssuedDate;
       var passportNumber;
-      var url = window.location.protocol + '//' + 'localhost' + ':5000';
+      var url = 'http:' + '//' + 'localhost' + ':5000';
       // if (window.location.port != null) {
       //   url += ':' + window.location.port;
       // }
@@ -62,21 +62,16 @@
 
       $(function () {
         setLang(languages.English);
-
-        Clear();
       });
 
       OnProcessingStartedCallback = function () {
         Connect();
-        Clear();
       };
 
       //Assign function values to event callbacks here
       OnProcessingFinishedCallback = function () {
         hideProgress();
         $('#currentProcessLbl').text('');
-
-        Clear();
 
         getLastResults();
       };
@@ -237,20 +232,22 @@
                   passportImage = 'data:image/png;base64,';
                   passportImage += data.DocGraphicsInfo.pArrayFields[0].image.image;
                   console.log(passportNumber, firstName, lastName, passportIssuedDate);
-                  fetch('http://10.255.53.91:14069/tax-free-api/passport/save', {
-                    method: 'POST',
-                    headers: {
-                      'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                      passportNumber: passportNumber,
-                      firstName: firstName,
-                      lastName: lastName,
-                      passportJSHR: passportJSHR,
-                      passportImage: passportImage,
-                      passportDate: passportIssuedDate,
-                    }),
-                  });
+                  if (localStorage.getItem('userId')) {
+                    fetch('https://mobile.soliq.uz/my3-api/tax-free-api/passport/save', {
+                      method: 'POST',
+                      headers: {
+                        'Content-Type': 'application/json',
+                      },
+                      body: JSON.stringify({
+                        passportNumber: passportNumber,
+                        fullName: `${firstName} ${lastName}`,
+                        passportJSHR: passportJSHR,
+                        passportImage: passportImage,
+                        passportDate: passportIssuedDate,
+                        userId: localStorage.getItem('userId'),
+                      }),
+                    });
+                  }
                 }
               );
             }
@@ -1452,72 +1449,6 @@
         });
       }
 
-      function Clear() {
-        $('#photosLayout').empty();
-
-        $('.tablinks').hide();
-
-        $('#lexTable tbody > tr').remove();
-
-        $('#securityTable tbody > tr').remove();
-
-        $('#rfidTable tbody > tr').remove();
-        $('#rfidNotifications tbody > tr').remove();
-        $('#rfidDataGroups tbody > tr').remove();
-
-        $('#visualGraphics tbody > tr').remove();
-        $('#rfidGraphics tbody > tr').remove();
-
-        $('#barcodeTable tbody > tr').remove();
-
-        $('#faceComparisonTable tbody > tr').remove();
-
-        $('.lexMrz').hide();
-        $('.lexRfid').hide();
-        $('.lexBarcode').hide();
-        $('.lexVisualOcr').hide();
-        $('.lexMrzRfid').hide();
-        $('.lexMrzVisual').hide();
-        $('.lexMrzBarcode').hide();
-        $('.lexRfidVisual').hide();
-        $('.lexBarcodeVisual').hide();
-        $('.lexRfidBarcode').hide();
-
-        $('#' + 'BAC').css('background-color', 'White');
-        $('#' + 'PACE').css('background-color', 'White');
-        $('#' + 'TA').css('background-color', 'White');
-        $('#' + 'CA').css('background-color', 'White');
-        $('#' + 'AA').css('background-color', 'White');
-        $('#' + 'PA').css('background-color', 'White');
-
-        $('#' + 'dftPassport_DG1').css('background-color', 'White');
-        $('#' + 'dftPassport_DG2').css('background-color', 'White');
-        $('#' + 'dftPassport_DG3').css('background-color', 'White');
-        $('#' + 'dftPassport_DG4').css('background-color', 'White');
-        $('#' + 'dftPassport_DG5').css('background-color', 'White');
-        $('#' + 'dftPassport_DG6').css('background-color', 'White');
-        $('#' + 'dftPassport_DG7').css('background-color', 'White');
-        $('#' + 'dftPassport_DG8').css('background-color', 'White');
-        $('#' + 'dftPassport_DG9').css('background-color', 'White');
-        $('#' + 'dftPassport_DG10').css('background-color', 'White');
-        $('#' + 'dftPassport_DG11').css('background-color', 'White');
-        $('#' + 'dftPassport_DG12').css('background-color', 'White');
-        $('#' + 'dftPassport_DG13').css('background-color', 'White');
-        $('#' + 'dftPassport_DG14').css('background-color', 'White');
-        $('#' + 'dftPassport_DG15').css('background-color', 'White');
-        $('#' + 'dftPassport_DG16').css('background-color', 'White');
-        $('#' + 'dftPassport_COM').css('background-color', 'White');
-        $('#' + 'dftPassport_SOD').css('background-color', 'White');
-        $('#' + 'dftPassport_CVCA').css('background-color', 'White');
-
-        $('#' + 'summmaryStat').attr('src', 'Content/Grey.png');
-        $('#' + 'mrzStat').attr('src', 'Content/Grey.png');
-        $('#' + 'docTypeStat').attr('src', 'Content/Grey.png');
-        $('#' + 'lexicalStat').attr('src', 'Content/Grey.png');
-        $('#' + 'securityStat').attr('src', 'Content/Grey.png');
-        $('#' + 'rfidStat').attr('src', 'Content/Grey.png');
-      }
-
       function updateProgressBar(value) {
         var progressBarParent = $('#' + 'progress-bar');
         progressBarParent.css('visibility', 'visible');
@@ -1641,8 +1572,6 @@
       }
 
       function AppendAndProcessImages(files) {
-        Clear();
-
         ClearResults(function () {
           var count = 0;
           for (var i = 0; i < files.length; i++) {

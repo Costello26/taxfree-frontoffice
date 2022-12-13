@@ -7,6 +7,7 @@ const initialpassportState = {
   passportImage: '',
   passportDate: '15/04/2014',
   passportNumber: 'AB1234567',
+  userId: '',
 };
 
 const passportSlice = createSlice({
@@ -28,6 +29,9 @@ const passportSlice = createSlice({
       state.passportImage = passportImage;
       state.passportDate = passportDate;
       state.passportNumber = passportNumber;
+    },
+    getUserId(state, { payload }) {
+      state.userId = payload.userId;
     },
   },
 });
