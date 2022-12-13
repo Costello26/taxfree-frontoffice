@@ -10,6 +10,7 @@ const Registration = (props) => {
   let qrCode = props.qrCode
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  // const [qrCode , setQrCode] = useState('')
   const [phoneNumber, setPhoneNumber] = useState('');
   const sendPhoneHandler = (phoneNumber) => {
     console.log(phoneNumber);
@@ -32,15 +33,15 @@ const Registration = (props) => {
         console.log(error);
       }
     };
-
     const id = setInterval(async () => {
       const res = await fetchData();
       const user = await res.json();
       console.log(user);
       if (user.success) {
         dispatch(passportActions.getUserId(user.data.userId));
-        localStorage.setItem("userId", user.data.userId)
         navigate('/scan-passport');
+        localStorage.setItem("userId" , user.data.userId)
+        localStorage.setItem('userInfo', '')
       }
     }, 3000);
 

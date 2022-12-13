@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Container, Avatar, Typography } from '@mui/material';
 import TaxFree from '../../assets/Png/TaxFreeLogo.png';
 import UserKey from '../UserKey/UserKey';
+import { Link } from 'react-router-dom';
 const ListUsers = () => {
   return (
     <Container maxWidth="xl" disableGutters className="container">
@@ -64,8 +65,8 @@ const ListUsers = () => {
                 justifyContent: 'center',
               }}
             >
-              <UserKey />
-              <UserKey />
+            <Link to="/register" style={{textDecoration:"none"}}><UserKey /></Link>  
+            <Link to="/register" style={{textDecoration:"none"}}><UserKey /></Link>  
             </Box>
           </Box>
         </Box>

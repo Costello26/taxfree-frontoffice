@@ -17,6 +17,7 @@ import axios from 'axios';
 
 function App() {
   const [qrCode, setQrCode] = useState('');
+  // let navigate = useNavigate()
   // const stompClient = new StompJs.Client({
   //   brokerURL: SOCKET_URL,
   //   debug: function (str) {
@@ -38,8 +39,9 @@ function App() {
   useEffect(()=>{
      axios.get("https://mobile.soliq.uz/my3-api/tax-free-api/user/get/qr-information")
      .then((res)=>{
-      console.log(res.data.data.qr_code);
+      console.log(res.data.data);
       setQrCode(res.data.data.qr_code)
+      // navigate("/register")
     })
     .catch((err)=>{console.log(err);})
   },[])

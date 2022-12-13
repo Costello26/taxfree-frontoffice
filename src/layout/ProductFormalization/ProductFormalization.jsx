@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import AppBar from '../../components/AppBar/AppBar';
 import ListCheck from '../../components/ListCheck/ListCheck';
 import Taxfree from '../../components/UserTaxfree/Taxfree';
@@ -6,6 +6,9 @@ import UserInfo from '../../components/UserTaxfree/UserInfo';
 import cls from './ProductFormalization.module.scss';
 
 const ProductFormalization = () => {
+  useEffect(() => {
+   localStorage.setItem("status", '')
+  }, []);
   return (
     <div className="container">
       <AppBar />

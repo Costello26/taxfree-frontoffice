@@ -12,32 +12,16 @@ const ScanPassport = (props) => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const select = useSelector(state => state)
-  // const [modalActive , setModalActive] = useState(false)
-  useEffect(() => {
-    // props.stompClient.subscribe('/topic/passport-response', (msg) => {
-    //   const data = JSON.parse(msg.body);
-    //   console.log(msg);
-    //   if (data.first_name && data.last_name && data.passport_image) {
-    //     //
-    //   }
-    // });
-    const data = JSON.parse(localStorage.getItem("userInfo"))
-    console.log(data.firstName);
-  
+  useEffect(()=>{
+   const status =  setInterval(()=>{
+      console.log(localStorage.getItem('status'));
+      if(localStorage.getItem('status')==='true'){
+       navigate('/product-formalization')
+      }
+    }, 1000)
 
-    dispatch(
-      passportActions.receive({
-              firstName: data.firstName,
-              lastName: data.lastName,
-              passportImage: data.passportImage,
-              passportDate: data.passportDate,
-              passportJSHR: data.passportJSHR,
-            })
-          );
-          // navigate('/product-formalization');
-    
-  }, []);
+    return ()=>{clearInterval(status)}
+  }, [])
   return (
     <div className="container">
       <AppBar />
