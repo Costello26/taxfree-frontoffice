@@ -3,7 +3,34 @@ import { Box, Container, Avatar, Typography } from '@mui/material';
 import TaxFree from '../../assets/Png/TaxFreeLogo.png';
 import UserKey from '../UserKey/UserKey';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { passportActions } from '../../store/passport';
+import { useEffect } from 'react';
 const ListUsers = () => {
+  let dispatch = useDispatch()
+  function selectInspector() {
+    dispatch(passportActions.receive({
+      firstName: 'Palonchi',
+      lastName: 'Palonchiyev',
+      passportJSHR: '31511941051487',
+      passportImage: 'https://ftimes.ru/wp-content/uploads/2022/02/damirbek-olimov-780x503.jpg',
+      passportDate: '10/12/2013',
+      passportNumber: 'AB1234567',
+      userId: '2',
+    }));
+  }
+
+  useEffect(()=>{
+     dispatch(passportActions.receive({
+      firstName: '',
+      lastName: '',
+      passportJSHR: '',
+      passportImage: '',
+      passportDate: '',
+      passportNumber: '',
+      userId: '',
+    }));
+  }, [])
   return (
     <Container maxWidth="xl" disableGutters className="container">
       <Box sx={{ flexGrow: 1, height: '1200px' }}>
@@ -30,7 +57,7 @@ const ListUsers = () => {
               justifyContent: 'center',
             }}
           >
-            <img src={TaxFree} alt="taxfree soliq service" style={{width:"350px"}} />
+            <img src={TaxFree} alt="taxfree soliq service" style={{ width: "350px" }} />
             {/* <Avatar
               src={TaxFree}
               alt="Tax Free"
@@ -65,8 +92,8 @@ const ListUsers = () => {
                 justifyContent: 'center',
               }}
             >
-            <Link to="/register" style={{textDecoration:"none"}}><UserKey /></Link>  
-            <Link to="/register" style={{textDecoration:"none"}}><UserKey /></Link>  
+              <Link to="/register" style={{ textDecoration: "none" }} onClick={selectInspector}><UserKey /></Link>
+              <Link to="/register" style={{ textDecoration: "none" }}onClick={selectInspector}><UserKey /></Link>
             </Box>
           </Box>
         </Box>

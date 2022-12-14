@@ -4,19 +4,17 @@ import RegulaInfo from '../../components/RegulaInfo/RegulaInfo';
 import classes from './ScanPassport.module.scss';
 import sloy from '../../assets/Png/sloy.png';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-
-import { Box, Typography } from '@mui/material';
-import { passportActions } from '../../store/passport';
+import  Modal from '../../components/Modal/Modal'
 const ScanPassport = (props) => {
 
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const [modalActive , setModalActive] = useState(false)
   useEffect(()=>{
    const status =  setInterval(()=>{
       console.log(localStorage.getItem('status'));
       if(localStorage.getItem('status')==='true'){
        navigate('/product-formalization')
+       setModalActive(true)
       }
     }, 1000)
 
@@ -32,7 +30,7 @@ const ScanPassport = (props) => {
           imgSrc={sloy}
         />
       </div>
-      {/* <Modal state={modalActive}></Modal> */}
+      <Modal state={modalActive}></Modal>
     </div>
   );
 };

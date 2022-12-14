@@ -22,7 +22,7 @@ const UserKey = () => {
           fontSize: '20px',
         }}
       >
-        Olimov Asqarali turg’unovich
+       Palonchiyev Palonchi
       </Typography>
       <Typography
         sx={{

@@ -12,31 +12,15 @@ import PrintCheck from './components/printCheck/PrintCheck';
 import * as StompJs from '@stomp/stompjs';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 // const SOCKET_URL = 'ws://10.255.53.91:14069/tax-free-api/websocket-server';
 
 function App() {
+  let selector = useSelector(state=> state)
   const [qrCode, setQrCode] = useState('');
-  // let navigate = useNavigate()
-  // const stompClient = new StompJs.Client({
-  //   brokerURL: SOCKET_URL,
-  //   debug: function (str) {
-  //     console.log(str);
-  //   },
-  //   reconnectDelay: 5000,
-  //   heartbeatIncoming: 4000,
-  //   heartbeatOutgoing: 4000,
-  // });
-  // stompClient.activate();
-  // useEffect(() => {
-  //   fetch('https://mobile.soliq.uz/my3-api/tax-free-api/user/get/qr-information')
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       setQrCode(res.data.qr_code);
-  //     });
-  // }, []);
-
   useEffect(()=>{
+   console.log(selector); 
      axios.get("https://mobile.soliq.uz/my3-api/tax-free-api/user/get/qr-information")
      .then((res)=>{
       console.log(res.data.data);

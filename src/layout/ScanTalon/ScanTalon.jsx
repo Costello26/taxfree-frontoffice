@@ -7,7 +7,7 @@ import Modal from '../../components/Modal/Modal';
 import { Box, Typography } from '@mui/material';
 import CheckBox from '../../assets/Png/CheckBox.png';
 const Index = () => {
-  const [isTalonVerified, setIsTalonVerified] = useState();
+  const [modalActive , setModalActive] = useState(false)
   return (
     <div>
       <div className="container">
@@ -19,8 +19,8 @@ const Index = () => {
             imgSrc={ticket}
           />
           <div className={classes['card__modal']}>
-            {isTalonVerified && (
-              <Modal>
+          
+              <Modal state={modalActive}>
                 <Box
                   sx={{
                     position: 'absolute',
@@ -65,7 +65,7 @@ const Index = () => {
                   </Typography>
                 </Box>
               </Modal>
-            )}
+          
           </div>
         </div>
       </div>

@@ -1,12 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialpassportState = {
-  firstName: 'Asqarali',
-  lastName: 'Olimov',
-  passportJSHR: '12345678910112',
+  firstName: '',
+  lastName: '',
+  passportJSHR: '',
   passportImage: '',
-  passportDate: '15/04/2014',
-  passportNumber: 'AB1234567',
+  passportDate: '',
+  passportNumber: '',
   userId: '',
 };
 
