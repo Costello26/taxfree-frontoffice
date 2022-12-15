@@ -20,8 +20,8 @@ export default function TemporaryDrawer() {
       link: '/',
     },
     {
-      name: "Ro'yhatdan o'tish",
-      link: '/register',
+      name: 'Login',
+      link: '/login',
     },
     {
       name: 'Passport skanerlash',

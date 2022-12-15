@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import { ButtonGroup, Button, Container } from '@mui/material';
 
-const AppBar = () => {
+const AppBar = (props) => {
   const [isRegActive, setIsRegActive] = useState(true);
   const [isStatActive, setIsStatActive] = useState(false);
   const onRegClickHandler = () => {
     setIsRegActive(true);
     setIsStatActive(false);
+    props.onRegClick(isRegActive);
   };
   const onStatClickHandler = () => {
     setIsStatActive(true);
     setIsRegActive(false);
+    props.onStatClick(isStatActive);
   };
   return (
     <Container disableGutters={true} maxWidth={false}>
@@ -48,7 +50,7 @@ const AppBar = () => {
           Ro’yxatga olish
         </Button>
         <Button
-        disabled
+          disabled
           variant="contained"
           sx={{
             width: '50%',

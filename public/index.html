@@ -29,6 +29,18 @@
     <title>Tax Free</title>
 
     <script>
+      console.log('USB');
+      navigator.usb.getDevices().then((devices) => {
+        console.log(`Total devices: ${devices.length}`);
+        devices.forEach((device) => {
+          console.log(
+            `Product name: ${device.productName}, serial number ${device.serialNumber}`
+          );
+        });
+      });
+    </script>
+
+    <script>
       // if (window.location.href.indexOf('/scan-passport') !== -1) {
       var firstName;
       var lastName;
@@ -55,7 +67,7 @@
       script.type = 'text/javascript';
       script.onload = function () {
         initRegulaReader(url);
-
+        console.log(url);
         getLastResults();
       };
       document.head.appendChild(script);
@@ -141,6 +153,8 @@
                   passportJSHR = data.ListVerifiedFields.pFieldMaps[7].Field_MRZ;
                   passportNumber = data.ListVerifiedFields.pFieldMaps[2].Field_MRZ;
                   passportIssuedDate = data.ListVerifiedFields.pFieldMaps[4].Field_RFID;
+                  localStorage.setItem('fullname', `${lastName} ${firstName}`);
+                  localStorage.setItem('passportJSHR', passportJSHR);
                 }
               );
             }
@@ -231,6 +245,7 @@
                   data = JSON.parse(data);
                   passportImage = 'data:image/png;base64,';
                   passportImage += data.DocGraphicsInfo.pArrayFields[0].image.image;
+                  localStorage.setItem('passportImage', passportImage);
                   console.log(passportNumber, firstName, lastName, passportIssuedDate);
                   // comment
                   if (localStorage.getItem('userId')) {
@@ -245,19 +260,20 @@
                         passportJSHR: passportJSHR,
                         passportImage: passportImage,
                         passportDate: passportIssuedDate,
-                        userId:localStorage.getItem('userId'),
+                        userId: localStorage.getItem('userId'),
                       }),
                     })
-                    .then((res)=>{
-                      console.log(res);
-                      localStorage.setItem('userId', '')
-                      localStorage.setItem('userInfo' , JSON.stringify(res))
-                      localStorage.setItem("status",  "true")
-                      console.log(res);
-                    })
-                    .catch((err)=>{console.log(err);})
+                      .then((res) => {
+                        console.log(res);
+                        localStorage.setItem('userId', '');
+                        localStorage.setItem('userInfo', JSON.stringify(res));
+                        localStorage.setItem('status', 'true');
+                        console.log(res);
+                      })
+                      .catch((err) => {
+                        console.log(err);
+                      });
                   }
-                  // commetn 
                 }
               );
             }
