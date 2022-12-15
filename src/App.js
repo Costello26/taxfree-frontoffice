@@ -9,10 +9,9 @@ import ProductFormalization from './layout/ProductFormalization/ProductFormaliza
 import UsersFormalition from './layout/UserFormalization/UsersFormalition';
 import StatisticsPage from './layout/StatisticsPage/Statistics';
 import PrintCheck from './components/printCheck/PrintCheck';
-import * as StompJs from '@stomp/stompjs';
+// import * as StompJs from '@stomp/stompjs';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
 
 // const SOCKET_URL = 'ws://10.255.53.91:14069/tax-free-api/websocket-server';
 
@@ -36,8 +35,8 @@ function App() {
         <Routes>
           <Route path="/" element={<ListInpector />} />
           <Route path="/statistic" element={<StatisticsPage />} />
-          {/* <Route path="/register" element={<Registration stompClient={stompClient} />} /> */}
-          <Route path="/register" element={<Registration qrCode={qrCode} />} />
+          <Route path="/register" element={<Registration qrCode={qrCode}/>} />
+          {/* <Route path="/login" element={<Registration qrCode={qrCode} />} /> */}
           {/* <Route
             path="/scan-passport"
             element={<ScanPassport stompClient={stompClient} />}

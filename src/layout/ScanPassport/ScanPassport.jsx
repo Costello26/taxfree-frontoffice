@@ -4,22 +4,23 @@ import RegulaInfo from '../../components/RegulaInfo/RegulaInfo';
 import classes from './ScanPassport.module.scss';
 import sloy from '../../assets/Png/sloy.png';
 import { useNavigate } from 'react-router-dom';
-import  Modal from '../../components/Modal/Modal'
-const ScanPassport = (props) => {
-
+import Modal from '../../components/Modal/Modal';
+const ScanPassport = () => {
   const navigate = useNavigate();
-  const [modalActive , setModalActive] = useState(false)
-  useEffect(()=>{
-   const status =  setInterval(()=>{
+  const [modalActive, setModalActive] = useState(false);
+  useEffect(() => {
+    const status = setInterval(() => {
       console.log(localStorage.getItem('status'));
-      if(localStorage.getItem('status')==='true'){
-       navigate('/product-formalization')
-       setModalActive(true)
+      if (localStorage.getItem('status') === 'true') {
+        navigate('/product-formalization');
+        setModalActive(true);
       }
-    }, 1000)
+    }, 1000);
 
-    return ()=>{clearInterval(status)}
-  }, [])
+    return () => {
+      clearInterval(status);
+    };
+  }, []);
   return (
     <div className="container">
       <AppBar />

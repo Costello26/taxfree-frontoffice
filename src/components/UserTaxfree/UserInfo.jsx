@@ -8,9 +8,10 @@ import successIcon from '../../assets/Png/Success.png';
 import cls from './User.module.scss';
 import { useSelector } from 'react-redux';
 
-const UserInfo = (props) => {
-  const { passportImage, firstName, lastName } = useSelector((state) => state.passport);
-  console.log(firstName, lastName);
+const UserInfo = () => {
+  // const { passportImage, firstName, lastName } = useSelector((state) => state.passport);
+  const fullname = localStorage.getItem('fullname');
+  const passportImage = localStorage.getItem('passportImage');
   return (
     <Card
       sx={{
@@ -34,7 +35,7 @@ const UserInfo = (props) => {
         <Box>
           <CardContent>
             <Typography sx={{ fontSize: '18px', fontWeight: '500' }} component="div">
-              FISh: {lastName} {firstName}
+              FISh: {fullname}
             </Typography>
             <Typography sx={{ fontSize: '18px', fontWeight: '500' }} component="div">
               Telefon: +44-7871234567
@@ -47,7 +48,7 @@ const UserInfo = (props) => {
               gutterBottom
               component="div"
             >
-              Visa FISh: {lastName} {firstName}
+              Visa FISh: {fullname}
             </Typography>
             <Typography
               sx={{

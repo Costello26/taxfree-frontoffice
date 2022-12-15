@@ -13,12 +13,10 @@ import { useSelector } from 'react-redux';
 import RightDashboard from '../../components/RightDashboard/RightDashboard';
 
 const SideBar = () => {
- 
   const firstName = useSelector((state) => state.passport.firstName);
   const lastName = useSelector((state) => state.passport.lastName);
   const passportImage = useSelector((state) => state.passport.passportImage);
   const passportJSHR = useSelector((state) => state.passport.passportJSHR);
-
   return (
     <AppBar
       position="static"
@@ -28,7 +26,7 @@ const SideBar = () => {
         boxShadow: '0 0 10px rgba(128, 128, 128, 0.567)',
       }}
     >
-      { }
+      {}
       <Container maxWidth="xl">
         <Toolbar
           disableGutters
@@ -87,25 +85,25 @@ const SideBar = () => {
           </Box>
           <Box sx={{ flexGrow: 0, display: 'flex', alignItems: 'center' }}>
             <IconButton sx={{ p: 0 }}>
-              {
-                passportImage ?
-                  <> <Avatar
+              {passportImage ? (
+                <>
+                  {' '}
+                  <Avatar
                     alt="Olimov Asqarali"
                     src={`${passportImage}` || '/static/images/avatar/2.jpg'}
                     style={{ width: '56px', height: '56px' }}
-                  /></>
-                  :
-                  <></>
-              }
-
+                  />
+                </>
+              ) : (
+                <></>
+              )}
             </IconButton>
             <Box>
               <Typography sx={{ pl: 2, fontWeight: '600', fontSize: '16px' }}>
-                {lastName || ''}{' '}
-                {firstName || ''}
+                {lastName || ''} {firstName || ''}
               </Typography>
               <Typography sx={{ pl: 2, fontWeight: '400', fontSize: '16px' }}>
-                {passportJSHR ? `JShShIR: ${passportJSHR}` : ""}
+                {passportJSHR ? `JShShIR: ${passportJSHR}` : ''}
               </Typography>
             </Box>
           </Box>

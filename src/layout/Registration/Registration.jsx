@@ -1,24 +1,36 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import AppBar from '../../components/AppBar/AppBar';
 import ScanCheck from '../../components/ScanCheck/ScanCheck';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { passportActions } from '../../store/passport';
-import axios from 'axios';
+import { authActions } from '../../store/auth';
 
 const Registration = (props) => {
-  let qrCode = props.qrCode
+  let qrCode = props.qrCode;
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  // const [qrCode , setQrCode] = useState('')
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const sendPhoneHandler = (phoneNumber) => {
-    console.log(phoneNumber);
-    setPhoneNumber(phoneNumber);
-    navigate('/scan-passport');
+  const sendPhoneHandler = async (phoneNumber) => {
+    try {
+      const response = await fetch(
+        'https://mobile.soliq.uz/my3-api/tax-free-api/user/qr/find-user/by-phone?' +
+          new URLSearchParams({
+            phone: phoneNumber,
+            qr_code: qrCode,
+          })
+      );
+      if (response.status === 200) {
+        dispatch(authActions.login());
+        navigate('/scan-passport');
+      }
+      if (response.status === 403) {
+        console.log("Noto'g'ri raqam");
+      }
+    } catch (err) {
+      console.log('Err', err);
+    }
   };
 
-  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -28,25 +40,26 @@ const Registration = (props) => {
             method: 'POST',
           }
         );
-      }
-      catch (error) {
+      } catch (error) {
         console.log(error);
       }
     };
     const id = setInterval(async () => {
       const res = await fetchData();
       const user = await res.json();
-      console.log(user);
-      if (user.success) {
+      if (user.success && user.code === 1) {
         dispatch(passportActions.getUserId(user.data.userId));
+        localStorage.setItem('userId', user.data.userId);
+        dispatch(authActions.login());
         navigate('/scan-passport');
-        localStorage.setItem("userId" , user.data.userId)
-        localStorage.setItem('userInfo', '')
+      } else if (user.success && user.code === 2) {
+        console.log(user);
+        navigate('/product-formalization');
       }
     }, 3000);
 
     return () => clearInterval(id);
-  }, [props.qrCode]);
+  }, [qrCode, dispatch, navigate]);
 
   return (
     <div className="container">
