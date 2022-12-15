@@ -17,18 +17,18 @@ import { useSelector } from 'react-redux';
 // const SOCKET_URL = 'ws://10.255.53.91:14069/tax-free-api/websocket-server';
 
 function App() {
-  let selector = useSelector(state=> state)
+  let selector = useSelector(state => state)
   const [qrCode, setQrCode] = useState('');
-  useEffect(()=>{
-   console.log(selector); 
-     axios.get("https://mobile.soliq.uz/my3-api/tax-free-api/user/get/qr-information")
-     .then((res)=>{
-      console.log(res.data.data);
-      setQrCode(res.data.data.qr_code)
-      // navigate("/register")
-    })
-    .catch((err)=>{console.log(err);})
-  },[])
+  useEffect(() => {
+    console.log(selector);
+    axios.get("https://mobile.soliq.uz/my3-api/tax-free-api/user/get/qr-information")
+      .then((res) => {
+        console.log(res.data.data);
+        setQrCode(res.data.data.qr_code)
+        // navigate("/register")
+      })
+      .catch((err) => { console.log(err); })
+  }, [])
   return (
     <div className="App">
       <Router>
