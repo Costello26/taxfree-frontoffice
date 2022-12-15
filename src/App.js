@@ -36,8 +36,8 @@ function App() {
         <Routes>
           <Route path="/" element={<ListInpector />} />
           <Route path="/statistic" element={<StatisticsPage />} />
-          {/* <Route path="/register" element={<Registration stompClient={stompClient} />} /> */}
-          <Route path="/login" element={<Registration qrCode={qrCode} />} />
+          <Route path="/register" element={<Registration qrCode={qrCode}/>} />
+          {/* <Route path="/login" element={<Registration qrCode={qrCode} />} /> */}
           {/* <Route
             path="/scan-passport"
             element={<ScanPassport stompClient={stompClient} />}
