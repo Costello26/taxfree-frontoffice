@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { Box, Container, Avatar, Typography, TextField, Button } from '@mui/material';
 import ScanBtn from '../../assets/Png/Scanme.png';
-import UserIcon from '../../assets/Png/UserIcons.png';
+import UserIcon from '../../assets/Png/userAvatar.png';
 import QRGenerator from '../QRGenerator/QRGenerator';
 import classes from './scanCheck.module.scss';
 const ScanCheck = (props) => {

@@ -12,8 +12,11 @@ import SoliqLogo from '../../assets/Png/SoliqLogo.png';
 // import { useSelector } from 'react-redux';
 import RightDashboard from '../../components/RightDashboard/RightDashboard';
 import user from '../../assets/Png/user.png';
+import { useLocation } from 'react-router-dom';
 
 const SideBar = () => {
+  const location = useLocation();
+  console.log(location);
   return (
     <AppBar
       position="static"
@@ -79,23 +82,27 @@ const SideBar = () => {
               </Typography>
             </Box>
           </Box>
-          <Box sx={{ flexGrow: 0, display: 'flex', alignItems: 'center' }}>
-            <IconButton sx={{ p: 0 }}>
-              <Avatar
-                alt="Olimov Asqarali"
-                src={user}
-                style={{ width: '56px', height: '56px' }}
-              />
-            </IconButton>
-            <Box>
-              <Typography sx={{ pl: 2, fontWeight: '600', fontSize: '16px' }}>
-                Olimov Asqarali
-              </Typography>
-              <Typography sx={{ pl: 2, fontWeight: '400', fontSize: '16px' }}>
-                JShShIR: 12345678901234
-              </Typography>
+          {location.pathname !== '/' ? (
+            <Box sx={{ flexGrow: 0, display: 'flex', alignItems: 'center' }}>
+              <IconButton sx={{ p: 0 }}>
+                <Avatar
+                  alt="Olimov Asqarali"
+                  src={user}
+                  style={{ width: '56px', height: '56px' }}
+                />
+              </IconButton>
+              <Box>
+                <Typography sx={{ pl: 2, fontWeight: '600', fontSize: '16px' }}>
+                  Olimov Asqarali
+                </Typography>
+                <Typography sx={{ pl: 2, fontWeight: '400', fontSize: '16px' }}>
+                  JShShIR: 12345678901234
+                </Typography>
+              </Box>
             </Box>
-          </Box>
+          ) : (
+            <></>
+          )}
           <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
             <SelectLanguage />
             <RightDashboard />
