@@ -135,12 +135,22 @@
                 0,
                 function (data) {
                   data = JSON.parse(data);
-                  console.log(data);
+
                   lastName = data.ListVerifiedFields.pFieldMaps[8].Field_MRZ;
                   firstName = data.ListVerifiedFields.pFieldMaps[9].Field_MRZ;
                   passportJSHR = data.ListVerifiedFields.pFieldMaps[7].Field_MRZ;
                   passportNumber = data.ListVerifiedFields.pFieldMaps[2].Field_MRZ;
                   passportIssuedDate = data.ListVerifiedFields.pFieldMaps[4].Field_RFID;
+                  console.log(lastName, firstName, passportNumber);
+                  fetch('http://localhost:5000/Regula.SDK.Api/Methods/ClearResults', {
+                    method: 'POST',
+                  })
+                    .then((data) => {
+                      console.log('cleared. result:', data.status);
+                    })
+                    .catch(() => {
+                      console.log('cache not cleared. Error');
+                    });
                 }
               );
             }
@@ -231,7 +241,7 @@
                   data = JSON.parse(data);
                   passportImage = 'data:image/png;base64,';
                   passportImage += data.DocGraphicsInfo.pArrayFields[0].image.image;
-                  console.log(passportNumber, firstName, lastName, passportIssuedDate);
+                  // console.log(passportNumber, firstName, lastName, passportIssuedDate);
                   // comment
                   if (localStorage.getItem('userId')) {
                     fetch('https://mobile.soliq.uz/my3-api/tax-free-api/passport/save', {
