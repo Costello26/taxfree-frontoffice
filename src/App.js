@@ -18,15 +18,17 @@ import axios from 'axios';
 function App() {
   const [qrCode, setQrCode] = useState('');
   useEffect(() => {
-    
-    axios.get("https://mobile.soliq.uz/my3-api/tax-free-api/user/get/qr-information")
+    axios
+      .get('https://mobile.soliq.uz/my3-api/tax-free-api/user/get/qr-information')
       .then((res) => {
         console.log(res.data.data);
-        setQrCode(res.data.data.qr_code)
+        setQrCode(res.data.data.qr_code);
         // navigate("/register")
       })
-      .catch((err) => { console.log(err); })
-  }, [])
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   return (
     <div className="App">
       <Router>
@@ -34,7 +36,7 @@ function App() {
         <Routes>
           <Route path="/" element={<ListInpector />} />
           <Route path="/statistic" element={<StatisticsPage />} />
-          <Route path="/register" element={<Registration qrCode={qrCode}/>} />
+          <Route path="/login" element={<Registration qrCode={qrCode} />} />
           {/* <Route path="/login" element={<Registration qrCode={qrCode} />} /> */}
           {/* <Route
             path="/scan-passport"

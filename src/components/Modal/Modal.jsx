@@ -18,18 +18,11 @@ const style = {
 };
 
 export default function KeepMountedModal(props) {
-  console.log(props);
-  const [open, setOpen] = React.useState(props.state);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-  React.useEffect(() => {
-   setOpen(props.state)
-  }, [props]);
   return (
       <Modal
         keepMounted
-        open={open}
-        onClose={handleClose}
+        open={props.open}
+        onClose={props.onClose}
         aria-labelledby="keep-mounted-modal-title"
         aria-describedby="keep-mounted-modal-description"
       >

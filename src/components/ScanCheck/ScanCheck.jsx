@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { Box, Container, Avatar, Typography, TextField, Button } from '@mui/material';
 import ScanBtn from '../../assets/Png/Scanme.png';
-import User from '../../assets/Png/User.png';
+import UserIcon from '../../assets/Png/UserIcons.png';
 import QRGenerator from '../QRGenerator/QRGenerator';
 import classes from './scanCheck.module.scss';
 const ScanCheck = (props) => {
@@ -78,7 +78,7 @@ const ScanCheck = (props) => {
           </Box>
           <Box sx={{ width: '50%', height: '700px', padding: '50px 0' }}>
             <Avatar
-              src={User}
+              src={UserIcon}
               alt="user Icon"
               sx={{
                 width: '164px',
