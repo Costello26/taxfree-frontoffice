@@ -16,10 +16,9 @@ import axios from 'axios';
 // const SOCKET_URL = 'ws://10.255.53.91:14069/tax-free-api/websocket-server';
 
 function App() {
-  let selector = useSelector(state => state)
   const [qrCode, setQrCode] = useState('');
   useEffect(() => {
-    console.log(selector);
+    
     axios.get("https://mobile.soliq.uz/my3-api/tax-free-api/user/get/qr-information")
       .then((res) => {
         console.log(res.data.data);

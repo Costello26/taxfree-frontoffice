@@ -9,6 +9,10 @@ import { Fragment } from 'react';
 
 const ProductFormalization = () => {
   const [isStatActive, setIsStatActive] = useState(false);
+  useEffect(() => {
+    localStorage.setItem('userId', '')
+    localStorage.setItem("status", "")
+  }, []);
   return (
     <div className="container">
       <AppBar
