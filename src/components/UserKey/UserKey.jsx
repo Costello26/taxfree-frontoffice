@@ -1,7 +1,7 @@
 import React from 'react';
-import { Box, Button, Typography } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 import cls from './UserKey.module.scss';
-const UserKey = () => {
+const UserKey = (props) => {
   return (
     <Button
       sx={{
@@ -22,7 +22,7 @@ const UserKey = () => {
           fontSize: '20px',
         }}
       >
-       Palonchiyev Palonchi
+        {props.fullname}
       </Typography>
       <Typography
         sx={{
@@ -31,7 +31,7 @@ const UserKey = () => {
           fontSize: '20px',
         }}
       >
-        <span style={{ color: 'gray' }}>JShShIR</span>: 31511941051487
+        <span style={{ color: 'gray' }}>JShShIR</span>: {props.jshr}
       </Typography>
       <Typography
         sx={{
@@ -40,7 +40,7 @@ const UserKey = () => {
           fontSize: '20px',
         }}
       >
-        <span style={{ color: 'gray' }}>STIR</span>:200523221
+        <span style={{ color: 'gray' }}>STIR</span>:{props.stir}
       </Typography>
       <Typography
         sx={{

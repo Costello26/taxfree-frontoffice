@@ -102,14 +102,22 @@ const ListUsers = () => {
                 style={{ textDecoration: 'none' }}
                 onClick={selectInspector}
               >
-                <UserKey />
+                <UserKey
+                  fullname="Olimov Asqarali Turg'unovich"
+                  jshr="31511941051487"
+                  stir="200523221"
+                />
               </Link>
               <Link
                 to="/login"
                 style={{ textDecoration: 'none' }}
                 onClick={selectInspector}
               >
-                <UserKey />
+                <UserKey
+                  fullname="Sodiqov Shamshod Salimovich"
+                  jshr="31511941051487"
+                  stir="200523221"
+                />
               </Link>
             </Box>
           </Box>
