@@ -15,7 +15,7 @@ const AppBar = (props) => {
     props.onStatClick(isStatActive);
   };
   return (
-    <Container disableGutters={true} maxWidth={false}>
+    <Container disableGutters={true} maxWidth={false} sx={{ textAlign: 'center' }}>
       <ButtonGroup
         variant="contained"
         aria-label="button group"
@@ -24,6 +24,7 @@ const AppBar = (props) => {
           width: '100%',
           borderRadius: '20px',
           boxShadow: 'none',
+          maxWidth: '1536px',
         }}
       >
         <Button

@@ -9,14 +9,14 @@ import Avatar from '@mui/material/Avatar';
 
 import SelectLanguage from '../../components/SelectLanguage/SelectLang';
 import SoliqLogo from '../../assets/Png/SoliqLogo.png';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import RightDashboard from '../../components/RightDashboard/RightDashboard';
+import user from '../../assets/Png/user.png';
+import { useLocation } from 'react-router-dom';
 
 const SideBar = () => {
-  const firstName = useSelector((state) => state.passport.firstName);
-  const lastName = useSelector((state) => state.passport.lastName);
-  const passportImage = useSelector((state) => state.passport.passportImage);
-  const passportJSHR = useSelector((state) => state.passport.passportJSHR);
+  const location = useLocation();
+  console.log(location);
   return (
     <AppBar
       position="static"
@@ -26,7 +26,6 @@ const SideBar = () => {
         boxShadow: '0 0 10px rgba(128, 128, 128, 0.567)',
       }}
     >
-      {}
       <Container maxWidth="xl">
         <Toolbar
           disableGutters
@@ -83,30 +82,27 @@ const SideBar = () => {
               </Typography>
             </Box>
           </Box>
-          <Box sx={{ flexGrow: 0, display: 'flex', alignItems: 'center' }}>
-            <IconButton sx={{ p: 0 }}>
-              {passportImage ? (
-                <>
-                  {' '}
-                  <Avatar
-                    alt="Olimov Asqarali"
-                    src={`${passportImage}` || '/static/images/avatar/2.jpg'}
-                    style={{ width: '56px', height: '56px' }}
-                  />
-                </>
-              ) : (
-                <></>
-              )}
-            </IconButton>
-            <Box>
-              <Typography sx={{ pl: 2, fontWeight: '600', fontSize: '16px' }}>
-                {lastName || ''} {firstName || ''}
-              </Typography>
-              <Typography sx={{ pl: 2, fontWeight: '400', fontSize: '16px' }}>
-                {passportJSHR ? `JShShIR: ${passportJSHR}` : ''}
-              </Typography>
+          {location.pathname !== '/' ? (
+            <Box sx={{ flexGrow: 0, display: 'flex', alignItems: 'center' }}>
+              <IconButton sx={{ p: 0 }}>
+                <Avatar
+                  alt="Olimov Asqarali"
+                  src={user}
+                  style={{ width: '56px', height: '56px' }}
+                />
+              </IconButton>
+              <Box>
+                <Typography sx={{ pl: 2, fontWeight: '600', fontSize: '16px' }}>
+                  Olimov Asqarali
+                </Typography>
+                <Typography sx={{ pl: 2, fontWeight: '400', fontSize: '16px' }}>
+                  JShShIR: 12345678901234
+                </Typography>
+              </Box>
             </Box>
-          </Box>
+          ) : (
+            <></>
+          )}
           <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
             <SelectLanguage />
             <RightDashboard />

@@ -5,22 +5,18 @@ import classes from './ScanPassport.module.scss';
 import sloy from '../../assets/Png/sloy.png';
 import { useNavigate } from 'react-router-dom';
 import Modal from '../../components/Modal/Modal';
-const ScanPassport = () => {
+const ScanPassport = (props) => {
   const navigate = useNavigate();
   const [modalActive, setModalActive] = useState(false);
-  useEffect(() => {
-    const status = setInterval(() => {
-      console.log(localStorage.getItem('status'));
-      if (localStorage.getItem('status') === 'true') {
-        navigate('/product-formalization');
-        setModalActive(true);
-      }
-    }, 1000);
 
-    return () => {
-      clearInterval(status);
-    };
-  }, []);
+  useEffect(() => {
+    if (localStorage.getItem('status')) {
+      setModalActive(true);
+    }
+  }, [navigate]);
+  const modalCloseHandler = () => {
+    navigate('/product-formalization');
+  };
   return (
     <div className="container">
       <AppBar />
@@ -31,7 +27,7 @@ const ScanPassport = () => {
           imgSrc={sloy}
         />
       </div>
-      <Modal state={modalActive}></Modal>
+      {modalActive && <Modal open={modalActive} onClose={modalCloseHandler}></Modal>}
     </div>
   );
 };

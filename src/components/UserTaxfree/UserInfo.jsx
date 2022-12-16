@@ -6,7 +6,7 @@ import { Avatar, Box } from '@mui/material';
 import UserIcons from '../../assets/Png/UserIcons.png';
 import successIcon from '../../assets/Png/Success.png';
 import cls from './User.module.scss';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 
 const UserInfo = () => {
   // const { passportImage, firstName, lastName } = useSelector((state) => state.passport);
