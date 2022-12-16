@@ -10,7 +10,7 @@ const ScanPassport = (props) => {
   // const [modalActive, setModalActive] = useState(false);
 
   useEffect(() => {
-    if (localStorage.getItem('status')=== 'true') {
+    if (localStorage.getItem('status') === 'true') {
       navigate('/product-formalization');
     }
   }, [navigate]);

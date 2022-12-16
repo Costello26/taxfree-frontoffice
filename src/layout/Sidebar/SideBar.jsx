@@ -16,7 +16,6 @@ import { useLocation } from 'react-router-dom';
 
 const SideBar = () => {
   const location = useLocation();
-  console.log(location);
   return (
     <AppBar
       position="static"
