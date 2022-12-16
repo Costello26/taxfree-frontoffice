@@ -11,7 +11,7 @@ import SelectLanguage from '../../components/SelectLanguage/SelectLang';
 import SoliqLogo from '../../assets/Png/SoliqLogo.png';
 // import { useSelector } from 'react-redux';
 import RightDashboard from '../../components/RightDashboard/RightDashboard';
-import user from '../../assets/Png/user.png';
+import user from '../../assets/Png/User.png';
 import { useLocation } from 'react-router-dom';
 
 const SideBar = () => {

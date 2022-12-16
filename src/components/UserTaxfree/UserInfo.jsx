@@ -6,7 +6,7 @@ import { Avatar, Box } from '@mui/material';
 import UserIcons from '../../assets/Png/UserIcons.png';
 import successIcon from '../../assets/Png/Success.png';
 import cls from './User.module.scss';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 const UserInfo = () => {
   // const { passportImage, firstName, lastName } = useSelector((state) => state.passport);
@@ -41,7 +41,7 @@ const UserInfo = () => {
         <Box>
           <CardContent>
             <Typography sx={{ fontSize: '18px', fontWeight: '500' }} component="div">
-              FISh: {fullname}
+              FISh: {userInfo.fullName}
             </Typography>
             <Typography sx={{ fontSize: '18px', fontWeight: '500' }} component="div">
               Passport: {userInfo.passportNumber}
