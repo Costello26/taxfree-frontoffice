@@ -27,7 +27,7 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
-      }); 
+      });
   }, []);
   return (
     <div className="App">
@@ -42,7 +42,7 @@ function App() {
             path="/scan-passport"
             element={<ScanPassport stompClient={stompClient} />}
           /> */}
-          <Route path="/scan-passport" element={<ScanPassport />} />
+          <Route path="/scan-passport" element={<ScanPassport qrCode={qrCode} />} />
           <Route path="/scan-talon" element={<ScanTalon />} />
           <Route path="/product-formalization" element={<ProductFormalization />} />
           <Route path="/users-formalization" element={<UsersFormalition />} />

@@ -13,7 +13,29 @@ const ScanPassport = (props) => {
     if (localStorage.getItem('status') === 'true') {
       navigate('/product-formalization');
     }
-  }, [navigate]);
+    const fetchData = async () => {
+      try {
+        return await fetch(
+          `https://mobile.soliq.uz/my3-api/tax-free-api/user/qr/check-state/${props.qrCode}`,
+          {
+            method: 'POST',
+          }
+        );
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    const id = setInterval(async () => {
+      const res = await fetchData();
+      const user = await res.json();
+      if (user.success && user.code === 2) {
+        console.log(user);
+        navigate('/product-formalization');
+      }
+    }, 3000);
+
+    return () => clearInterval(id);
+  }, [navigate, props.qrCode]);
   return (
     <div className="container">
       <AppBar />
