@@ -13,7 +13,8 @@ const ProductFormalization = () => {
   const [data , setData] = useState([])
   useEffect(() => {
     const userId = localStorage.getItem('userId')
-    localStorage.setItem("status", "")
+    localStorage.removeItem('status')
+    localStorage.removeItem('userId')
       axios.get(`http://my-api.soliq.local/tax-free-api/product/get-all-product?userId=${userId}`)
         .then((res) => {
           console.log(res.data.data);

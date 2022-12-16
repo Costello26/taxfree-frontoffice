@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
@@ -10,8 +10,14 @@ import { useSelector } from 'react-redux';
 
 const UserInfo = () => {
   // const { passportImage, firstName, lastName } = useSelector((state) => state.passport);
-  const fullname = localStorage.getItem('fullname');
-  const passportImage = localStorage.getItem('passportImage');
+  // const fullname = localStorage.getItem('fullname');
+  // const passportImage = localStorage.getItem('passportImage');
+  let userInfo = JSON.parse(localStorage.getItem('userInfo'))
+  const [fullname, setfullname] = useState('');
+  useEffect(() => {
+     setfullname(userInfo.fullName)
+  }, [userInfo]);
+  console.log(userInfo);
   return (
     <Card
       sx={{
@@ -25,7 +31,7 @@ const UserInfo = () => {
     >
       <div className={cls['user-info']}>
         <Avatar
-          src={passportImage || UserIcons}
+          src={userInfo.passportImage || UserIcons}
           sx={{
             width: '158px',
             height: '164px',
@@ -38,7 +44,7 @@ const UserInfo = () => {
               FISh: {fullname}
             </Typography>
             <Typography sx={{ fontSize: '18px', fontWeight: '500' }} component="div">
-              Telefon: +44-7871234567
+              Passport: {userInfo.passportNumber}
             </Typography>
             <Typography sx={{ fontSize: '18px', fontWeight: '500' }} component="div">
               Visa: 400*******9010
@@ -48,7 +54,7 @@ const UserInfo = () => {
               gutterBottom
               component="div"
             >
-              Visa FISh: {fullname}
+              Visa FISh: {userInfo.fullName}
             </Typography>
             <Typography
               sx={{
