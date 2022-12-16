@@ -10,11 +10,11 @@ const ScanPassport = (props) => {
   // const [modalActive, setModalActive] = useState(false);
 
   useEffect(() => {
-    if (localStorage.getItem('status') === 'true') {
-      navigate('/product-formalization');
-    }
     const fetchData = async () => {
       try {
+        if (localStorage.getItem('status')) {
+          navigate('/product-formalization');
+        }
         return await fetch(
           `https://mobile.soliq.uz/my3-api/tax-free-api/user/qr/check-state/${props.qrCode}`,
           {
