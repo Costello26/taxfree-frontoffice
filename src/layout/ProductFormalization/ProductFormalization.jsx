@@ -10,19 +10,22 @@ import axios from 'axios';
 
 const ProductFormalization = () => {
   const [isStatActive, setIsStatActive] = useState(false);
-  const [data , setData] = useState([])
+  const [data, setData] = useState([]);
   useEffect(() => {
-    const userId = localStorage.getItem('userId')
-    localStorage.removeItem('status')
-    localStorage.removeItem('userId')
-      axios.get(`http://my-api.soliq.local/tax-free-api/product/get-all-product?userId=${userId}`)
-        .then((res) => {
-          console.log(res.data.data);
-          setData(res.data.data)
-        })
-        .catch((err) => {
-          console.log(err);
-        })
+    const userId = localStorage.getItem('userId');
+    localStorage.removeItem('status');
+    localStorage.removeItem('userId');
+    axios
+      .get(
+        `http://my-api.soliq.local/tax-free-api/product/get-all-product?userId=${userId}`
+      )
+      .then((res) => {
+        console.log(res.data.data);
+        setData(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
   return (
     <div className="container">
