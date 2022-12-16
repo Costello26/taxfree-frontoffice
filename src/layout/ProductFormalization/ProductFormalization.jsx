@@ -6,12 +6,22 @@ import UserInfo from '../../components/UserTaxfree/UserInfo';
 import cls from './ProductFormalization.module.scss';
 import TaxFreeStatisticsTable from '../../components/TaxFreeStatisticsTable/TaxFreeStatisticsTable';
 import { Fragment } from 'react';
+import axios from 'axios';
 
 const ProductFormalization = () => {
   const [isStatActive, setIsStatActive] = useState(false);
+  const [data , setData] = useState([])
   useEffect(() => {
-    localStorage.setItem('userId', '')
+    const userId = localStorage.getItem('userId')
     localStorage.setItem("status", "")
+      axios.get(`http://my-api.soliq.local/tax-free-api/product/get-all-product?userId=${userId}`)
+        .then((res) => {
+          console.log(res.data.data);
+          setData(res.data.data)
+        })
+        .catch((err) => {
+          console.log(err);
+        })
   }, []);
   return (
     <div className="container">
@@ -31,7 +41,7 @@ const ProductFormalization = () => {
               <Taxfree />
             </div>
           </div>
-          <ListCheck />
+          <ListCheck state={data} />
         </Fragment>
       )}
     </div>

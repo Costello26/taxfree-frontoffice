@@ -47,6 +47,7 @@ const Registration = (props) => {
     const id = setInterval(async () => {
       const res = await fetchData();
       const user = await res.json();
+      console.log(user);
       if (user.success && user.code === 1) {
         dispatch(passportActions.getUserId(user.data.userId));
         localStorage.setItem('userId', user.data.userId);

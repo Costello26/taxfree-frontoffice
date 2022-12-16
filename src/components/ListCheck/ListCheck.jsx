@@ -11,7 +11,7 @@ import {
 
 import { pink } from '@mui/material/colors';
 
-const ListCheck = () => {
+const ListCheck = (props) => {
   let head = {
     id: '№',
     name: 'Mahsulot nomi',
@@ -20,57 +20,58 @@ const ListCheck = () => {
     taxFreeSumma: 'Tax Free summasi',
     event: 'Mavjudligi',
   };
-  const headCells = [
-    {
-      id: '1',
-      name: 'Shim',
-      MXIK: 12345678912345678,
-      price: 250000,
-      taxFreeSumma: 150756,
-      event: true,
-    },
-    {
-      id: '2',
-      name: 'Palto',
-      MXIK: 12345678912345678,
-      price: 250000,
-      taxFreeSumma: 150756,
-      event: false,
-    },
-    {
-      id: '1',
-      name: 'Shim',
-      MXIK: 12345678912345678,
-      price: 250000,
-      taxFreeSumma: 150756,
-      event: true,
-    },
-    {
-      id: '2',
-      name: 'Palto',
-      MXIK: 12345678912345678,
-      price: 250000,
-      taxFreeSumma: 150756,
-      event: false,
-    },
-    {
-      id: '1',
-      name: 'Shim',
-      MXIK: 12345678912345678,
-      price: 250000,
-      taxFreeSumma: 150756,
-      event: true,
-    },
-    {
-      id: '2',
-      name: 'Palto',
-      MXIK: 12345678912345678,
-      price: 250000,
-      taxFreeSumma: 150756,
-      event: false,
-    },
-  ];
-
+  // const headCells = [
+  //   {
+  //     id: '1',
+  //     name: 'Shim',
+  //     MXIK: 12345678912345678,
+  //     price: 250000,
+  //     taxFreeSumma: 150756,
+  //     event: true,
+  //   },
+  //   {
+  //     id: '2',
+  //     name: 'Palto',
+  //     MXIK: 12345678912345678,
+  //     price: 250000,
+  //     taxFreeSumma: 150756,
+  //     event: false,
+  //   },
+  //   {
+  //     id: '1',
+  //     name: 'Shim',
+  //     MXIK: 12345678912345678,
+  //     price: 250000,
+  //     taxFreeSumma: 150756,
+  //     event: true,
+  //   },
+  //   {
+  //     id: '2',
+  //     name: 'Palto',
+  //     MXIK: 12345678912345678,
+  //     price: 250000,
+  //     taxFreeSumma: 150756,
+  //     event: false,
+  //   },
+  //   {
+  //     id: '1',
+  //     name: 'Shim',
+  //     MXIK: 12345678912345678,
+  //     price: 250000,
+  //     taxFreeSumma: 150756,
+  //     event: true,
+  //   },
+  //   {
+  //     id: '2',
+  //     name: 'Palto',
+  //     MXIK: 12345678912345678,
+  //     price: 250000,
+  //     taxFreeSumma: 150756,
+  //     event: false,
+  //   },
+  // ];
+   const headCells = [...props.state]
+    console.log(props);
   let btns = [
     {
       label: 'Hammasi',
@@ -156,7 +157,7 @@ const ListCheck = () => {
         {headCells.map((vl, ky) => {
           return (
             <ListItem
-              key={ky}
+              key={vl.id}
               sx={{
                 width: '100%',
                 border: '1px solid #D3E0FF',
@@ -186,7 +187,7 @@ const ListCheck = () => {
                   {vl.name}
                 </Grid>
                 <Grid item xs={6} sx={{ display: 'flex', alignItems: 'center' }}>
-                  {vl.MXIK}
+                  {vl.productCode}
                 </Grid>
                 <Grid item xs={4} sx={{ display: 'flex', alignItems: 'center' }}>
                   {vl.price}
