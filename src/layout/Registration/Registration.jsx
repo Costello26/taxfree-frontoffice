@@ -2,14 +2,14 @@ import React, { useEffect } from 'react';
 import AppBar from '../../components/AppBar/AppBar';
 import ScanCheck from '../../components/ScanCheck/ScanCheck';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { passportActions } from '../../store/passport';
 import { authActions } from '../../store/auth';
 
 const Registration = (props) => {
-  let qrCode = props.qrCode;
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { qrCode } = useSelector((state) => state.auth);
   const sendPhoneHandler = async (phoneNumber) => {
     try {
       const response = await fetch(
@@ -32,40 +32,56 @@ const Registration = (props) => {
   };
 
   useEffect(() => {
+    let qrCode = null;
+    fetch('https://mobile.soliq.uz/my3-api/tax-free-api/user/get/qr-information')
+      .then((res) => res.json())
+      .then((res) => {
+        qrCode = res.data.qr_code;
+        dispatch(authActions.setQrCode(res.data.qr_code));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     const fetchData = async () => {
       try {
-        return await fetch(
+        const res = await fetch(
           `https://mobile.soliq.uz/my3-api/tax-free-api/user/qr/check-state/${qrCode}`,
           {
             method: 'POST',
           }
         );
+        if (res.status === 403) {
+          throw new Error('error');
+        }
+        return await res.json();
       } catch (error) {
         console.log(error);
       }
     };
     const id = setInterval(async () => {
-      const res = await fetchData();
-      const user = await res.json();
-      console.log(user);
+      const user = await fetchData();
       if (user.success && user.code === 1) {
         dispatch(passportActions.getUserId(user.data.userId));
         localStorage.setItem('userId', user.data.userId);
         dispatch(authActions.login());
         navigate('/scan-passport');
       } else if (user.success && user.code === 2) {
-        console.log(user);
+        console.log('User', user.data.fullName);
+        dispatch(passportActions.receive(user.data));
+        localStorage.setItem('userId', user.data.userId);
+        localStorage.setItem('fullname', user.data.fullName);
+        localStorage.setItem('passportNumber', user.data.passportNumber);
         navigate('/product-formalization');
       }
     }, 3000);
 
     return () => clearInterval(id);
-  }, [qrCode, dispatch, navigate]);
+  }, [dispatch, navigate]);
 
   return (
     <div className="container">
       <AppBar />
-      <ScanCheck qrCode={props.qrCode} onContinue={sendPhoneHandler} />
+      <ScanCheck onContinue={sendPhoneHandler} />
     </div>
   );
 };

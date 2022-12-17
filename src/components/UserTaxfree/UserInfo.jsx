@@ -9,15 +9,18 @@ import cls from './User.module.scss';
 import { useSelector } from 'react-redux';
 
 const UserInfo = () => {
-  // const { passportImage, firstName, lastName } = useSelector((state) => state.passport);
-  // const fullname = localStorage.getItem('fullname');
-  // const passportImage = localStorage.getItem('passportImage');
-  let userInfo = JSON.parse(localStorage.getItem('userInfo'))
-  const [fullname, setfullname] = useState('');
-  useEffect(() => {
-     setfullname(userInfo.fullName)
-  }, [userInfo]);
-  console.log(userInfo);
+  // const { passportImage, fullname, passportNumber } = useSelector(
+  //   (state) => state.passport
+  // );
+  const fullname = localStorage.getItem('fullname');
+  const passportImage = localStorage.getItem('passportImage');
+  const passportNumber  = localStorage.getItem("passportNumber")
+  // let userInfo = JSON.parse(localStorage.getItem('userInfo'))
+  // const [fullname, setfullname] = useState('');
+  // useEffect(() => {
+  //    setfullname(userInfo.fullName)
+  // }, [userInfo]);
+  // console.log(userInfo);
   return (
     <Card
       sx={{
@@ -31,7 +34,7 @@ const UserInfo = () => {
     >
       <div className={cls['user-info']}>
         <Avatar
-          src={userInfo.passportImage || UserIcons}
+          src={passportImage || UserIcons}
           sx={{
             width: '158px',
             height: '164px',
@@ -41,10 +44,10 @@ const UserInfo = () => {
         <Box>
           <CardContent>
             <Typography sx={{ fontSize: '18px', fontWeight: '500' }} component="div">
-              FISh: {userInfo.fullName}
+              FISh: {fullname}
             </Typography>
             <Typography sx={{ fontSize: '18px', fontWeight: '500' }} component="div">
-              Passport: {userInfo.passportNumber}
+              Passport: {passportNumber}
             </Typography>
             <Typography sx={{ fontSize: '18px', fontWeight: '500' }} component="div">
               Visa: 400*******9010
@@ -54,7 +57,7 @@ const UserInfo = () => {
               gutterBottom
               component="div"
             >
-              Visa FISh: {userInfo.fullName}
+              Visa FISh: {fullname}
             </Typography>
             <Typography
               sx={{

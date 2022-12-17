@@ -29,6 +29,7 @@
     "react-scripts": "5.0.1",
     "redux": "^4.2.0",
     "sass": "^1.56.1",
+    "signalr-no-jquery": "^0.2.0",
     "socket.io-client": "^4.5.4",
     "sockjs-client": "^1.6.1",
     "stompjs": "^2.3.3",

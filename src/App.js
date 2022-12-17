@@ -16,19 +16,6 @@ import axios from 'axios';
 // const SOCKET_URL = 'ws://10.255.53.91:14069/tax-free-api/websocket-server';
 
 function App() {
-  const [qrCode, setQrCode] = useState('');
-  useEffect(() => {
-    axios
-      .get('https://mobile.soliq.uz/my3-api/tax-free-api/user/get/qr-information')
-      .then((res) => {
-        console.log(res.data.data);
-        setQrCode(res.data.data.qr_code);
-        // navigate("/register")
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
   return (
     <div className="App">
       <Router>
@@ -36,13 +23,13 @@ function App() {
         <Routes>
           <Route path="/" element={<ListInpector />} />
           <Route path="/statistic" element={<StatisticsPage />} />
-          <Route path="/login" element={<Registration qrCode={qrCode} />} />
+          <Route path="/login" element={<Registration />} />
           {/* <Route path="/login" element={<Registration qrCode={qrCode} />} /> */}
           {/* <Route
             path="/scan-passport"
             element={<ScanPassport stompClient={stompClient} />}
           /> */}
-          <Route path="/scan-passport" element={<ScanPassport qrCode={qrCode} />} />
+          <Route path="/scan-passport" element={<ScanPassport />} />
           <Route path="/scan-talon" element={<ScanTalon />} />
           <Route path="/product-formalization" element={<ProductFormalization />} />
           <Route path="/users-formalization" element={<UsersFormalition />} />

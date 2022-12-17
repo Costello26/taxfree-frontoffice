@@ -29,7 +29,6 @@
     <title>Tax Free</title>
 
     <script>
-      // if (window.location.href.indexOf('/scan-passport') !== -1) {
       var firstName;
       var lastName;
       var passportJSHR;
@@ -135,7 +134,6 @@
                 0,
                 function (data) {
                   data = JSON.parse(data);
-
                   lastName = data.ListVerifiedFields.pFieldMaps[8].Field_MRZ;
                   firstName = data.ListVerifiedFields.pFieldMaps[9].Field_MRZ;
                   passportJSHR = data.ListVerifiedFields.pFieldMaps[7].Field_MRZ;
@@ -241,7 +239,6 @@
                   data = JSON.parse(data);
                   passportImage = 'data:image/png;base64,';
                   passportImage += data.DocGraphicsInfo.pArrayFields[0].image.image;
-                  // console.log(passportNumber, firstName, lastName, passportIssuedDate);
                   // comment
                   if (localStorage.getItem('userId')) {
                     fetch('https://mobile.soliq.uz/my3-api/tax-free-api/passport/save', {
@@ -260,16 +257,9 @@
                     })
                       .then((res) => {
                         console.log(res.json());
-                        localStorage.setItem(
-                          'userInfo',
-                          JSON.stringify({
-                            passportNumber: passportNumber,
-                            fullName: `${firstName} ${lastName}`,
-                            passportJSHR: passportJSHR,
-                            passportImage: passportImage,
-                            passportDate: passportIssuedDate,
-                          })
-                        );
+                        localStorage.setItem("fullname", firstName+" "+lastName)
+                        localStorage.setItem("passportNumber", passportNumber)
+                        localStorage.setItem("passportImage", passportImage)
 
                         localStorage.setItem('status', true);
                         if (res.status === 200) {

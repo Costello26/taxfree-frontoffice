@@ -4,7 +4,10 @@ import ScanBtn from '../../assets/Png/Scanme.png';
 import UserIcon from '../../assets/Png/userAvatar.png';
 import QRGenerator from '../QRGenerator/QRGenerator';
 import classes from './scanCheck.module.scss';
+import { useSelector } from 'react-redux';
 const ScanCheck = (props) => {
+  const { qrCode } = useSelector((state) => state.auth);
+  console.log(qrCode);
   const sendPhoneHandler = () => {
     console.log(phoneNumberRef.current.value);
     props.onContinue(phoneNumberRef.current.value);
@@ -64,7 +67,7 @@ const ScanCheck = (props) => {
               отсканировать QR код с помощью <br />
               приложения Soliq
             </Typography>
-            <QRGenerator qrCode={props.qrCode} />
+            <QRGenerator qrCode={qrCode} />
             <Avatar
               src={ScanBtn}
               alt="Tax Free"

@@ -7,14 +7,15 @@ import cls from './ProductFormalization.module.scss';
 import TaxFreeStatisticsTable from '../../components/TaxFreeStatisticsTable/TaxFreeStatisticsTable';
 import { Fragment } from 'react';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 const ProductFormalization = () => {
   const [isStatActive, setIsStatActive] = useState(false);
   const [data, setData] = useState([]);
+  const { userId } = useSelector((state) => state.passport);
   useEffect(() => {
-    const userId = localStorage.getItem('userId');
+    // const userId = localStorage.getItem('userId');
     localStorage.removeItem('status');
-    localStorage.removeItem('userId');
     axios
       .get(
         `http://my-api.soliq.local/tax-free-api/product/get-all-product?userId=${userId}`
@@ -26,7 +27,7 @@ const ProductFormalization = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [userId]);
   return (
     <div className="container">
       <AppBar
