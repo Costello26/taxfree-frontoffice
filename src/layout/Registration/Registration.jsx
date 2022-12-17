@@ -20,7 +20,9 @@ const Registration = (props) => {
           })
       );
       if (response.status === 200) {
+        const data = await response.json();
         dispatch(authActions.login());
+        localStorage.setItem('userId', data.data.userId);
         navigate('/scan-passport');
       }
       if (response.status === 403) {
@@ -62,6 +64,7 @@ const Registration = (props) => {
       const user = await fetchData();
       if (user.success && user.code === 1) {
         dispatch(passportActions.getUserId(user.data.userId));
+        console.log(user.data.userId);
         localStorage.setItem('userId', user.data.userId);
         dispatch(authActions.login());
         navigate('/scan-passport');
