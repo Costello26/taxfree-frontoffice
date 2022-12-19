@@ -1,0 +1,69 @@
+image: node:14
+stages:
+    - build
+    - deploy
+
+#Staging 
+build_staging:
+    stage: build
+    script:
+        - echo "Building deploy package"
+        - yarn install
+        - CI=false yarn build-dev
+        - echo "Build successful"
+    artifacts:
+        expire_in: 1 hour
+        paths:
+            - build
+    only:
+        - master
+        - dev
+deploy_staging:
+    stage: deploy
+    script:
+        - echo "Deploying to server"
+        - /bin/bash ui-staging-deploy.sh "$SSH_PRIVATE_KEY"
+        - echo "Deployed"
+    artifacts:
+        expire_in: 1 hour
+        paths:
+            - build
+    environment:
+        name: development
+        url: https://dev-taxfree.soliq.uz
+    when: manual
+    only:
+        - master
+        - dev
+
+#Production
+build_prod:
+    stage: build
+    script:
+        - echo "Building deploy package"
+        - yarn install
+        - CI=false yarn build
+        - echo "Build successful"
+    artifacts:
+        expire_in: 1 hour
+        paths:
+            - build
+    only:
+        - production
+deploy_prod:
+    stage: deploy
+    script:
+        - echo "Deploying to server"
+        - /bin/bash ui-deploy.sh "$SSH_PRIVATE_KEY"
+        - echo "Deployed"
+    artifacts:
+        expire_in: 1 hour
+        paths:
+            - build
+    environment:
+        name: production
+        url: https://taxfree.soliq.uz
+    when: manual
+    only:
+        - production
+
