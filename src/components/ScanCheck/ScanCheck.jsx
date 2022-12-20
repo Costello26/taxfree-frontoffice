@@ -10,7 +10,6 @@ import { globalLocales } from '../../assets/locales';
 const ScanCheck = (props) => {
   const { selectedLang } = useSelector((state) => state.lang);
   const { qrCode } = useSelector((state) => state.auth);
-  console.log(qrCode);
   const sendPhoneHandler = () => {
     console.log(phoneNumber);
     props.onContinue(phoneNumber);

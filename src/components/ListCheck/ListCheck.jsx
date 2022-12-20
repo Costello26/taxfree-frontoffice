@@ -22,58 +22,7 @@ const ListCheck = (props) => {
     taxFreeSumma: globalLocales.infoPage.table.tfSum[selectedLang],
     event: globalLocales.infoPage.table.available[selectedLang],
   };
-  // const headCells = [
-  //   {
-  //     id: '1',
-  //     name: 'Shim',
-  //     MXIK: 12345678912345678,
-  //     price: 250000,
-  //     taxFreeSumma: 150756,
-  //     event: true,
-  //   },
-  //   {
-  //     id: '2',
-  //     name: 'Palto',
-  //     MXIK: 12345678912345678,
-  //     price: 250000,
-  //     taxFreeSumma: 150756,
-  //     event: false,
-  //   },
-  //   {
-  //     id: '1',
-  //     name: 'Shim',
-  //     MXIK: 12345678912345678,
-  //     price: 250000,
-  //     taxFreeSumma: 150756,
-  //     event: true,
-  //   },
-  //   {
-  //     id: '2',
-  //     name: 'Palto',
-  //     MXIK: 12345678912345678,
-  //     price: 250000,
-  //     taxFreeSumma: 150756,
-  //     event: false,
-  //   },
-  //   {
-  //     id: '1',
-  //     name: 'Shim',
-  //     MXIK: 12345678912345678,
-  //     price: 250000,
-  //     taxFreeSumma: 150756,
-  //     event: true,
-  //   },
-  //   {
-  //     id: '2',
-  //     name: 'Palto',
-  //     MXIK: 12345678912345678,
-  //     price: 250000,
-  //     taxFreeSumma: 150756,
-  //     event: false,
-  //   },
-  // ];
-   const headCells = [...props.state]
-    console.log(props);
+  const headCells = [...props.state];
   let btns = [
     {
       label: globalLocales.infoPage.controls.all[selectedLang],
@@ -147,10 +96,10 @@ const ListCheck = (props) => {
             <Grid item xs={6} sx={{ display: 'flex', alignItems: 'center' }}>
               {head.MXIK}
             </Grid>
-            <Grid item xs={4} sx={{ display: 'flex', alignItems: 'center' }}>
+            <Grid item xs={2} sx={{ display: 'flex', alignItems: 'center' }}>
               {head.price}
             </Grid>
-            <Grid item xs={4} sx={{ display: 'flex', alignItems: 'center' }}>
+            <Grid item xs={2} sx={{ display: 'flex', alignItems: 'center' }}>
               {head.taxFreeSumma}
             </Grid>
             <Grid item xs={4} sx={{ display: 'flex', alignItems: 'center' }}>
@@ -187,16 +136,16 @@ const ListCheck = (props) => {
                 <Grid item xs={2} sx={{ display: 'flex', alignItems: 'center' }}>
                   <Checkbox {...label} /> {vl.id}
                 </Grid>
-                <Grid item xs={4} sx={{ display: 'flex', alignItems: 'center' }}>
+                <Grid item xs={8} sx={{ display: 'flex', alignItems: 'center' }}>
                   {vl.name}
                 </Grid>
                 <Grid item xs={6} sx={{ display: 'flex', alignItems: 'center' }}>
                   {vl.productCode}
                 </Grid>
-                <Grid item xs={4} sx={{ display: 'flex', alignItems: 'center' }}>
+                <Grid item xs={2} sx={{ display: 'flex', alignItems: 'center' }}>
                   {vl.price}
                 </Grid>
-                <Grid item xs={4} sx={{ display: 'flex', alignItems: 'center' }}>
+                <Grid item xs={2} sx={{ display: 'flex', alignItems: 'center' }}>
                   {vl.taxFreeSumma}
                 </Grid>
                 <Grid item xs={4} sx={{ display: 'flex', alignItems: 'center' }}>

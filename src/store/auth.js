@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialAuthState = {
   isAuthenticated: false,
+  hasPassportSaved: false,
   qrCode: null,
 };
 
@@ -14,6 +15,9 @@ const authSlice = createSlice({
     },
     setQrCode(state, { payload }) {
       state.qrCode = payload;
+    },
+    setPassportSaved(state, { payload }) {
+      state.hasPassportSaved = payload;
     },
   },
 });

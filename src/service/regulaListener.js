@@ -1,8 +1,10 @@
 import { hubConnection } from 'signalr-no-jquery';
 import RegulaApiService from './regula.api.service';
+import store from '../store';
+import { passportActions } from '../store/passport';
+import ApiService from './fetch.api.service';
 
 let host = 'http://localhost:5000';
-let aType = null;
 
 const connection = hubConnection(`${host}/Regula.SDK.Api`);
 const hubProxy = connection.createHubProxy('EventsHub');
@@ -30,6 +32,8 @@ export const regulaEventListener = async () => {
 
   hubProxy.on('OnProcessingFinished', async function () {
     //console.log('Processing finished!');
+    const phoneNumber = store.getState().passport.phone;
+    const userId = store.getState().passport.userId;
     const name = await RegulaApiService.GetTextFieldByType(25);
     const serialNum = await RegulaApiService.GetTextFieldByType(2);
     const personalNumber = await RegulaApiService.GetTextFieldByType(7);
@@ -37,28 +41,18 @@ export const regulaEventListener = async () => {
     const image = await RegulaApiService.GetImage(201);
     let passportImage = 'data:image/png;base64,';
     passportImage += image;
-    // console.log(name, serialNum, personalNumber, dataOfIssue, passportImage);
-    return {
+    const personalData = {
       passportNumber: serialNum,
       fullName: name,
       passportJSHR: personalNumber,
       passportImage: passportImage,
       passportDate: dataOfIssue,
+      phone: phoneNumber,
+      userId,
     };
-    // fetch('https://mobile.soliq.uz/my3-api/tax-free-api/passport/save', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({
-    //     passportNumber: serialNumber,
-    //     fullName: name,
-    //     passportJSHR: personalNumber,
-    //     passportImage: passportImage,
-    //     passportDate: passportIssuedDate,
-    //     userId: localStorage.getItem('userId'),
-    //   }),
-    // });
+    store.dispatch(passportActions.setPersonalData(personalData));
+    const res = await ApiService.savePassportData(personalData);
+    console.log(res);
   });
 
   hubProxy.on('OnProcessingStarted', function () {
@@ -66,7 +60,6 @@ export const regulaEventListener = async () => {
   });
 
   hubProxy.on('OnResultReady', function (AType) {
-    aType = AType;
     console.log('Result ready');
   });
 

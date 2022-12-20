@@ -6,6 +6,7 @@ const initialpassportState = {
   passportImage: '',
   passportDate: '',
   passportNumber: '',
+  phone: '',
   userId: '',
 };
 
@@ -13,24 +14,29 @@ const passportSlice = createSlice({
   name: 'passportData',
   initialState: initialpassportState,
   reducers: {
-    receive(state, { payload }) {
+    setUserId(state, { payload }) {
+      state.userId = payload;
+    },
+    setPhoneNumber(state, { payload }) {
+      state.phone = payload;
+    },
+    setPersonalData(state, { payload }) {
       const {
-        fullname,
+        fullName,
         passportJSHR,
         passportImage,
         passportDate,
         passportNumber,
+        phone,
         userId,
       } = payload;
-      state.fullname = fullname;
+      state.fullname = fullName;
       state.passportJSHR = passportJSHR;
       state.passportImage = passportImage;
       state.passportDate = passportDate;
       state.passportNumber = passportNumber;
+      state.phone = phone;
       state.userId = userId;
-    },
-    setUserId(state, { payload }) {
-      state.userId = payload;
     },
   },
 });
