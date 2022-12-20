@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { Box, Button, Container } from '@mui/material';
+import { useSelector } from 'react-redux';
+import { globalLocales } from '../../assets/locales';
 
 const Bar = () => {
+    const { selectedLang } = useSelector(state => state.lang)
     const [userCountBtn , setUserCountBtn] = useState("outlined")
     const [taxFreeSummaBtn , setTaxFreeSumma] = useState("contained")
     const [USD , setUSD]= useState("outlined")
@@ -32,7 +35,9 @@ const Bar = () => {
                         boxShadow: "0px 0px 11px rgba(0, 0, 0, 0.05)",
                         borderRadius: "26px",
                     }}
-                >TaxFree summasi</Button>
+                >
+                    {globalLocales.stats.sum[selectedLang]}
+                </Button>
                   <Button variant={userCountBtn}
                   onClick={handleBtn}
                     sx={{
@@ -40,7 +45,7 @@ const Bar = () => {
                         borderRadius: "26px",
                         ml:"20px"
                     }}
-                >Foydalanuvchilar soni</Button>
+                >{globalLocales.stats.count[selectedLang]}</Button>
             </Box>
             <Box sx={{
               border:"1px solid #325ECD",

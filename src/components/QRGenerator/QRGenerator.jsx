@@ -11,7 +11,7 @@ const QrCode = (props) => {
         </Box>
       )}
       {props.qrCode && (
-        <QRCodeCanvas id="qrCode" value={props.qrCode} size={332} level={'H'} />
+        <QRCodeCanvas id="qrCode" value={props.qrCode} size={200} level={'H'} />
       )}
     </div>
   );

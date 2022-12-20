@@ -5,68 +5,54 @@ import LupIcon from '../../assets/Png/lupIcon.png';
 const RegulaInfo = (props) => {
   return (
     <Container maxWidth="xl" disableGutters>
-      <Box sx={{ flexGrow: 1, height: '700px' }}>
+      <Box sx={{ 
+        flexGrow: 1, 
+        height: '650px',
+        //marginBottom: '50px',
+      }}>
         <Box
           sx={{
             width: '100%',
-            height: '800px',
+            height: '650px',
             borderRadius: '40px',
             textAlign: 'center',
             backgroundColor: '#FFF',
-            padding: '25px 0',
+            //padding: '25px 0px',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center' 
           }}
         >
           <Typography
             sx={{
-              fontFamily: 'Montserrat',
+              fontFamily: 'Roboto',
               color: '#325ECD',
               fontWeight: '600',
               fontSize: '25px',
+              maxWidth: '80%',
+              margin: '0 auto'
             }}
           >
-            {props.textUZ}
-          </Typography>
-          <br />
-          <Typography
-            sx={{
-              fontFamily: 'Montserrat',
-              color: '#325ECD',
-              fontWeight: '600',
-              fontSize: '25px',
-            }}
-          >
+            {props.textUZ} 
+            <br/>
             {props.textRU}
           </Typography>
+          
           <div
             style={{
-              width: '527px',
-              height: '527px',
-              backgroundImage: { LupIcon },
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
+              //height: '327px',
               margin: '55px auto',
               position: 'relative',
             }}
           >
             <img
-              src={LupIcon}
-              alt=""
-              style={{
-                width: '600px',
-                height: '600px',
-                position: 'absolute',
-                top: '25px',
-                left: '40px',
-              }}
-            />
-            <img
               src={props.imgSrc}
-              alt="regula"
+              alt="Passport scanner"
               style={{
+                marginTop: '30px',
                 width: '242px',
                 height: '210px',
-                borderRadius: '0',
               }}
             />
           </div>

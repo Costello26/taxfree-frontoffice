@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import AppBar from '../../components/AppBar/AppBar';
+//import AppBar from '../../components/AppBar/AppBar';
 import RegulaInfo from '../../components/RegulaInfo/RegulaInfo';
 import classes from './ScanPassport.module.scss';
 import sloy from '../../assets/Png/sloy.png';
@@ -28,7 +28,7 @@ const ScanPassport = (props) => {
   }, [navigate, hasPassportSaved]);
   return (
     <div className="container">
-      <AppBar />
+      {/* <AppBar /> */}
       <div className={classes['card__content']}>
         <RegulaInfo
           textUZ="Shaxsingizni tasdiqlovchi xujjatni ochiq holda skanerlash qurilmasiga qo`ying"

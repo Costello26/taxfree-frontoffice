@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import AppBar from '../../components/AppBar/AppBar';
+//import AppBar from '../../components/AppBar/AppBar';
+import { NotificationManager } from 'react-notifications';
 import ScanCheck from '../../components/ScanCheck/ScanCheck';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,10 +8,13 @@ import { passportActions } from '../../store/passport';
 import { authActions } from '../../store/auth';
 import ApiService from '../../service/fetch.api.service';
 
-const Registration = (props) => {
+
+
+const Registration = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { qrCode } = useSelector((state) => state.auth);
+
   const sendPhoneHandler = async (phoneNumber) => {
     dispatch(passportActions.setPhoneNumber(phoneNumber));
     const res = await ApiService.findUserByPhone(phoneNumber, qrCode);
@@ -53,7 +57,7 @@ const Registration = (props) => {
 
   return (
     <div className="container">
-      <AppBar />
+      {/* <AppBar /> */}
       <ScanCheck onContinue={sendPhoneHandler} />
     </div>
   );

@@ -11,7 +11,7 @@ const Index = () => {
   return (
     <div>
       <div className="container">
-        <AppBar />
+        {/* <AppBar /> */}
         <div className={classes['card__content']}>
           <RegulaInfo
             textUZ="Iltimos, bort taloningizni ko`rsating"

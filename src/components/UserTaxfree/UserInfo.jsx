@@ -7,11 +7,14 @@ import UserIcons from '../../assets/Png/UserIcons.png';
 import successIcon from '../../assets/Png/Success.png';
 import cls from './User.module.scss';
 import { useSelector } from 'react-redux';
+import { globalLocales } from '../../assets/locales';
 
 const UserInfo = () => {
+
   const { passportImage, fullname, passportNumber, phone } = useSelector(
     (state) => state.passport
   );
+  const { selectedLang } = useSelector(state => state.lang)
   return (
     <Card
       sx={{
@@ -35,10 +38,10 @@ const UserInfo = () => {
         <Box>
           <CardContent>
             <Typography sx={{ fontSize: '18px', fontWeight: '500' }} component="div">
-              FISh: {fullname}
+              {globalLocales.infoPage.fio[selectedLang]}: {fullname}
             </Typography>
             <Typography sx={{ fontSize: '18px', fontWeight: '500' }} component="div">
-              Passport: {passportNumber}
+            {globalLocales.infoPage.passport[selectedLang]}: {passportNumber}
             </Typography>
             {phone && (
               <Typography sx={{ fontSize: '18px', fontWeight: '500' }} component="div">
@@ -46,14 +49,7 @@ const UserInfo = () => {
               </Typography>
             )}
             <Typography sx={{ fontSize: '18px', fontWeight: '500' }} component="div">
-              Visa: 400*******9010
-            </Typography>
-            <Typography
-              sx={{ fontSize: '18px', fontWeight: '500' }}
-              gutterBottom
-              component="div"
-            >
-              Visa FISh: {fullname}
+            {globalLocales.infoPage.visa[selectedLang]}: 400*******9010
             </Typography>
             <Typography
               sx={{
@@ -65,7 +61,7 @@ const UserInfo = () => {
               gutterBottom
               component="div"
             >
-              Holati:
+              {globalLocales.infoPage.status[selectedLang]}:&nbsp;
               <Typography
                 sx={{
                   color: '#12B903',

@@ -1,15 +1,18 @@
 import { Search } from '@mui/icons-material';
 import { Container, FormControl, Grid, InputAdornment, InputLabel, MenuItem, Select, TextField } from '@mui/material';
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { globalLocales } from '../../assets/locales';
 
 const StatisticsSearch = () => {
+    const { selectedLang } = useSelector(state => state.lang)
     return (
         <Container maxWidth='xl'>
               <Grid container columns={12}>
                 <Grid item xs={8}>
                     <TextField
                         id="outlined-required"
-                        label="Telefon raqam"
+                        label={globalLocales.stats.phoneLabel[selectedLang]}
                         sx={{
                             width: "100%",
                             margin: "15px 0",
@@ -30,7 +33,7 @@ const StatisticsSearch = () => {
                 </Grid>
                 <Grid item xs={4} sx={{ display: "flex", alignItems:"center" }} >
                     <FormControl fullWidth sx={{ margin: "5px" }}>
-                        <InputLabel id="demo-simple-select-label">Yil</InputLabel>
+                        <InputLabel id="demo-simple-select-label">{globalLocales.stats.yearLabel[selectedLang]}</InputLabel>
                         <Select
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
@@ -38,13 +41,13 @@ const StatisticsSearch = () => {
                             label="Yil"
                         // onChange={handleChange}  
                         >
-                            <MenuItem value={10}>Ten</MenuItem>
-                            <MenuItem value={20}>Twenty</MenuItem>
-                            <MenuItem value={30}>Thirty</MenuItem>
+                            <MenuItem value={10}>2022</MenuItem>
+                            <MenuItem value={20}>2021</MenuItem>
+                            <MenuItem value={30}>2019</MenuItem>
                         </Select>
                     </FormControl>
                     <FormControl fullWidth sx={{ margin: "5px" }}>
-                        <InputLabel id="demo-simple-select-label">Oy</InputLabel>
+                        <InputLabel id="demo-simple-select-label">{globalLocales.stats.monthLabel[selectedLang]}</InputLabel>
                         <Select
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
@@ -57,7 +60,7 @@ const StatisticsSearch = () => {
                         </Select>
                     </FormControl>
                     <FormControl fullWidth sx={{ margin: "5px" }}>
-                        <InputLabel id="demo-simple-select-label">Kun</InputLabel>
+                        <InputLabel id="demo-simple-select-label">{globalLocales.stats.dayLabel[selectedLang]}</InputLabel>
                         <Select
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"

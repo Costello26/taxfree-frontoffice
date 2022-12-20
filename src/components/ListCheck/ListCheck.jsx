@@ -8,30 +8,32 @@ import {
   Button,
   TextField,
 } from '@mui/material';
-
+import { useSelector } from 'react-redux';
+import { globalLocales } from '../../assets/locales';
 import { pink } from '@mui/material/colors';
 
 const ListCheck = (props) => {
+  const { selectedLang } = useSelector(state => state.lang)
   let head = {
     id: '№',
-    name: 'Mahsulot nomi',
-    MXIK: 'MXIK',
-    price: 'Mahsulot narxi',
-    taxFreeSumma: 'Tax Free summasi',
-    event: 'Mavjudligi',
+    name: globalLocales.infoPage.table.productName[selectedLang],
+    MXIK: globalLocales.infoPage.table.fiscalNum[selectedLang],
+    price: globalLocales.infoPage.table.price[selectedLang],
+    taxFreeSumma: globalLocales.infoPage.table.tfSum[selectedLang],
+    event: globalLocales.infoPage.table.available[selectedLang],
   };
   const headCells = [...props.state];
   let btns = [
     {
-      label: 'Hammasi',
+      label: globalLocales.infoPage.controls.all[selectedLang],
       event: 'all',
     },
     {
-      label: 'Tasdiqlangan',
+      label: globalLocales.infoPage.controls.approved[selectedLang],
       event: 'success',
     },
     {
-      label: 'Rad etilgan',
+      label: globalLocales.infoPage.controls.declined[selectedLang],
       event: 'failed',
     },
   ];
@@ -40,14 +42,16 @@ const ListCheck = (props) => {
   return (
     <Container maxWidth={false} disableGutters={true}>
       <TextField
-        id="outlined-required"
-        label="Mahsulot nomi / MXIK kodi"
+        defaultValue="123"
+        id="outlined"
+        label={globalLocales.infoPage.formLabel[selectedLang]}
         sx={{
           width: '100%',
           margin: '15px 0',
+          borderRadius: '20px',
+          backgroundColor: '#FFF',
           '& fieldset': {
             borderRadius: '20px',
-            backgroundColor: '#FFF',
           },
         }}
       />
@@ -86,8 +90,8 @@ const ListCheck = (props) => {
             <Grid item xs={2} sx={{ display: 'flex', alignItems: 'center' }}>
               <Checkbox {...label} /> {head.id}
             </Grid>
-            <Grid item xs={8} sx={{ display: 'flex', alignItems: 'center' }}>
-              {head.name}
+            <Grid item xs={4} sx={{ display: 'flex', alignItems: 'center' }}>
+              {head.name}"
             </Grid>
             <Grid item xs={6} sx={{ display: 'flex', alignItems: 'center' }}>
               {head.MXIK}

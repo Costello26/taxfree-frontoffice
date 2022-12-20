@@ -6,15 +6,20 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
-
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { globalLocales } from '../../assets/locales';
 import SelectLanguage from '../../components/SelectLanguage/SelectLang';
 import SoliqLogo from '../../assets/Png/SoliqLogo.png';
 import RightDashboard from '../../components/RightDashboard/RightDashboard';
 import user from '../../assets/Png/User.png';
 import { useLocation } from 'react-router-dom';
 
+
+
 const SideBar = () => {
   const location = useLocation();
+  const { selectedLang } = useSelector((state) => state.lang);
   return (
     <AppBar
       position="static"
@@ -29,17 +34,19 @@ const SideBar = () => {
           disableGutters
           sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
         >
-          <Box
-            sx={{
+          <Link
+          to="/"
+            style={{
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center',
+              textDecoration: 'none'
             }}
           >
             <img
               src={SoliqLogo}
               alt="Soliq Logo"
-              style={{ width: '70px', height: '62px', margin: '25px 10px' }}
+              style={{ width: '60px', height: '52px', margin: '25px 10px' }}
             />
 
             <Box sx={{ lineHeight: '20px' }}>
@@ -48,7 +55,7 @@ const SideBar = () => {
                   display: { xs: 'none', md: 'flex' },
                   fontFamily: 'Nunito',
                   color: 'black',
-                  fontSize: '30px',
+                  fontSize: '24px',
                   fontWeight: '600',
                   lineHeight: '25px',
                 }}
@@ -81,7 +88,7 @@ const SideBar = () => {
                 Tashkent Airport
               </Typography>
             </Box>
-          </Box>
+          </Link>
           {location.pathname !== '/' ? (
             <Box sx={{ flexGrow: 0, display: 'flex', alignItems: 'center' }}>
               <IconButton sx={{ p: 0 }}>
@@ -96,7 +103,7 @@ const SideBar = () => {
                   Olimov Asqarali
                 </Typography>
                 <Typography sx={{ pl: 2, fontWeight: '400', fontSize: '16px' }}>
-                  JShShIR: 12345678901234
+                  {globalLocales.header.pinfl[selectedLang]}: 12345678901234
                 </Typography>
               </Box>
             </Box>

@@ -3,32 +3,35 @@ import { Box, Container, Typography } from '@mui/material';
 import TaxFree from '../../assets/Png/TaxFreeLogo.png';
 import UserKey from '../UserKey/UserKey';
 import { Link, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { globalLocales } from '../../assets/locales';
 
 const ListUsers = () => {
-  const navigate = useNavigate();
-  const selectInspector = () => {
-    navigate('/login');
-  };
+  const { selectedLang } = useSelector(state => state.lang)
+  const navigate = useNavigate()
+  const selectInspector=()=>{
+    navigate("/login")
+  }
   return (
     <Container maxWidth="xl" disableGutters className="container">
-      <Box sx={{ flexGrow: 1, height: '1200px' }}>
+      <Box sx={{ flexGrow: 1, height: '700px' }}>
         <Box
           sx={{
             display: 'flex',
             alignItems: 'center',
-            borderRadius: '40px',
-            boxShadow: ' 0px 0px 15px rgba(0, 0, 0, 0.2)',
-            marginTop: '150px',
+            borderRadius: '20px',
+            boxShadow: ' 0px 0px 15px rgba(0, 0, 0, 0.08)',
+            marginTop: '40px',
             background: '#FFF',
           }}
         >
           <Box
             sx={{
               width: '50%',
-              height: '1000px',
+              height: '650px',
               bgcolor: '#F1FAFF',
-              borderBottomLeftRadius: '40px',
-              borderTopLeftRadius: '40px',
+              borderBottomLeftRadius: '20px',
+              borderTopLeftRadius: '20px',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
@@ -36,26 +39,32 @@ const ListUsers = () => {
             }}
           >
             <img src={TaxFree} alt="taxfree soliq service" style={{ width: '350px' }} />
-            <Typography
+            {/* <Avatar
+              src={TaxFree}
+              alt="Tax Free"
+              sx={{ width: '400px', borderRadius: '0px' }}
+            /> */}
+            {/* <Typography
               sx={{
                 fontWeight: '400',
                 fontSize: '40px',
               }}
             >
               Tizimiga kirish!
-            </Typography>
+            </Typography> */}
           </Box>
-          <Box sx={{ width: '50%', height: '1000px' }}>
+          <Box sx={{ width: '50%', height: '650px' }}>
             <Typography
               sx={{
                 fontFamily: 'Nunito',
                 fontWeight: 700,
-                fontSize: '30px',
-                marginTop: '76px',
+                fontSize: '28px',
+                marginTop: '36px',
                 textAlign: 'center',
               }}
+              dangerouslySetInnerHTML={{ __html: `${globalLocales.signIn.header[selectedLang]}` }}
             >
-              Tizimga kirish kalitini <br /> tanlang
+              
             </Typography>
             <Box
               sx={{
