@@ -5,10 +5,10 @@ import UserKey from '../UserKey/UserKey';
 import { Link, useNavigate } from 'react-router-dom';
 
 const ListUsers = () => {
-  const navigate = useNavigate()
-  const selectInspector=()=>{
-    navigate("/login")
-  }
+  const navigate = useNavigate();
+  const selectInspector = () => {
+    navigate('/login');
+  };
   return (
     <Container maxWidth="xl" disableGutters className="container">
       <Box sx={{ flexGrow: 1, height: '1200px' }}>
@@ -36,11 +36,6 @@ const ListUsers = () => {
             }}
           >
             <img src={TaxFree} alt="taxfree soliq service" style={{ width: '350px' }} />
-            {/* <Avatar
-              src={TaxFree}
-              alt="Tax Free"
-              sx={{ width: '400px', borderRadius: '0px' }}
-            /> */}
             <Typography
               sx={{
                 fontWeight: '400',

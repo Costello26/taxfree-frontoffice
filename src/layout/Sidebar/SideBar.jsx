@@ -9,7 +9,6 @@ import Avatar from '@mui/material/Avatar';
 
 import SelectLanguage from '../../components/SelectLanguage/SelectLang';
 import SoliqLogo from '../../assets/Png/SoliqLogo.png';
-// import { useSelector } from 'react-redux';
 import RightDashboard from '../../components/RightDashboard/RightDashboard';
 import user from '../../assets/Png/User.png';
 import { useLocation } from 'react-router-dom';
@@ -61,9 +60,10 @@ const SideBar = () => {
                   display: { xs: 'none', md: 'flex' },
                   fontFamily: 'Nunito',
                   color: 'black',
-                  fontSize: '16px',
+                  fontSize: '18px',
                   fontWeight: '400',
                   lineHeight: '25px',
+                  paddingLeft: '5px',
                 }}
               >
                 Front office
@@ -75,6 +75,7 @@ const SideBar = () => {
                   fontSize: '16px',
                   fontWeight: '400',
                   lineHeight: '20px',
+                  paddingLeft: '5px',
                 }}
               >
                 Tashkent Airport
