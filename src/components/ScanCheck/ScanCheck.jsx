@@ -7,7 +7,6 @@ import classes from './scanCheck.module.scss';
 import { useSelector } from 'react-redux';
 const ScanCheck = (props) => {
   const { qrCode } = useSelector((state) => state.auth);
-  console.log(qrCode);
   const sendPhoneHandler = () => {
     console.log(phoneNumberRef.current.value);
     props.onContinue(phoneNumberRef.current.value);

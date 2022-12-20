@@ -5,42 +5,27 @@ import classes from './ScanPassport.module.scss';
 import sloy from '../../assets/Png/sloy.png';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-// import { regulaEventListener } from '../../service/regulaListener';
+import { regulaEventListener } from '../../service/regulaListener';
 
 const ScanPassport = (props) => {
   const navigate = useNavigate();
-  const { qrCode } = useSelector((state) => state.auth);
+  const userId = useSelector((state) => state.passport.userId);
+  const hasPassportSaved = useSelector((state) => state.auth.hasPassportSaved);
   useEffect(() => {
-    // const initRegula = async () => {
-    //   await regulaEventListener();
-    // };
-    // initRegula();
-    const fetchData = async () => {
-      try {
-        if (localStorage.getItem('status')) {
-          navigate('/product-formalization');
-        }
-        return await fetch(
-          `https://mobile.soliq.uz/my3-api/tax-free-api/user/qr/check-state/${qrCode}`,
-          {
-            method: 'POST',
-          }
-        );
-      } catch (error) {
-        console.log(error);
-      }
+    console.log(userId);
+    if (!userId) {
+      navigate('/login');
+    }
+    const initRegula = async () => {
+      await regulaEventListener();
     };
-    const id = setInterval(async () => {
-      const res = await fetchData();
-      const user = await res.json();
-      if (user.success && user.code === 2) {
-        console.log(user);
-        navigate('/product-formalization');
-      }
-    }, 3000);
-
-    return () => clearInterval(id);
-  }, [navigate, qrCode]);
+    initRegula();
+  }, [navigate, userId]);
+  useEffect(() => {
+    if (hasPassportSaved) {
+      navigate('/product-formalization');
+    }
+  }, [navigate, hasPassportSaved]);
   return (
     <div className="container">
       <AppBar />

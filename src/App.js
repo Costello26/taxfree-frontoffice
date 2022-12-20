@@ -10,8 +10,6 @@ import UsersFormalition from './layout/UserFormalization/UsersFormalition';
 import StatisticsPage from './layout/StatisticsPage/Statistics';
 import PrintCheck from './components/printCheck/PrintCheck';
 // import * as StompJs from '@stomp/stompjs';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
 
 // const SOCKET_URL = 'ws://10.255.53.91:14069/tax-free-api/websocket-server';
 

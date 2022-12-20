@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
@@ -9,18 +9,9 @@ import cls from './User.module.scss';
 import { useSelector } from 'react-redux';
 
 const UserInfo = () => {
-  // const { passportImage, fullname, passportNumber } = useSelector(
-  //   (state) => state.passport
-  // );
-  const fullname = localStorage.getItem('fullname');
-  const passportImage = localStorage.getItem('passportImage');
-  const passportNumber  = localStorage.getItem("passportNumber")
-  // let userInfo = JSON.parse(localStorage.getItem('userInfo'))
-  // const [fullname, setfullname] = useState('');
-  // useEffect(() => {
-  //    setfullname(userInfo.fullName)
-  // }, [userInfo]);
-  // console.log(userInfo);
+  const { passportImage, fullname, passportNumber, phone } = useSelector(
+    (state) => state.passport
+  );
   return (
     <Card
       sx={{
@@ -49,6 +40,11 @@ const UserInfo = () => {
             <Typography sx={{ fontSize: '18px', fontWeight: '500' }} component="div">
               Passport: {passportNumber}
             </Typography>
+            {phone && (
+              <Typography sx={{ fontSize: '18px', fontWeight: '500' }} component="div">
+                Telefon: {phone}
+              </Typography>
+            )}
             <Typography sx={{ fontSize: '18px', fontWeight: '500' }} component="div">
               Visa: 400*******9010
             </Typography>

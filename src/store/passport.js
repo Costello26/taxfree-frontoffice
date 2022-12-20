@@ -1,11 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialpassportState = {
-  fullname: "Olimov Asqarali",
+  fullname: 'Olimov Asqarali',
   passportJSHR: '12345678910112',
   passportImage: '',
   passportDate: '',
   passportNumber: '',
+  phone: '',
   userId: '',
 };
 
@@ -13,24 +14,26 @@ const passportSlice = createSlice({
   name: 'passportData',
   initialState: initialpassportState,
   reducers: {
-    receive(state, { payload }) {
+    setUserId(state, { payload }) {
+      state.userId = payload;
+    },
+    setPersonalData(state, { payload }) {
       const {
-        fullname,
+        fullName,
         passportJSHR,
         passportImage,
         passportDate,
         passportNumber,
+        phone,
         userId,
       } = payload;
-      state.fullname = fullname;
+      state.fullname = fullName;
       state.passportJSHR = passportJSHR;
       state.passportImage = passportImage;
       state.passportDate = passportDate;
       state.passportNumber = passportNumber;
+      state.phone = phone;
       state.userId = userId;
-    },
-    getUserId(state, { payload }) {
-      state.userId = payload.userId;
     },
   },
 });

@@ -21,4 +21,14 @@ export default class RegulaApiService {
       return err;
     }
   }
+  static async GetImage(fieldId) {
+    try {
+      const data = await fetch(
+        `${RegulaApiService.host}/Regula.SDK.Api/Methods/GetRFIDGraphicsFileImageByFieldType?AType=${fieldId}`
+      );
+      return await data.json();
+    } catch (err) {
+      return err;
+    }
+  }
 }

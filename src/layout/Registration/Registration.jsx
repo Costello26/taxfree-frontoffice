@@ -22,7 +22,7 @@ const Registration = (props) => {
       if (response.status === 200) {
         const data = await response.json();
         dispatch(authActions.login());
-        localStorage.setItem('userId', data.data.userId);
+        dispatch(passportActions.setUserId(data.data.userId));
         navigate('/scan-passport');
       }
       if (response.status === 403) {
@@ -63,17 +63,13 @@ const Registration = (props) => {
     const id = setInterval(async () => {
       const user = await fetchData();
       if (user.success && user.code === 1) {
-        dispatch(passportActions.getUserId(user.data.userId));
+        dispatch(passportActions.setUserId(user.data.userId));
         console.log(user.data.userId);
-        localStorage.setItem('userId', user.data.userId);
         dispatch(authActions.login());
         navigate('/scan-passport');
       } else if (user.success && user.code === 2) {
-        console.log('User', user.data.fullName);
-        dispatch(passportActions.receive(user.data));
-        localStorage.setItem('userId', user.data.userId);
-        localStorage.setItem('fullname', user.data.fullName);
-        localStorage.setItem('passportNumber', user.data.passportNumber);
+        console.log('User', user.data);
+        dispatch(passportActions.setPersonalData(user.data));
         navigate('/product-formalization');
       }
     }, 3000);

@@ -1,15 +1,16 @@
 import { hubConnection } from 'signalr-no-jquery';
 import RegulaApiService from './regula.api.service';
+import store from '../store';
+import { passportActions } from '../store/passport';
+import { authActions } from '../store/auth';
 
 let host = 'http://localhost:5000';
-let aType = null;
 
 const connection = hubConnection(`${host}/Regula.SDK.Api`);
 const hubProxy = connection.createHubProxy('EventsHub');
 
-export const regulaEventListener = async () => {
+export const regulaEventListener = async (navigate) => {
   const response = await RegulaApiService.hostHealthCheck();
-  console.log(response);
   if (!response.ok) {
     console.log('Regula host is not available!');
     return;
@@ -31,9 +32,41 @@ export const regulaEventListener = async () => {
 
   hubProxy.on('OnProcessingFinished', async function () {
     //console.log('Processing finished!');
+    const userId = store.getState().passport.userId;
     const name = await RegulaApiService.GetTextFieldByType(25);
     const serialNum = await RegulaApiService.GetTextFieldByType(2);
-    console.log(name, serialNum);
+    const personalNumber = await RegulaApiService.GetTextFieldByType(7);
+    const dataOfIssue = await RegulaApiService.GetTextFieldByType(4);
+    const image = await RegulaApiService.GetImage(201);
+    let passportImage = 'data:image/png;base64,';
+    passportImage += image;
+    const personalData = {
+      passportNumber: serialNum,
+      fullName: name,
+      passportJSHR: personalNumber,
+      passportImage: passportImage,
+      passportDate: dataOfIssue,
+      userId: userId,
+    };
+    store.dispatch(passportActions.setPersonalData(personalData));
+
+    fetch('https://mobile.soliq.uz/my3-api/tax-free-api/passport/save', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(personalData),
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          store.dispatch(authActions.setPassportSaved(true));
+        }
+        return res.json();
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
   });
 
   hubProxy.on('OnProcessingStarted', function () {
@@ -41,7 +74,6 @@ export const regulaEventListener = async () => {
   });
 
   hubProxy.on('OnResultReady', function (AType) {
-    aType = AType;
     console.log('Result ready');
   });
 

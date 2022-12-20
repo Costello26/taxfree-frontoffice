@@ -8,26 +8,28 @@ import TaxFreeStatisticsTable from '../../components/TaxFreeStatisticsTable/TaxF
 import { Fragment } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const ProductFormalization = () => {
   const [isStatActive, setIsStatActive] = useState(false);
   const [data, setData] = useState([]);
   const { userId } = useSelector((state) => state.passport);
+  const navigate = useNavigate();
   useEffect(() => {
-    // const userId = localStorage.getItem('userId');
-    localStorage.removeItem('status');
+    if (!userId) {
+      navigate('/login');
+    }
     axios
       .get(
         `http://my-api.soliq.local/tax-free-api/product/get-all-product?userId=${userId}`
       )
       .then((res) => {
-        console.log(res.data.data);
         setData(res.data.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, [userId]);
+  }, [userId, navigate]);
   return (
     <div className="container">
       <AppBar
