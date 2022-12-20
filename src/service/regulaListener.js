@@ -2,14 +2,14 @@ import { hubConnection } from 'signalr-no-jquery';
 import RegulaApiService from './regula.api.service';
 import store from '../store';
 import { passportActions } from '../store/passport';
-import { authActions } from '../store/auth';
+import ApiService from './fetch.api.service';
 
 let host = 'http://localhost:5000';
 
 const connection = hubConnection(`${host}/Regula.SDK.Api`);
 const hubProxy = connection.createHubProxy('EventsHub');
 
-export const regulaEventListener = async (navigate) => {
+export const regulaEventListener = async () => {
   const response = await RegulaApiService.hostHealthCheck();
   if (!response.ok) {
     console.log('Regula host is not available!');
@@ -32,6 +32,7 @@ export const regulaEventListener = async (navigate) => {
 
   hubProxy.on('OnProcessingFinished', async function () {
     //console.log('Processing finished!');
+    const phoneNumber = store.getState().passport.phone;
     const userId = store.getState().passport.userId;
     const name = await RegulaApiService.GetTextFieldByType(25);
     const serialNum = await RegulaApiService.GetTextFieldByType(2);
@@ -46,27 +47,12 @@ export const regulaEventListener = async (navigate) => {
       passportJSHR: personalNumber,
       passportImage: passportImage,
       passportDate: dataOfIssue,
-      userId: userId,
+      phone: phoneNumber,
+      userId,
     };
     store.dispatch(passportActions.setPersonalData(personalData));
-
-    fetch('https://mobile.soliq.uz/my3-api/tax-free-api/passport/save', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(personalData),
-    })
-      .then((res) => {
-        if (res.status === 200) {
-          store.dispatch(authActions.setPassportSaved(true));
-        }
-        return res.json();
-      })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => console.log(err));
+    const res = await ApiService.savePassportData(personalData);
+    console.log(res);
   });
 
   hubProxy.on('OnProcessingStarted', function () {

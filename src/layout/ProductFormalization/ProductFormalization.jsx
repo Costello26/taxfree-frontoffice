@@ -6,9 +6,9 @@ import UserInfo from '../../components/UserTaxfree/UserInfo';
 import cls from './ProductFormalization.module.scss';
 import TaxFreeStatisticsTable from '../../components/TaxFreeStatisticsTable/TaxFreeStatisticsTable';
 import { Fragment } from 'react';
-import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import ApiService from '../../service/fetch.api.service';
 
 const ProductFormalization = () => {
   const [isStatActive, setIsStatActive] = useState(false);
@@ -19,16 +19,11 @@ const ProductFormalization = () => {
     if (!userId) {
       navigate('/login');
     }
-    axios
-      .get(
-        `http://my-api.soliq.local/tax-free-api/product/get-all-product?userId=${userId}`
-      )
-      .then((res) => {
-        setData(res.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    const getAllProducts = async () => {
+      const res = await ApiService.getProductsByID(userId);
+      setData(res.data);
+    };
+    getAllProducts();
   }, [userId, navigate]);
   return (
     <div className="container">
