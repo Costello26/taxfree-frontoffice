@@ -3,6 +3,7 @@ import RegulaApiService from './regula.api.service';
 import store from '../store';
 import { passportActions } from '../store/passport';
 import ApiService from './fetch.api.service';
+import { NotificationManager } from 'react-notifications';
 
 let host = 'http://localhost:5000';
 
@@ -31,6 +32,7 @@ export const regulaEventListener = async () => {
   });
 
   hubProxy.on('OnProcessingFinished', async function () {
+    NotificationManager.info('Обработка документа завершена успешно')
     //console.log('Processing finished!');
     const phoneNumber = store.getState().passport.phone;
     const userId = store.getState().passport.userId;
@@ -56,6 +58,7 @@ export const regulaEventListener = async () => {
   });
 
   hubProxy.on('OnProcessingStarted', function () {
+    NotificationManager.info('Начата обработка документа')
     console.log('Processing started...');
   });
 
