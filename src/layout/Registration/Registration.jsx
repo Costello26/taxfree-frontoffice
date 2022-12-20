@@ -6,7 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { passportActions } from '../../store/passport';
 import { authActions } from '../../store/auth';
 
-const Registration = (props) => {
+
+const Registration = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { qrCode } = useSelector((state) => state.auth);
@@ -77,7 +78,7 @@ const Registration = (props) => {
 
   return (
     <div className="container">
-      <AppBar />
+      {/* <AppBar /> */}
       <ScanCheck onContinue={sendPhoneHandler} />
     </div>
   );

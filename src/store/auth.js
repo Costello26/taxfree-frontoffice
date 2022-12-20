@@ -13,7 +13,6 @@ const authSlice = createSlice({
       state.isAuthenticated = true;
     },
     setQrCode(state, { payload }) {
-      console.log('worked!');
       state.qrCode = payload;
     },
   },

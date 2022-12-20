@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container , Box, Typography, Avatar } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 
 import helpMe from '../../assets/Png/helpMe.png'
@@ -23,7 +24,7 @@ const Footer = () => {
                     sx={{
                         paddingTop:"5px",
                         color:"#777B82",
-                        fontSize:"16px",
+                        fontSize:"14px",
                         fontWeight:"400"
                     }}
                     >
@@ -33,10 +34,17 @@ const Footer = () => {
                  <Box 
                  sx={{display: "flex" , justifyContent:"space-between" , alignItems:"center"}}
                  >
-                    <Avatar sx={{width:"50px" , height:"50px"}} alt='help me' src={helpMe} />
-                    <Typography sx={{pl:"10px" , fontWeight:"400" , fontSize:"20px"}}>
-                    Помощь и поддержка
-                    </Typography>
+                    <Avatar sx={{width:"40px" , height:"40px"}} alt='help me' src={helpMe} />
+                    <Link to="##" style={{
+                        paddingLeft:"10px" , 
+                        fontWeight:"400" , 
+                        fontSize:"16px", 
+                        color: "#000", 
+                        textDecoration: "none",
+                        display: "block"
+                        }}>
+                            Помощь и поддержка
+                    </Link>
                  </Box>
             </Container>
         </Box>

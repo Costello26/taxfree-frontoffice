@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 import { Box, Container, Avatar, Typography, TextField, Button } from '@mui/material';
 import ScanBtn from '../../assets/Png/Scanme.png';
 import UserIcon from '../../assets/Png/userAvatar.png';
@@ -9,10 +9,15 @@ const ScanCheck = (props) => {
   const { qrCode } = useSelector((state) => state.auth);
   console.log(qrCode);
   const sendPhoneHandler = () => {
-    console.log(phoneNumberRef.current.value);
-    props.onContinue(phoneNumberRef.current.value);
+    console.log(phoneNumber);
+    props.onContinue(phoneNumber);
   };
-  const phoneNumberRef = useRef(null);
+  const [phoneNumber, setPhoneNumber] = useState("");
+
+  const phoneValidation = (value) => {
+    // validation will be here
+    setPhoneNumber(value);
+  }
   return (
     <Container
       className={classes['registration__container']}
@@ -25,14 +30,14 @@ const ScanCheck = (props) => {
             display: 'flex',
             alignItems: 'center',
             borderRadius: '40px',
-            marginTop: '105px',
-            marginBottom: '300px',
+            marginTop: '50px',
+            marginBottom: '50px',
           }}
         >
           <Box
             sx={{
               width: '50%',
-              height: '700px',
+              height: '500px',
               borderBottomLeftRadius: '40px',
               borderTopLeftRadius: '40px',
               display: 'flex',
@@ -68,18 +73,13 @@ const ScanCheck = (props) => {
               приложения Soliq
             </Typography>
             <QRGenerator qrCode={qrCode} />
-            <Avatar
-              src={ScanBtn}
-              alt="Tax Free"
-              sx={{
-                width: '332px',
-                height: '92px',
-                borderRadius: '0px',
-                padding: '35px 0',
-              }}
-            />
+            <img src={ScanBtn} alt="scan-me" style={{
+              marginTop: "20px",
+              maxWidth: "450px",
+              height: "70px"
+            }}/>
           </Box>
-          <Box sx={{ width: '50%', height: '700px', padding: '50px 0' }}>
+          <Box sx={{ width: '50%', height: '500px', padding: '50px 0' }}>
             <Avatar
               src={UserIcon}
               alt="user Icon"
@@ -94,7 +94,7 @@ const ScanCheck = (props) => {
               sx={{
                 fontFamily: 'Nunito',
                 fontWeight: 700,
-                fontSize: '30px',
+                fontSize: '24px',
                 textAlign: 'center',
                 color: '#325ECD',
               }}
@@ -108,7 +108,8 @@ const ScanCheck = (props) => {
                 type="number"
                 label="Telefon raqam"
                 variant="outlined"
-                inputRef={phoneNumberRef}
+                value={phoneNumber}
+                onChange={(e) => phoneValidation(e.target.value)}
                 sx={{
                   width: '100%',
                   height: '56px',
@@ -129,6 +130,7 @@ const ScanCheck = (props) => {
                   borderRadius: '25px',
                   bgColor: '#325ECD',
                   textTransform: 'none',
+                  fontSize: '18px'
                 }}
                 onClick={sendPhoneHandler}
               >

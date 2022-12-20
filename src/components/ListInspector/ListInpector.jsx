@@ -11,24 +11,24 @@ const ListUsers = () => {
   }
   return (
     <Container maxWidth="xl" disableGutters className="container">
-      <Box sx={{ flexGrow: 1, height: '1200px' }}>
+      <Box sx={{ flexGrow: 1, height: '700px' }}>
         <Box
           sx={{
             display: 'flex',
             alignItems: 'center',
-            borderRadius: '40px',
-            boxShadow: ' 0px 0px 15px rgba(0, 0, 0, 0.2)',
-            marginTop: '150px',
+            borderRadius: '20px',
+            boxShadow: ' 0px 0px 15px rgba(0, 0, 0, 0.08)',
+            marginTop: '40px',
             background: '#FFF',
           }}
         >
           <Box
             sx={{
               width: '50%',
-              height: '1000px',
+              height: '650px',
               bgcolor: '#F1FAFF',
-              borderBottomLeftRadius: '40px',
-              borderTopLeftRadius: '40px',
+              borderBottomLeftRadius: '20px',
+              borderTopLeftRadius: '20px',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
@@ -41,22 +41,22 @@ const ListUsers = () => {
               alt="Tax Free"
               sx={{ width: '400px', borderRadius: '0px' }}
             /> */}
-            <Typography
+            {/* <Typography
               sx={{
                 fontWeight: '400',
                 fontSize: '40px',
               }}
             >
               Tizimiga kirish!
-            </Typography>
+            </Typography> */}
           </Box>
-          <Box sx={{ width: '50%', height: '1000px' }}>
+          <Box sx={{ width: '50%', height: '650px' }}>
             <Typography
               sx={{
                 fontFamily: 'Nunito',
                 fontWeight: 700,
-                fontSize: '30px',
-                marginTop: '76px',
+                fontSize: '28px',
+                marginTop: '36px',
                 textAlign: 'center',
               }}
             >

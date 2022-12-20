@@ -6,6 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
+import { Link } from 'react-router-dom';
 
 import SelectLanguage from '../../components/SelectLanguage/SelectLang';
 import SoliqLogo from '../../assets/Png/SoliqLogo.png';
@@ -30,17 +31,19 @@ const SideBar = () => {
           disableGutters
           sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
         >
-          <Box
-            sx={{
+          <Link
+          to="/"
+            style={{
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center',
+              textDecoration: 'none'
             }}
           >
             <img
               src={SoliqLogo}
               alt="Soliq Logo"
-              style={{ width: '70px', height: '62px', margin: '25px 10px' }}
+              style={{ width: '60px', height: '52px', margin: '25px 10px' }}
             />
 
             <Box sx={{ lineHeight: '20px' }}>
@@ -49,7 +52,7 @@ const SideBar = () => {
                   display: { xs: 'none', md: 'flex' },
                   fontFamily: 'Nunito',
                   color: 'black',
-                  fontSize: '30px',
+                  fontSize: '24px',
                   fontWeight: '600',
                   lineHeight: '25px',
                 }}
@@ -80,7 +83,7 @@ const SideBar = () => {
                 Tashkent Airport
               </Typography>
             </Box>
-          </Box>
+          </Link>
           {location.pathname !== '/' ? (
             <Box sx={{ flexGrow: 0, display: 'flex', alignItems: 'center' }}>
               <IconButton sx={{ p: 0 }}>
