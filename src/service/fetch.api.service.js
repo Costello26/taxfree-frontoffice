@@ -1,5 +1,8 @@
+import store from '../store';
+import { authActions } from '../store/auth';
+
 export default class ApiService {
-  baseUrl = 'https://mobile.soliq.uz/my3-api/tax-free-api';
+  static baseUrl = 'https://mobile.soliq.uz/my3-api/tax-free-api';
 
   static async getQR() {
     try {
@@ -41,27 +44,33 @@ export default class ApiService {
 
   static async savePassportData(personalData) {
     try {
-      const data = await fetch(`${ApiService.baseUrl}/passport/save`, {
+      const res = await fetch(`${ApiService.baseUrl}/passport/save`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(personalData),
       });
-      const result = await data.json();
+      if (res.status === 200) {
+        store.dispatch(authActions.setPassportSaved(true));
+      }
+      const result = await res.json();
       return result;
     } catch (err) {
+      console.log(err);
       return err.message;
     }
   }
 
-  static async getProductsByID(userId){
-    try{
-        const data = await fetch(`${ApiService.baseUrl}/product/get-all-product?userId=${userId}`)
-        const result = await data.json();
-        return result;
-    }catch(err){
-        return err.message
+  static async getProductsByID(userId) {
+    try {
+      const data = await fetch(
+        `${ApiService.baseUrl}/product/get-all-product?userId=${userId}`
+      );
+      const result = await data.json();
+      return result;
+    } catch (err) {
+      return err.message;
     }
   }
 }

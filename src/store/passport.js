@@ -17,6 +17,9 @@ const passportSlice = createSlice({
     setUserId(state, { payload }) {
       state.userId = payload;
     },
+    setPhoneNumber(state, {payload}){
+      state.phone = payload
+    },
     setPersonalData(state, { payload }) {
       const {
         fullName,
