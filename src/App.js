@@ -21,7 +21,7 @@ import {NotificationContainer, NotificationManager} from 'react-notifications';
 function App() {
   useEffect(() => {
     setTimeout(() => {
-      NotificationManager.info("123 check");
+      NotificationManager.success("Вы успешно вошли в систему");
     }, 1500)
   }, []);
   return (

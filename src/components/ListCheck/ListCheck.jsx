@@ -91,14 +91,16 @@ const ListCheck = (props) => {
   return (
     <Container maxWidth={false} disableGutters={true}>
       <TextField
-        id="outlined-required"
+        defaultValue="123"
+        id="outlined"
         label="Mahsulot nomi / MXIK kodi"
         sx={{
           width: '100%',
           margin: '15px 0',
+          borderRadius: '20px',
+          backgroundColor: '#FFF',
           '& fieldset': {
             borderRadius: '20px',
-            backgroundColor: '#FFF',
           },
         }}
       />
@@ -138,7 +140,7 @@ const ListCheck = (props) => {
               <Checkbox {...label} /> {head.id}
             </Grid>
             <Grid item xs={4} sx={{ display: 'flex', alignItems: 'center' }}>
-              {head.name}
+              {head.name}"
             </Grid>
             <Grid item xs={6} sx={{ display: 'flex', alignItems: 'center' }}>
               {head.MXIK}

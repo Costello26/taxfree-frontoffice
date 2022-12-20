@@ -69,7 +69,7 @@ const UserInfo = () => {
               gutterBottom
               component="div"
             >
-              Holati:
+              Holati:&nbsp;
               <Typography
                 sx={{
                   color: '#12B903',

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import AppBar from '../../components/AppBar/AppBar';
+import { NotificationManager } from 'react-notifications';
 import ScanCheck from '../../components/ScanCheck/ScanCheck';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,6 +13,8 @@ const Registration = () => {
   const dispatch = useDispatch();
   const { qrCode } = useSelector((state) => state.auth);
   const sendPhoneHandler = async (phoneNumber) => {
+    if (phoneNumber.length === 0) return;
+    if (phoneNumber.length < 12) return NotificationManager.error("Введено недопустимое значение");
     try {
       const response = await fetch(
         'https://mobile.soliq.uz/my3-api/tax-free-api/user/qr/find-user/by-phone?' +
@@ -26,9 +29,11 @@ const Registration = () => {
         navigate('/scan-passport');
       }
       if (response.status === 403) {
-        console.log("Noto'g'ri raqam");
+        NotificationManager.error("Noto'g'ri raqam")
+        return;
       }
     } catch (err) {
+      NotificationManager.error("Xatolik yuz berdi")
       console.log('Err', err);
     }
   };

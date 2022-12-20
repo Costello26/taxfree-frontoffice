@@ -34,7 +34,7 @@ const AppBar = (props) => {
             padding: '12px 0px',
             borderRadius: '20px',
             fontWeight: 500,
-            fontSize: '25px',
+            fontSize: '20px',
             border: '1px solid #D3E0FF',
             borderRight: '0',
             textTransform: 'none',
@@ -51,14 +51,14 @@ const AppBar = (props) => {
           Ro’yxatga olish
         </Button>
         <Button
-          disabled
+          
           variant="contained"
           sx={{
             width: '50%',
             padding: '16px 0px',
             borderRadius: '20px',
             fontWeight: 600,
-            fontSize: '25px',
+            fontSize: '20px',
             background: '#FFF',
             border: '1px solid #D3E0FF',
             borderLeft: '0',
