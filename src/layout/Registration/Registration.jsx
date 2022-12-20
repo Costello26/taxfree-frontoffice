@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import AppBar from '../../components/AppBar/AppBar';
+//import AppBar from '../../components/AppBar/AppBar';
 import { NotificationManager } from 'react-notifications';
 import ScanCheck from '../../components/ScanCheck/ScanCheck';
 import { useNavigate } from 'react-router-dom';
@@ -8,10 +8,12 @@ import { passportActions } from '../../store/passport';
 import { authActions } from '../../store/auth';
 
 
+
 const Registration = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { qrCode } = useSelector((state) => state.auth);
+
   const sendPhoneHandler = async (phoneNumber) => {
     if (phoneNumber.length === 0) return;
     if (phoneNumber.length < 12) return NotificationManager.error("Введено недопустимое значение");

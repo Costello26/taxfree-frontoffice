@@ -30,16 +30,19 @@ import { AccountCircle, Search } from '@mui/icons-material';
 import Card from './Card';
 import StatisticsSearch from './StatisticsSearch';
 import Bar from './Bar';
+import { useSelector } from 'react-redux';
+import { globalLocales } from '../../assets/locales';
 
 const ListCheck = () => {
+  const { selectedLang } = useSelector(state => state.lang)
   let head = {
     id: '№ ',
-    name: ' FIO',
-    MXIK: 'Telefon raqami',
-    price: 'Karat raqami',
-    taxFreeSumma: 'Mahsulot narxi',
-    productCount: 'Tovarlar soni',
-    event: 'Holati',
+    name: globalLocales.stats.table.fio[selectedLang],
+    MXIK: globalLocales.stats.table.phone[selectedLang],
+    price: globalLocales.stats.table.card[selectedLang],
+    taxFreeSumma: globalLocales.stats.table.productPrice[selectedLang],
+    productCount: globalLocales.stats.table.count[selectedLang],
+    event: globalLocales.stats.table.status[selectedLang],
   };
   const headCells = [
     {

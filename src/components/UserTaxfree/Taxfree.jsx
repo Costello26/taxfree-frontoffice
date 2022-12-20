@@ -1,6 +1,10 @@
 import React from 'react';
 import { Box, Typography, Card } from '@mui/material';
+import { useSelector } from 'react-redux';
+import { globalLocales } from '../../assets/locales';
+
 const Taxfree = () => {
+  const { selectedLang } = useSelector(state => state.lang)
   return (
     <Card
       sx={{
@@ -41,7 +45,7 @@ const Taxfree = () => {
             fontSize: '18px',
           }}
         >
-          Jami xaridlar summasi
+          {globalLocales.infoPage.overall[selectedLang]}
         </Typography>
         <Typography
           sx={{
@@ -70,7 +74,7 @@ const Taxfree = () => {
             fontSize: '18px',
           }}
         >
-          Cheklar soni
+          {globalLocales.infoPage.checksCount[selectedLang]}
         </Typography>
         <Typography
           sx={{
@@ -99,7 +103,7 @@ const Taxfree = () => {
             fontSize: '18px',
           }}
         >
-          Hisoblangan summasi
+          {globalLocales.infoPage.countedSum[selectedLang]}
         </Typography>
         <Typography
           sx={{
@@ -127,7 +131,7 @@ const Taxfree = () => {
             fontSize: '18px',
           }}
         >
-          To’lovga tasdiqlangan
+          {globalLocales.infoPage.approvedSum[selectedLang]}
         </Typography>
         <Typography
           sx={{

@@ -5,7 +5,10 @@ import UserIcon from '../../assets/Png/userAvatar.png';
 import QRGenerator from '../QRGenerator/QRGenerator';
 import classes from './scanCheck.module.scss';
 import { useSelector } from 'react-redux';
+import { globalLocales } from '../../assets/locales';
+
 const ScanCheck = (props) => {
+  const { selectedLang } = useSelector((state) => state.lang);
   const { qrCode } = useSelector((state) => state.auth);
   console.log(qrCode);
   const sendPhoneHandler = () => {
@@ -98,15 +101,14 @@ const ScanCheck = (props) => {
                 textAlign: 'center',
                 color: '#325ECD',
               }}
+              dangerouslySetInnerHTML={{ __html: `${globalLocales.logIn.heading[selectedLang]}`}}
             >
-              Chet el fuqarosini <br />
-              TaxFree summasini ro’yxatga olish.
             </Typography>
 
             <Container maxWidth="sm">
               <TextField
                 type="number"
-                label="Telefon raqam"
+                label={globalLocales.logIn.formLabel[selectedLang]}
                 variant="outlined"
                 value={phoneNumber}
                 onChange={(e) => phoneValidation(e.target.value)}
@@ -134,7 +136,7 @@ const ScanCheck = (props) => {
                 }}
                 onClick={sendPhoneHandler}
               >
-                Davom etish
+                {globalLocales.logIn.buttonLabel[selectedLang]}
               </Button>
             </Container>
           </Box>

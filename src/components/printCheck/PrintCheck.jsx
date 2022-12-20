@@ -1,11 +1,15 @@
 import React from 'react'
-import printCheck from '../../assets/printPage.png'
+//import printCheck from '../../assets/printPage.png'
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import classes from './PrintCheck.module.scss'
 import Rasm from '../../assets/Png/code.jpg'
 import TaxFreeLogo from '../../assets/Png/TaxFreeLogo.png'
+import { useSelector } from 'react-redux';
+import { globalLocales } from '../../assets/locales';
+
 export default function PrintCheck() {
+    const { selectedLang } = useSelector(state => state.lang)
     function printDocument() {
         const input = document.getElementById('divToPrint');
         html2canvas(input)
@@ -19,7 +23,7 @@ export default function PrintCheck() {
             ;
     }
     return (
-        <div style={{ width: "90%", height: "auto", margin: "0 auto", overflow: "hidden" }}>
+        <div style={{ maxWidth: "1240px", height: "auto", margin: "0 auto", overflow: "hidden" }}>
             {/* <img  width={"100%"} src={printCheck} alt="check" style={{ transform: "translateX(-50px)" }} /> */}
 
             <div id='divToPrint' className={classes.print__check}>
@@ -66,7 +70,7 @@ export default function PrintCheck() {
                         </div>
                         <div className={classes.check__right}>
                             <div className={classes.summa}>
-                                <ul>
+                                <ul className={classes.sum__list}>
                                     <li>1 293 000.00</li>
                                     <li>15</li>
                                     <li>124 682.00</li>
@@ -74,7 +78,7 @@ export default function PrintCheck() {
                                 </ul>
                             </div>
                             <div className={classes.valyuta}>
-                                <ul>
+                                <ul className={classes.sum__list}>
                                     <li>UZS</li>
                                     <li></li>
                                     <li>UZS</li>
@@ -82,12 +86,12 @@ export default function PrintCheck() {
                                 </ul>
                             </div>
                             <div className={classes.summa}>
-                                <ul>
+                                <ul className={classes.sum__list}>
                                     <li>11.25</li>
                                 </ul>
                             </div>
                             <div className={classes.valyuta}>
-                                <ul>
+                                <ul className={classes.sum__list}>
                                     <li>USD</li>
                                 </ul>
                             </div>
@@ -108,11 +112,11 @@ export default function PrintCheck() {
                     </div>
                     <div className={classes.card__info}>
                         <div className={classes.card__left}>
-                            <p>4000 **** **** 9010</p>
+                            <p className={classes.sum__list__item}>4000 **** **** 9010</p>
                         </div>
                         <div className={classes.card__right}>
-                            <p>VISA</p>
-                            <p>08/24</p>
+                            <p className={classes.sum__list__item}>VISA</p>
+                            <p className={classes.sum__list__item}>08/24</p>
                         </div>
                     </div>
                 </div>
@@ -184,7 +188,7 @@ export default function PrintCheck() {
                                 <li> Ознакомлен с правилами системы Tax Free Uzbekistan.</li>
                             </ul>
                             <p className={classes.text_muted}>
-                            Подпись заявителя________________________________________________
+                            Подпись заявителя _____________________________________________
                             </p>
                             <p className={classes.text_muted}>
                             Примечание
@@ -197,7 +201,7 @@ export default function PrintCheck() {
 правилами Tax Free Uzbekistan.
                             </p>
                             <p className={classes.text_muted2} style={{fontSize:"16px"}}>
-                            Подпись заявителя________________________________________________
+                            Подпись заявителя ___________________________________
                             </p>
                         </div>
                     </div>
@@ -206,20 +210,23 @@ export default function PrintCheck() {
 
 
             <div style={{}}>
-                <button
+                <a href="##"
                     style={{
-                        width: "276px",
-                        height: "55px",
+                        //width: "276px",
+                        //height: "55px",
+                        display: 'inline-block',
+                        textDecoration: 'none   ',
+                        padding: '15px 60px',
                         background: "#325ECD",
                         borderRadius: "16px",
                         fontWeight: 500,
-                        fontSize: "30px",
+                        fontSize: "20px",
                         color: "white",
                         border: "none",
                         margin: "20px 0"
                     }}
                     onClick={()=>{printDocument()}}
-                >Chop etish </button>
+                >{globalLocales.checkPrint.print[selectedLang]} </a>
             </div>
         </div >
     )

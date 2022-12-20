@@ -3,8 +3,11 @@ import { Box, Container, Typography } from '@mui/material';
 import TaxFree from '../../assets/Png/TaxFreeLogo.png';
 import UserKey from '../UserKey/UserKey';
 import { Link, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { globalLocales } from '../../assets/locales';
 
 const ListUsers = () => {
+  const { selectedLang } = useSelector(state => state.lang)
   const navigate = useNavigate()
   const selectInspector=()=>{
     navigate("/login")
@@ -59,8 +62,9 @@ const ListUsers = () => {
                 marginTop: '36px',
                 textAlign: 'center',
               }}
+              dangerouslySetInnerHTML={{ __html: `${globalLocales.signIn.header[selectedLang]}` }}
             >
-              Tizimga kirish kalitini <br /> tanlang
+              
             </Typography>
             <Box
               sx={{

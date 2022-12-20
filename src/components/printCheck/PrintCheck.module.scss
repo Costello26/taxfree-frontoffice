@@ -1,6 +1,6 @@
 .print__check {
     width: 100%;
-    height: 1000px;
+    //height: 1000px;
     background: #F1EFE1;
     border-radius: 26px;
     margin-top: 35px;
@@ -23,7 +23,7 @@
     background: #233259;
     border-radius: 13px;
     font-weight: 700;
-    font-size: 25px;
+    font-size: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,8 +31,8 @@
 }
 
 .code {
-    width: 190.84px;
-    height: 95px;
+    width: 160.84px;
+    height: 65px;
 }
 
 .header__info {
@@ -176,6 +176,11 @@
             width: 30%;
         }
 
+        .sum__list li {
+            display: flex;
+            align-items: center;
+        }
+
         .valyuta {
             width: 20%;
 
@@ -184,6 +189,12 @@
             }
         }
     }
+}
+
+.sum__list__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .card__section {
@@ -382,11 +393,11 @@
 
         .box1 {
             width: 90%;
-            height: 454px;
+            //height: 454px;
             background: #FFFFFF;
             border-radius: 13px;
             margin-top: 20px;
-            padding-left: 15px;
+            padding: 0px 15px;
             box-sizing: border-box;
 
             ul {

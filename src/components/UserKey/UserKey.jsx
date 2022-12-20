@@ -1,7 +1,12 @@
 import React from 'react';
 import { Button, Typography } from '@mui/material';
 import cls from './UserKey.module.scss';
+import { useSelector } from 'react-redux';
+import { globalLocales } from '../../assets/locales';
+
+
 const UserKey = (props) => {
+  const { selectedLang } = useSelector(state => state.lang)
   return (
     <Button
       sx={{
@@ -31,7 +36,7 @@ const UserKey = (props) => {
           fontSize: '14px',
         }}
       >
-        <span style={{ color: 'gray' }}>JShShIR</span>: {props.jshr}
+        <span style={{ color: 'gray' }}>{globalLocales.signIn.pinfl[selectedLang]}</span>: {props.jshr}
       </Typography>
       <Typography
         sx={{
@@ -40,7 +45,7 @@ const UserKey = (props) => {
           fontSize: '14px',
         }}
       >
-        <span style={{ color: 'gray' }}>STIR</span>:{props.stir}
+        <span style={{ color: 'gray' }}>{globalLocales.signIn.inn[selectedLang]}</span>:{props.stir}
       </Typography>
       <Typography
         sx={{

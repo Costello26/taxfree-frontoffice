@@ -2,21 +2,22 @@ import { createSlice } from '@reduxjs/toolkit';
 import { langsList } from '../assets/locales';
 
 const initialLangState = {
-  selected: langsList.uz
+  selectedLang: 0 //uz
 };
 
 const langSlice = createSlice({
-  name: 'authentication',
+  name: 'language',
   initialState: initialLangState,
   reducers: {
     setLang(state, { payload }) {
-      if(payload === 0 || payload === 1 || payload === 2){
-        state.selected = payload;
+      const idx = langsList[payload];
+      if(idx === 0 || idx === 1 || idx === 2){
+        state.selectedLang = idx;
       }
     },
   },
 });
 
-export const authActions = langSlice.actions;
+export const langActions = langSlice.actions;
 
 export default langSlice.reducer;

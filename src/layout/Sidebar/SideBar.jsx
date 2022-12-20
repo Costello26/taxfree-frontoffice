@@ -7,7 +7,8 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import { Link } from 'react-router-dom';
-
+import { useSelector } from 'react-redux';
+import { globalLocales } from '../../assets/locales';
 import SelectLanguage from '../../components/SelectLanguage/SelectLang';
 import SoliqLogo from '../../assets/Png/SoliqLogo.png';
 // import { useSelector } from 'react-redux';
@@ -15,8 +16,11 @@ import RightDashboard from '../../components/RightDashboard/RightDashboard';
 import user from '../../assets/Png/User.png';
 import { useLocation } from 'react-router-dom';
 
+
+
 const SideBar = () => {
   const location = useLocation();
+  const { selectedLang } = useSelector((state) => state.lang);
   return (
     <AppBar
       position="static"
@@ -98,7 +102,7 @@ const SideBar = () => {
                   Olimov Asqarali
                 </Typography>
                 <Typography sx={{ pl: 2, fontWeight: '400', fontSize: '16px' }}>
-                  JShShIR: 12345678901234
+                  {globalLocales.header.pinfl[selectedLang]}: 12345678901234
                 </Typography>
               </Box>
             </Box>

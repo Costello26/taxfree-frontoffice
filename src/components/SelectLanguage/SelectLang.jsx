@@ -3,12 +3,22 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-const languages = ["O'ZB", 'ENG', 'RU'];
-export default function SelectSmall() {
-  const [lang, setLang] = React.useState("O'ZB");
+import { useDispatch, useSelector } from 'react-redux';
+import { langActions } from '../../store/lang';
 
+
+const languages = [
+  { title: 'RU', idx: 0 },
+  { title: "O'ZB", idx: 1 },
+  { title: 'ENG', idx: 2 }, 
+];
+
+export default function SelectSmall() {
+  const { selectedLang } = useSelector((state) => state.lang);
+  const dispatch = useDispatch();
+  console.log(selectedLang)
   const handleChange = (event) => {
-    setLang(event.target.value);
+    dispatch(langActions.setLang(event.target.value))
   };
 
   return (
@@ -23,7 +33,7 @@ export default function SelectSmall() {
       }}
     >
       <Select
-        value={lang}
+        value={languages[selectedLang].title}
         onChange={handleChange}
         sx={{
           borderRadius: '20px',
@@ -36,8 +46,8 @@ export default function SelectSmall() {
       >
         {languages.map((val, index) => {
           return (
-            <MenuItem value={val} key={index}>
-              {val}
+            <MenuItem value={val.title} key={index}>
+              {val.title}
             </MenuItem>
           );
         })}

@@ -7,7 +7,8 @@ import cls from './ProductFormalization.module.scss';
 import TaxFreeStatisticsTable from '../../components/TaxFreeStatisticsTable/TaxFreeStatisticsTable';
 import { Fragment } from 'react';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
+
+import { Container } from '@mui/system';
 
 const ProductFormalization = () => {
   const [isStatActive, setIsStatActive] = useState(false);
@@ -37,7 +38,7 @@ const ProductFormalization = () => {
       {isStatActive ? (
         <TaxFreeStatisticsTable />
       ) : (
-        <Fragment>
+        <Container maxWidth="xl">
           <div className={cls['user-details']}>
             <div className={cls['user-info']}>
               <UserInfo />
@@ -47,7 +48,7 @@ const ProductFormalization = () => {
             </div>
           </div>
           <ListCheck state={data} />
-        </Fragment>
+        </Container>
       )}
     </div>
   );

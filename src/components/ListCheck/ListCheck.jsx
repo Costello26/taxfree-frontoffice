@@ -8,17 +8,19 @@ import {
   Button,
   TextField,
 } from '@mui/material';
-
+import { useSelector } from 'react-redux';
+import { globalLocales } from '../../assets/locales';
 import { pink } from '@mui/material/colors';
 
 const ListCheck = (props) => {
+  const { selectedLang } = useSelector(state => state.lang)
   let head = {
     id: '№',
-    name: 'Mahsulot nomi',
-    MXIK: 'MXIK',
-    price: 'Mahsulot narxi',
-    taxFreeSumma: 'Tax Free summasi',
-    event: 'Mavjudligi',
+    name: globalLocales.infoPage.table.productName[selectedLang],
+    MXIK: globalLocales.infoPage.table.fiscalNum[selectedLang],
+    price: globalLocales.infoPage.table.price[selectedLang],
+    taxFreeSumma: globalLocales.infoPage.table.tfSum[selectedLang],
+    event: globalLocales.infoPage.table.available[selectedLang],
   };
   // const headCells = [
   //   {
@@ -74,15 +76,15 @@ const ListCheck = (props) => {
     console.log(props);
   let btns = [
     {
-      label: 'Hammasi',
+      label: globalLocales.infoPage.controls.all[selectedLang],
       event: 'all',
     },
     {
-      label: 'Tasdiqlangan',
+      label: globalLocales.infoPage.controls.approved[selectedLang],
       event: 'success',
     },
     {
-      label: 'Rad etilgan',
+      label: globalLocales.infoPage.controls.declined[selectedLang],
       event: 'failed',
     },
   ];
@@ -93,7 +95,7 @@ const ListCheck = (props) => {
       <TextField
         defaultValue="123"
         id="outlined"
-        label="Mahsulot nomi / MXIK kodi"
+        label={globalLocales.infoPage.formLabel[selectedLang]}
         sx={{
           width: '100%',
           margin: '15px 0',
