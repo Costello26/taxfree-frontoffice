@@ -39,14 +39,14 @@ const Footer = () => {
                  sx={{display: "flex" , justifyContent:"space-between" , alignItems:"center"}}
                  >
                     <Avatar sx={{width:"40px" , height:"40px"}} alt='help me' src={helpMe} />
-                    <Link to="##"
+                    <Link to="/"
                         
                         style={{
                         paddingLeft:"10px" , 
                         fontWeight:"400" , 
                         fontSize:"16px", 
                         color: "#000", 
-                        textDecoration: "none",
+                        //textDecoration: "none",
                         display: "block"
                         
                         }}>

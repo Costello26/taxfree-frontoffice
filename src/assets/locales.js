@@ -284,5 +284,28 @@ export const globalLocales = {
             "Elektron soliq xizmatlari: soliq organlarining <br/> elektron davlat xizmatlari portali.",
             "Electronic tax services: portal of electronic <br/> public services of tax authorities."
         ]
+    },
+
+    notifications: {
+        universalError: [
+            "Возникла непредвиденная ошибка",
+            "Kutilmagan xatolik yuz berdi",
+            "An unexpected error has occurred"
+        ],
+        invalidNumber: [
+            "Введен некорректный номер",
+            "Yaroqsiz raqam kiritildi",
+            "Invalid number entered"
+        ],
+        documentProcessingStarted: [
+            "Сканирование документа начато",
+            "Hujjatni skanerlash boshlanmoqda",
+            "Document scanning started"
+        ],
+        documentProcessingFinished: [
+            "Сканирование документа завершено",
+            "Hujjatlar ьгммфафйшнфедш skanerlandi",
+            "Document scanning completed"
+        ]
     }
 }
