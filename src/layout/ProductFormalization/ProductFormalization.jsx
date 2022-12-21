@@ -6,7 +6,6 @@ import Taxfree from '../../components/UserTaxfree/Taxfree';
 import UserInfo from '../../components/UserTaxfree/UserInfo';
 import cls from './ProductFormalization.module.scss';
 import TaxFreeStatisticsTable from '../../components/TaxFreeStatisticsTable/TaxFreeStatisticsTable';
-import { Fragment } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import ApiService from '../../service/fetch.api.service';
@@ -35,7 +34,7 @@ const ProductFormalization = () => {
       {isStatActive ? (
         <TaxFreeStatisticsTable />
       ) : (
-        <Container maxWidth="xl">
+        <Container maxWidth="xl" disableGutters={true}>
           <div className={cls['user-details']}>
             <div className={cls['user-info']}>
               <UserInfo />
