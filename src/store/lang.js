@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { langsList } from '../assets/locales';
 
 const initialLangState = {
-  selectedLang: 0 //uz
+  selectedLang: 0 //0 ru, 1 uz, 2 en
 };
 
 const langSlice = createSlice({

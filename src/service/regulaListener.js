@@ -4,13 +4,14 @@ import store from '../store';
 import { passportActions } from '../store/passport';
 import ApiService from './fetch.api.service';
 import { NotificationManager } from 'react-notifications';
+import { globalLocales } from '../assets/locales';
 
 let host = 'http://localhost:5000';
 
 const connection = hubConnection(`${host}/Regula.SDK.Api`);
 const hubProxy = connection.createHubProxy('EventsHub');
 
-export const regulaEventListener = async () => {
+export const regulaEventListener = async (selectedLang = 1) => {
   const response = await RegulaApiService.hostHealthCheck();
   if (!response.ok) {
     console.log('Regula host is not available!');
@@ -32,7 +33,7 @@ export const regulaEventListener = async () => {
   });
 
   hubProxy.on('OnProcessingFinished', async function () {
-    NotificationManager.info('Обработка документа завершена успешно')
+    NotificationManager.info(globalLocales.notifications.documentProcessingFinished[selectedLang])
     //console.log('Processing finished!');
     const phoneNumber = store.getState().passport.phone;
     const userId = store.getState().passport.userId;
@@ -58,12 +59,12 @@ export const regulaEventListener = async () => {
   });
 
   hubProxy.on('OnProcessingStarted', function () {
-    NotificationManager.info('Начата обработка документа')
-    console.log('Processing started...');
+    NotificationManager.info(globalLocales.notifications.documentProcessingStarted[selectedLang])
+    //console.log('Processing started...');
   });
 
   hubProxy.on('OnResultReady', function (AType) {
-    console.log('Result ready');
+    //console.log('Result ready');
   });
 
   hubProxy.on('OnResultReadyXML', function (AType, ResultXML) {

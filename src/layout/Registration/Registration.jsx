@@ -7,25 +7,30 @@ import { useDispatch, useSelector } from 'react-redux';
 import { passportActions } from '../../store/passport';
 import { authActions } from '../../store/auth';
 import ApiService from '../../service/fetch.api.service';
-
+import { globalLocales } from '../../assets/locales';
 
 
 const Registration = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { selectedLang } = useSelector((state) => state.lang)
   const { qrCode } = useSelector((state) => state.auth);
 
   const sendPhoneHandler = async (phoneNumber) => {
+
+    if(phoneNumber.length < 12) return NotificationManager.error(globalLocales.notifications.invalidNumber[selectedLang])
+
     dispatch(passportActions.setPhoneNumber(phoneNumber));
     const res = await ApiService.findUserByPhone(phoneNumber, qrCode);
     if (res.success && res.code === 1) {
-      console.log(res);
       dispatch(passportActions.setUserId(res.data.userId));
       navigate('/scan-passport');
     } else if (res.success && res.code === 2) {
       console.log(res);
       dispatch(passportActions.setPersonalData(res.data));
       navigate('/product-formalization');
+    } else {
+      return NotificationManager.error(globalLocales.notifications.universalError[selectedLang])
     }
   };
 

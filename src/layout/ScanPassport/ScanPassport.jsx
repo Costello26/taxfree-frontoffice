@@ -9,6 +9,7 @@ import { regulaEventListener } from '../../service/regulaListener';
 
 const ScanPassport = (props) => {
   const navigate = useNavigate();
+  const { selectedLang } = ((state) => state.lang)
   const userId = useSelector((state) => state.passport.userId);
   const hasPassportSaved = useSelector((state) => state.auth.hasPassportSaved);
   useEffect(() => {
@@ -17,7 +18,7 @@ const ScanPassport = (props) => {
       navigate('/login');
     }
     const initRegula = async () => {
-      await regulaEventListener();
+      await regulaEventListener(selectedLang);
     };
     initRegula();
   }, [navigate, userId]);
