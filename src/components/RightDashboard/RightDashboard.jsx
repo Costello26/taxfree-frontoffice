@@ -7,6 +7,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 
 import MenuIcon from '@mui/icons-material/Menu';
+import Burger from '../../assets/svg/burger.svg'
 import { NavLink } from 'react-router-dom';
 import cls from './rightDashboard.module.scss';
 
@@ -36,7 +37,7 @@ export default function TemporaryDrawer() {
       link: '/product-formalization',
     },
     {
-      name: 'status',
+      name: 'Status',
       link: '/users-formalization',
     },
     {
@@ -80,10 +81,21 @@ export default function TemporaryDrawer() {
     <div>
       {['right'].map((anchor) => (
         <React.Fragment key={anchor}>
-          <MenuIcon
+          <span onClick={toggleDrawer(anchor, true)} style={{ 
+            width: '35px', 
+            height: '35px', 
+            display: 'flex', 
+            justifyContent: 'center', 
+            cursor: 'pointer'
+            }}>
+            <img src={Burger} style={{
+              display: 'block', width: '100%'
+            }} alt="burger"/>
+          </span>
+          {/* <MenuIcon
             sx={{ fontSize: '45px', cursor: 'pointer' }}
             onClick={toggleDrawer(anchor, true)}
-          />
+          /> */}
           <Drawer
             anchor={anchor}
             open={state[anchor]}

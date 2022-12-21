@@ -18,11 +18,11 @@ const Index = () => {
     <div>
       <div className="container">
         {/* <AppBar /> */}
-        <UserBadge/>
+        <UserBadge step={3}/>
         <div className={classes['card__content']}>
           <RegulaInfo
             heading={globalLocales.ticketScan.heading[selectedLang]}
-            textUZ="Iltimos, bort taloningizni ko`rsating"
+            textUZ="Iltimos, parvoz taloningizni ko`rsating"
             textRU="Пожалуйста, предъявите ваш посадочный талон"
             imgSrc={ScanTalon}
           />

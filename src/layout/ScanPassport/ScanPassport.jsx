@@ -32,7 +32,7 @@ const ScanPassport = () => {
   return (
     <div className="container">
       {/* <AppBar /> */}
-      <UserBadge/>
+      <UserBadge step={2}/>
       <div className={classes['card__content']}>
         <RegulaInfo
           heading={globalLocales.passportScan.heading[selectedLang]}

@@ -110,7 +110,7 @@ const SideBar = () => {
           ) : (
             <></>
           )}
-          <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' }, alignItems: 'center' }}>
             <SelectLanguage />
             <RightDashboard />
           </Box>

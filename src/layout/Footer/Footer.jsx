@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container , Box, Typography, Avatar } from '@mui/material';
 import { Link } from 'react-router-dom';
-import helpMe from '../../assets/Png/helpMe.png'
+import helpMe from '../../assets/svg/question.svg'
 import { useSelector } from 'react-redux';
 import { globalLocales } from '../../assets/locales';
 

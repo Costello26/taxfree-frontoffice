@@ -3,7 +3,15 @@ import Taxfree from "../UserTaxfree/Taxfree"
 import cls from "./UserBadge.module.scss"
 import { RoundItem } from "./RoundItem"
 
-export const UserBadge = () => {
+const progressSteps = [
+    "Qr scan",
+    "Shaxsini tasdiqlash",
+    "Chiptani tasdiqlash",
+    "Tovarlarni tekshirish",
+    "Rasmiylashtirish"
+]
+
+export const UserBadge = ({ step = 0 }) => {
     return(
         <div className={cls['user-details']}>
             <div className={cls['user-info']}>
@@ -17,15 +25,21 @@ export const UserBadge = () => {
             <div className={cls['progress-bar']}>
                 <div className={cls['tube-wrap']}>
                     <div className={cls['progress-tube']}>
-                        <div className={cls['progress']}></div>
+                        <div style={{ width: `${25*step - 25}%` }} className={cls['progress']}></div>
                     </div>
                 </div>
                 <div className={cls['rounds-group']}>
-                    <RoundItem step="1" done={true} title="Qr scan"/>
-                    <RoundItem step="2" active={true} title="Shaxsini tasdiqlash"/>
-                    <RoundItem step="3" title="Chiptani tasdiqlash"/>
-                    <RoundItem step="4" title="Tovarlarni tekshirish"/>
-                    <RoundItem step="5" title="Rasmiylashtirish"/>
+                    {
+                        progressSteps.map( (label, key) => {
+                            if(key+1 < step) { 
+                                return (<RoundItem step={key+1} done={true} key={key} title={label}/>) 
+                            } else if(key+1 === step) {
+                                return (<RoundItem step={key+1} active={true} key={key} done={false} title={label}/>) 
+                            } else {
+                                 return (<RoundItem step={key+1} done={false} key={key} title={label}/>)
+                            }
+                        })
+                    }
                 </div>
             </div>
         </div>

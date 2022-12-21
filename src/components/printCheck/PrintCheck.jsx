@@ -24,9 +24,9 @@ export default function PrintCheck() {
             ;
     }
     return (
-        <div style={{ maxWidth: "1240px", height: "auto", margin: "0 auto", overflow: "hidden" }}>
+        <div style={{ maxWidth: "1140px", height: "auto", margin: "0 auto", overflow: "hidden" }}>
             {/* <img  width={"100%"} src={printCheck} alt="check" style={{ transform: "translateX(-50px)" }} /> */}
-            <UserBadge/>
+            <UserBadge step={5}/>
             <div id='divToPrint' className={classes.print__check}>
                 <div className={classes.print__check__header}>
                     <div className={classes.header__left}><h5>Tax Free Form</h5></div>

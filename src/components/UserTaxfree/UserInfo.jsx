@@ -38,7 +38,7 @@ const UserInfo = () => {
           color: 'rgba(35, 50, 89, 1)'
         }}
       >
-        Ma'lumot
+        {globalLocales.infoPage.heading[selectedLang]}
       </Typography>
       <div className={cls['user-info']}>
         <Avatar

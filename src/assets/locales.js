@@ -64,6 +64,11 @@ export const globalLocales = {
         ]
     },
     infoPage: {
+        heading: [
+            "Личные данные",
+            "Ma'lumot",
+            "Personal info"
+        ],
         fio: [
             "ФИО",
             "FISh",
@@ -95,9 +100,9 @@ export const globalLocales = {
             "Number of checks"
         ],
         countedSum: [
-            "Расчетная сумма",
-            "Hisoblangan summasi",
-            "Estimated amount"
+            "Расчетная сумма кешбека",
+            "Keshbek hisoblangan summasi ",
+            "Estimated cahcback amount"
         ],
         approvedSum: [
             "Подтверждено к начислению",
@@ -297,6 +302,11 @@ export const globalLocales = {
     },
 
     notifications: {
+        loadingError: [
+            "Ошибка загрузки данных",
+            "Ma'lumot yuklash xatoligi yuz berdi",
+            "Data loading error"
+        ],
         universalError: [
             "Возникла непредвиденная ошибка",
             "Kutilmagan xatolik yuz berdi",
