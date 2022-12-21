@@ -40,13 +40,23 @@ export const globalLocales = {
         ]
     },
     passportScan: {
+        heading: [
+            "Идентификация иностранного <br/> гражданина",
+            "Chet el fuqarosining shaxsini <br/> tasdiqlash",
+            "Confirmation of the identity of a <br/> foreign citizen"
+        ],
         mainHeading: [
-            "Положите документ, подтверждающий вашу личность в открытом виде на устройство сканирования",
-            "Shaxsingizni tasdiqlovchi xujjatni ochiq holda skanerlash qurilmasiga qo`ying",
-            "Put a document confirming your identity in an open form on the scanner"
+            "Положите документ, подтверждающий вашу личность <br/> в открытом виде на устройство сканирования",
+            "Shaxsingizni tasdiqlovchi xujjatni ochiq holda <br/> skanerlash qurilmasiga qo`ying",
+            "Put a document confirming your identity in an <br/> open form on the scanner"
         ]
     },
     ticketScan: {
+        heading: [
+            "Проверка посадочного талона <br/> иностранного гражданина",
+            "Chet el fuqarosining  bort <br/> talonini tekshirish",
+            "Foreign citizen <br/> boarding ticket check"
+        ],
         mainHeading: [
             "Пожалуйста, предъявите ваш посадочный талон",
             "Iltimos, bort taloningizni ko`rsating",

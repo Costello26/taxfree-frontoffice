@@ -7,6 +7,7 @@ import Rasm from '../../assets/Png/code.jpg'
 import TaxFreeLogo from '../../assets/Png/TaxFreeLogo.png'
 import { useSelector } from 'react-redux';
 import { globalLocales } from '../../assets/locales';
+import { UserBadge } from '../UserBadge/UserBadge';
 
 export default function PrintCheck() {
     const { selectedLang } = useSelector(state => state.lang)
@@ -25,7 +26,7 @@ export default function PrintCheck() {
     return (
         <div style={{ maxWidth: "1240px", height: "auto", margin: "0 auto", overflow: "hidden" }}>
             {/* <img  width={"100%"} src={printCheck} alt="check" style={{ transform: "translateX(-50px)" }} /> */}
-
+            <UserBadge/>
             <div id='divToPrint' className={classes.print__check}>
                 <div className={classes.print__check__header}>
                     <div className={classes.header__left}><h5>Tax Free Form</h5></div>

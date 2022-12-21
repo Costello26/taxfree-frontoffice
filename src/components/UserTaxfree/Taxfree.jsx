@@ -10,20 +10,21 @@ const Taxfree = () => {
       sx={{
         display: 'inline-block',
         width: '100%',
-        height: '236px',
+        height: '246px',
         boxShadow: '0px 0px 15px rgba(160, 160, 160, 0.1)',
         borderRadius: '30px',
-        marginTop: '11px',
+        //marginTop: '11px',
       }}
     >
       <Typography
         sx={{
           textAlign: 'center',
-          fonFamily: 'Nunito',
-          fontWeight: '600',
+          fontFamily: 'Nunito',
+          fontWeight: '500',
           fontSize: '25px',
           borderBottom: '2px solid #D9D9D9',
           paddingTop: '11px',
+          color: 'rgba(35, 50, 89, 1)'
         }}
       >
         Tax Free
@@ -41,7 +42,7 @@ const Taxfree = () => {
         <Typography
           sx={{
             fontFamily: 'Nunito',
-            fontWeight: '600',
+            fontWeight: '500',
             fontSize: '18px',
           }}
         >
@@ -50,7 +51,7 @@ const Taxfree = () => {
         <Typography
           sx={{
             fontFamily: 'Nunito',
-            fontWeight: '600',
+            fontWeight: '500',
             fontSize: '18px',
           }}
         >
@@ -70,7 +71,7 @@ const Taxfree = () => {
         <Typography
           sx={{
             fontFamily: 'Nunito',
-            fontWeight: '600',
+            fontWeight: '500',
             fontSize: '18px',
           }}
         >
@@ -79,7 +80,7 @@ const Taxfree = () => {
         <Typography
           sx={{
             fontFamily: 'Nunito',
-            fontWeight: '600',
+            fontWeight: '500',
             fontSize: '18px',
           }}
         >
@@ -99,7 +100,7 @@ const Taxfree = () => {
         <Typography
           sx={{
             fontFamily: 'Nunito',
-            fontWeight: '600',
+            fontWeight: '500',
             fontSize: '18px',
           }}
         >
@@ -108,7 +109,7 @@ const Taxfree = () => {
         <Typography
           sx={{
             fontFamily: 'Nunito',
-            fontWeight: '600',
+            fontWeight: '500',
             fontSize: '18px',
           }}
         >
@@ -127,7 +128,7 @@ const Taxfree = () => {
         <Typography
           sx={{
             fontFamily: 'Nunito',
-            fontWeight: '600',
+            fontWeight: '500',
             fontSize: '18px',
           }}
         >
@@ -136,7 +137,7 @@ const Taxfree = () => {
         <Typography
           sx={{
             fontFamily: 'Nunito',
-            fontWeight: '600',
+            fontWeight: '500',
             fontSize: '18px',
           }}
         >

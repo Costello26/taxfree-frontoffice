@@ -1,60 +1,43 @@
 import React from 'react';
-import { Container, Box, Typography } from '@mui/material';
-import LupIcon from '../../assets/Png/lupIcon.png';
+import { Container, Box } from '@mui/material';
+import { useSelector } from 'react-redux';
+import { globalLocales } from '../../assets/locales';
+import SoliqIcon from '../../assets/svg/soliq-icon.svg'
+import cls from './RegulaInfo.module.scss'
 
-const RegulaInfo = (props) => {
+const RegulaInfo = ({imgSrc, heading, textUZ, textRU}) => {
+  const { selectedLang } = useSelector((state) => state.lang)
+  console.log(selectedLang)
   return (
-    <Container maxWidth="xl" disableGutters>
+    <Container maxWidth="md" disableGutters>
       <Box sx={{ 
         flexGrow: 1, 
-        height: '650px',
+        //height: '650px',
         //marginBottom: '50px',
       }}>
         <Box
           sx={{
-            width: '100%',
-            height: '650px',
+            maxWidth: '100%',
+            //height: '650px',
             borderRadius: '40px',
             textAlign: 'center',
             backgroundColor: '#FFF',
-            //padding: '25px 0px',
+            padding: '100px 35px',
             display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
+            flexDirection: 'row',
+            justifyContent: 'space-around',
             alignItems: 'center' 
           }}
         >
-          <Typography
-            sx={{
-              fontFamily: 'Roboto',
-              color: '#325ECD',
-              fontWeight: '600',
-              fontSize: '25px',
-              maxWidth: '80%',
-              margin: '0 auto'
-            }}
-          >
-            {props.textUZ} 
+          <div className={cls['image']}>
+            <img className={cls['image-exp']} clas src={imgSrc} alt="helper-icon" />
+          </div>
+          <div className={cls['spoiler']}>
+            <img src={SoliqIcon} alt="soliq-logo"/>
+            <span className={cls['heading']} dangerouslySetInnerHTML={{__html: `${heading}`}}></span>
+            <span className={cls['description']} dangerouslySetInnerHTML={{__html: `${textUZ}`}}></span>
             <br/>
-            {props.textRU}
-          </Typography>
-          
-          <div
-            style={{
-              //height: '327px',
-              margin: '55px auto',
-              position: 'relative',
-            }}
-          >
-            <img
-              src={props.imgSrc}
-              alt="Passport scanner"
-              style={{
-                marginTop: '30px',
-                width: '242px',
-                height: '210px',
-              }}
-            />
+            <span className={cls['description']} dangerouslySetInnerHTML={{__html: `${textRU}`}}></span>
           </div>
         </Box>
       </Box>

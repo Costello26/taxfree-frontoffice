@@ -43,10 +43,11 @@ const Footer = () => {
                         
                         style={{
                         paddingLeft:"10px" , 
-                        fontWeight:"400" , 
+                        fontWeight:"400" ,
+                        fontFamily: "sans-serif", 
                         fontSize:"16px", 
                         color: "#000", 
-                        //textDecoration: "none",
+                        textDecoration: "underline",
                         display: "block"
                         
                         }}>
