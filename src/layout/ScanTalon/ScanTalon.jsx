@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import AppBar from '../../components/AppBar/AppBar';
+//import AppBar from '../../components/AppBar/AppBar';
 import RegulaInfo from '../../components/RegulaInfo/RegulaInfo';
 import classes from './ScanTalon.module.scss';
-import ticket from '../../assets/Png/ticket.png';
 import Modal from '../../components/Modal/Modal';
 import { Box, Typography } from '@mui/material';
 import CheckBox from '../../assets/Png/CheckBox.png';
@@ -13,7 +12,7 @@ import { globalLocales } from '../../assets/locales';
 
 const Index = () => {
   const { selectedLang } = useSelector(state => state.lang)
-  const [modalActive , setModalActive] = useState(false)
+  const [modalActive ] = useState(false) //setModalActive
   return (
     <div>
       <div className="container">

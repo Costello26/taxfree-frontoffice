@@ -2,7 +2,7 @@ import { hubConnection } from 'signalr-no-jquery';
 import RegulaApiService from './regula.api.service';
 import store from '../store';
 import { passportActions } from '../store/passport';
-import ApiService from './fetch.api.service';
+import ApiService from './soliq.api.service';
 import { NotificationManager } from 'react-notifications';
 import { globalLocales } from '../assets/locales';
 
@@ -14,8 +14,8 @@ const hubProxy = connection.createHubProxy('EventsHub');
 export const regulaEventListener = async (selectedLang = 1) => {
   const response = await RegulaApiService.hostHealthCheck();
   if (!response.ok) {
-    console.log('Regula host is not available!');
-    return;
+    //console.log('Regula host is not available!');
+    return NotificationManager.error(globalLocales.notifications.regulaScannerUnavailable[selectedLang]);
   }
 
   // set up event listeners

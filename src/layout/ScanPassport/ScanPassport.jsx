@@ -23,7 +23,7 @@ const ScanPassport = () => {
       await regulaEventListener(selectedLang);
     };
     initRegula();
-  }, [navigate, userId]);
+  }, [navigate, userId, selectedLang]);
   useEffect(() => {
     if (hasPassportSaved) {
       navigate('/product-formalization');

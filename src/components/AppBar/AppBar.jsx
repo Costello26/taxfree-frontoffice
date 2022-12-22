@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ButtonGroup, Button, Container } from '@mui/material';
+import cls from './AppBar.scss'
 
 const AppBar = (props) => {
   const [isRegActive, setIsRegActive] = useState(true);

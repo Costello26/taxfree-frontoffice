@@ -19,3 +19,13 @@ code {
 .container {
   padding: 0px 94px;
 }
+
+::-moz-selection { /* Code for Firefox */
+  color: #fff;
+  background: #233259;
+}
+
+::selection {
+  color: #fff;
+  background: #233259;
+}

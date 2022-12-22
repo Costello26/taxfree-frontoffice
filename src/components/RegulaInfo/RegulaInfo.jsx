@@ -1,13 +1,10 @@
 import React from 'react';
 import { Container, Box } from '@mui/material';
-import { useSelector } from 'react-redux';
-import { globalLocales } from '../../assets/locales';
 import SoliqIcon from '../../assets/svg/soliq-icon.svg'
 import cls from './RegulaInfo.module.scss'
 
 const RegulaInfo = ({imgSrc, heading, textUZ, textRU}) => {
-  const { selectedLang } = useSelector((state) => state.lang)
-  console.log(selectedLang)
+  //console.log(selectedLang)
   return (
     <Container maxWidth="md" disableGutters>
       <Box sx={{ 
@@ -30,7 +27,7 @@ const RegulaInfo = ({imgSrc, heading, textUZ, textRU}) => {
           }}
         >
           <div className={cls['image']}>
-            <img className={cls['image-exp']} clas src={imgSrc} alt="helper-icon" />
+            <img className={cls['image-exp']} src={imgSrc} alt="helper-icon" />
           </div>
           <div className={cls['spoiler']}>
             <img src={SoliqIcon} alt="soliq-logo"/>

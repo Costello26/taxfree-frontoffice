@@ -9,15 +9,15 @@ import Avatar from '@mui/material/Avatar';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { globalLocales } from '../../assets/locales';
-import SelectLanguage from '../../components/SelectLanguage/SelectLang';
+import SelectLanguage from '../SelectLanguage/SelectLang';
 import SoliqLogo from '../../assets/Png/SoliqLogo.png';
-import RightDashboard from '../../components/RightDashboard/RightDashboard';
+import RightDashboard from '../RightDashboard/RightDashboard';
 import user from '../../assets/Png/User.png';
 import { useLocation } from 'react-router-dom';
 
 
 
-const SideBar = () => {
+const Navbar = () => {
   const location = useLocation();
   const { selectedLang } = useSelector((state) => state.lang);
   return (
@@ -99,10 +99,10 @@ const SideBar = () => {
                 />
               </IconButton>
               <Box>
-                <Typography sx={{ pl: 2, fontWeight: '600', fontSize: '16px' }}>
+                <Typography sx={{ pl: 2, fontWeight: '600', fontSize: '16px', fontFamily: '"Nunito", sans-serif' }}>
                   Olimov Asqarali
                 </Typography>
-                <Typography sx={{ pl: 2, fontWeight: '400', fontSize: '16px' }}>
+                <Typography sx={{ pl: 2, fontWeight: '400', fontSize: '16px', fontFamily: '"Nunito", sans-serif' }}>
                   {globalLocales.header.pinfl[selectedLang]}: 12345678901234
                 </Typography>
               </Box>
@@ -120,4 +120,4 @@ const SideBar = () => {
   );
 };
 
-export default SideBar;
+export default Navbar;

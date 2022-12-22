@@ -6,9 +6,9 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { passportActions } from '../../store/passport';
 import { authActions } from '../../store/auth';
-import ApiService from '../../service/fetch.api.service';
+import ApiService from '../../service/soliq.api.service';
 import { globalLocales } from '../../assets/locales';
-import { UserBadge } from '../../components/UserBadge/UserBadge';
+//import { UserBadge } from '../../components/UserBadge/UserBadge';
 
 
 const Registration = () => {
@@ -23,6 +23,7 @@ const Registration = () => {
 
     dispatch(passportActions.setPhoneNumber(phoneNumber));
     const res = await ApiService.findUserByPhone(phoneNumber, qrCode);
+    console.log(res)
     if (res.success && res.code === 1) {
       dispatch(passportActions.setUserId(res.data.userId));
       navigate('/scan-passport');

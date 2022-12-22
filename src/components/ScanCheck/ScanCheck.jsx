@@ -1,26 +1,25 @@
-import React, { useState } from 'react';
-import { Box, Container, Avatar, Typography, TextField, Button } from '@mui/material';
+import React from 'react';
+import { Box, Container, Typography } from '@mui/material';
 import ScanBtn from '../../assets/svg/scanme.svg';
 import SoliqIcon from '../../assets/svg/soliq-icon.svg';
 import QRGenerator from '../QRGenerator/QRGenerator';
 import classes from './scanCheck.module.scss';
 import { useSelector } from 'react-redux';
 import { globalLocales } from '../../assets/locales';
-import { display } from '@mui/system';
 
 const ScanCheck = (props) => {
   const { selectedLang } = useSelector((state) => state.lang);
   const { qrCode } = useSelector((state) => state.auth);
-  const sendPhoneHandler = () => {
-    console.log(phoneNumber);
-    props.onContinue(phoneNumber);
-  };
-  const [phoneNumber, setPhoneNumber] = useState("");
+  // const sendPhoneHandler = () => {
+  //   console.log(phoneNumber);
+  //   props.onContinue(phoneNumber);
+  // };
+//  const [phoneNumber, setPhoneNumber] = useState("");
 
-  const phoneValidation = (value) => {
-    // validation will be here
-    setPhoneNumber(value);
-  }
+  // const phoneValidation = (value) => {
+  //   // validation will be here
+  //   setPhoneNumber(value);
+  // }
   return (
     <Container
       className={classes['registration__container']}

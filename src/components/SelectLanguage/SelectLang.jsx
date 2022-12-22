@@ -16,7 +16,7 @@ const languages = [
 export default function SelectSmall() {
   const { selectedLang } = useSelector((state) => state.lang);
   const dispatch = useDispatch();
-  console.log(selectedLang)
+  //console.log(selectedLang)
   const handleChange = (event) => {
     dispatch(langActions.setLang(event.target.value))
   };

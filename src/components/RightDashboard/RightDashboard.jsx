@@ -82,8 +82,8 @@ export default function TemporaryDrawer() {
       {['right'].map((anchor) => (
         <React.Fragment key={anchor}>
           <span onClick={toggleDrawer(anchor, true)} style={{ 
-            width: '35px', 
-            height: '35px', 
+            width: '25px', 
+            height: '25px', 
             display: 'flex', 
             justifyContent: 'center', 
             cursor: 'pointer'

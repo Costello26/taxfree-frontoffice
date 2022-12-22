@@ -278,8 +278,8 @@ export const globalLocales = {
 
     header: {
         pinfl: [
-            "ПИНФЛ:",
-            "JShShIR:",
+            "ПИНФЛ",
+            "JShShIR",
             "PINI"
         ]
     },
@@ -326,6 +326,11 @@ export const globalLocales = {
             "Сканирование документа завершено",
             "Hujjatlar ьгммфафйшнфедш skanerlandi",
             "Document scanning completed"
+        ],
+        regulaScannerUnavailable: [
+            "Сканер Regula не обнаружен!",
+            "Regula skaneri ulanmagan!",
+            "Regula scanner not find!"
         ]
     }
 }

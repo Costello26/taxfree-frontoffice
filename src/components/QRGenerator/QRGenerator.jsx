@@ -5,8 +5,15 @@ import { Box, CircularProgress } from '@mui/material';
 const QrCode = (props) => {
   return (
     <div className="qrcode__container">
-      {!props.qrCode && (
-        <Box sx={{ display: 'flex' }}>
+      {!props.qrCode && ( 
+        <Box sx={{ 
+          display: 'flex', 
+          maxWidth: '65px', 
+          height: '190px',
+          justifyContent: 'center',
+          alignItems: 'center',
+          margin: '0 auto'
+        }}>
           <CircularProgress />
         </Box>
       )}

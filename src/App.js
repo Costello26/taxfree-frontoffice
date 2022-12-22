@@ -1,6 +1,5 @@
-import SideBar from './layout/Sidebar/SideBar';
 import ListInpector from './components/ListInspector/ListInpector';
-import Footer from './layout/Footer/Footer';
+import Footer from './components/Footer/Footer';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Registration from './layout/Registration/Registration';
 import ScanPassport from './layout/ScanPassport/ScanPassport';
@@ -11,10 +10,10 @@ import StatisticsPage from './layout/StatisticsPage/Statistics';
 import PrintCheck from './components/printCheck/PrintCheck';
 // import * as StompJs from '@stomp/stompjs';
 import { useEffect } from 'react';
-//import axios from 'axios';
 
 import notificationsStyle from 'react-notifications/lib/notifications.css';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
+import Navbar from './components/Navbar/NavBar';
 
 // const SOCKET_URL = 'ws://10.255.53.91:14069/tax-free-api/websocket-server';
 
@@ -27,7 +26,7 @@ function App() {
   return (
     <div className="App" style={notificationsStyle}>
       <Router>
-        <SideBar />
+        <Navbar/>
         <div style={{ maxWidth: '1440px', margin: '0 auto' }}>
           <Routes>
             <Route path="/" element={<ListInpector />} />

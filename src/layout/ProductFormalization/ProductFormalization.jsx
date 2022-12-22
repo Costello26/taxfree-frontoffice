@@ -1,6 +1,6 @@
 import { Container } from '@mui/system';
 import React, { useEffect, useState } from 'react';
-import AppBar from '../../components/AppBar/AppBar';
+//import AppBar from '../../components/AppBar/AppBar';
 import ListCheck from '../../components/ListCheck/ListCheck';
 // import Taxfree from '../../components/UserTaxfree/Taxfree';
 // import UserInfo from '../../components/UserTaxfree/UserInfo';
@@ -9,12 +9,12 @@ import TaxFreeStatisticsTable from '../../components/TaxFreeStatisticsTable/TaxF
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { UserBadge } from '../../components/UserBadge/UserBadge';
-import ApiService from '../../service/fetch.api.service';
+import ApiService from '../../service/soliq.api.service';
 import { NotificationManager } from 'react-notifications';
 import { globalLocales } from '../../assets/locales';
 
 const ProductFormalization = (props) => {
-  const [isStatActive, setIsStatActive] = useState(false);
+  const [isStatActive] = useState(false); //setIsStatActive
   const [data, setData] = useState([]);
   const { selectedLang } = useSelector(state => state.lang)
   const { userId } = useSelector((state) => state.passport);
@@ -33,7 +33,7 @@ const ProductFormalization = (props) => {
       return setData([])
     };
     getAllProducts();
-  }, [userId, navigate]);
+  }, [userId, navigate, selectedLang]);
   return (
     <div className="container">
       {/* <AppBar
