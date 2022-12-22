@@ -1,10 +1,6 @@
 import { Container } from '@mui/system';
 import React, { useEffect, useState } from 'react';
-import AppBar from '../../components/AppBar/AppBar';
 import ListCheck from '../../components/ListCheck/ListCheck';
-// import Taxfree from '../../components/UserTaxfree/Taxfree';
-// import UserInfo from '../../components/UserTaxfree/UserInfo';
-//import cls from './ProductFormalization.module.scss';
 import TaxFreeStatisticsTable from '../../components/TaxFreeStatisticsTable/TaxFreeStatisticsTable';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -20,9 +16,6 @@ const ProductFormalization = (props) => {
   const { userId } = useSelector((state) => state.passport);
   const navigate = useNavigate();
   useEffect(() => {
-    // if (!userId) {
-    //   navigate('/login');
-    // }
     const getAllProducts = async () => {
       const res = await ApiService.getProductsByID(userId);
       console.log(res);
@@ -33,13 +26,9 @@ const ProductFormalization = (props) => {
       return setData([]);
     };
     getAllProducts();
-  }, [userId, navigate]);
+  }, [userId, navigate, selectedLang]);
   return (
     <div className="container">
-      {/* <AppBar
-        onRegClick={() => setIsStatActive(false)}
-        onStatClick={() => setIsStatActive(true)}
-      /> */}
       {isStatActive ? (
         <TaxFreeStatisticsTable />
       ) : (
