@@ -2,21 +2,23 @@ import React, { useEffect } from 'react';
 //import AppBar from '../../components/AppBar/AppBar';
 import RegulaInfo from '../../components/RegulaInfo/RegulaInfo';
 import classes from './ScanPassport.module.scss';
-import sloy from '../../assets/Png/sloy.png';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { regulaEventListener } from '../../service/regulaListener';
+import { UserBadge } from '../../components/UserBadge/UserBadge';
+import { globalLocales } from '../../assets/locales';
+import PassportScan from '../../assets/Png/passport-scan.png'
 
-const ScanPassport = (props) => {
+const ScanPassport = () => {
   const navigate = useNavigate();
-  const { selectedLang } = ((state) => state.lang)
+  const { selectedLang } = useSelector((state) => state.lang)
   const userId = useSelector((state) => state.passport.userId);
   const hasPassportSaved = useSelector((state) => state.auth.hasPassportSaved);
   useEffect(() => {
     console.log(userId);
-    if (!userId) {
-      navigate('/login');
-    }
+    // if (!userId) {
+    //   navigate('/login');
+    // }
     const initRegula = async () => {
       await regulaEventListener(selectedLang);
     };
@@ -30,11 +32,13 @@ const ScanPassport = (props) => {
   return (
     <div className="container">
       {/* <AppBar /> */}
+      <UserBadge step={2}/>
       <div className={classes['card__content']}>
         <RegulaInfo
-          textUZ="Shaxsingizni tasdiqlovchi xujjatni ochiq holda skanerlash qurilmasiga qo`ying"
-          textRU="Положите документ, подтверждающий вашу личность в открытом виде  на устройство сканирования"
-          imgSrc={sloy}
+          heading={globalLocales.passportScan.heading[selectedLang]}
+          textUZ={globalLocales.passportScan.mainHeading[1]}
+          textRU={globalLocales.passportScan.mainHeading[2]}
+          imgSrc={PassportScan}
         />
       </div>
     </div>

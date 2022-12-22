@@ -1,0 +1,95 @@
+.user-details {
+  margin-top: 26px;
+  display: flex;
+  gap: 18px;
+  margin-bottom: 19px;
+  max-width: 1440px;
+  flex-wrap: wrap;
+}
+.user-info,
+.user-taxfree {
+  width: 48%;
+}
+
+// ========== 
+
+  .progress-bar {
+    width: 100%;
+    position: relative;
+    .tube-wrap {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: -3;
+      .progress-tube {
+        height: 6px;
+        width: 85%;
+        border-radius: 50px;
+        background-color: #E2E2E2;
+        overflow: hidden;
+        .progress {
+          background-color: #067911;
+          height: 6px;
+          //width: 25%;
+        }
+      }
+    }
+    .rounds-group {
+      z-index: 99999;
+      display: flex;
+      justify-content: space-between;
+      .round-item {
+        width: 15%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .round {
+          border-radius: 50%;
+          height: 34px;
+          width: 34px;
+          border: 1px solid #E2E2E2;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-weight: 800;
+          margin-bottom: 16px;
+          background-color: #fff;
+        }
+        .round-active {
+          border-radius: 50%;
+          height: 34px;
+          width: 34px;
+          border: 1px solid #067911;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-weight: 800;
+          margin-bottom: 16px;
+          background-color: #fff;
+        }
+        .round-done { 
+          border-radius: 50%;
+          height: 34px;
+          width: 34px;
+          border: 1px solid #067911;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-weight: 800;
+          margin-bottom: 16px;
+          background-color: #067911;
+          color: #fff;
+        }
+        // .round-label {
+        //   position: relative;
+        //   left: -35%;
+        // }
+      }
+    }
+  }
+  

@@ -8,6 +8,7 @@ import { passportActions } from '../../store/passport';
 import { authActions } from '../../store/auth';
 import ApiService from '../../service/fetch.api.service';
 import { globalLocales } from '../../assets/locales';
+import { UserBadge } from '../../components/UserBadge/UserBadge';
 
 
 const Registration = () => {
@@ -61,10 +62,13 @@ const Registration = () => {
   }, [dispatch, navigate]);
 
   return (
+    <>
     <div className="container">
       {/* <AppBar /> */}
+      {/* <UserBadge/> */}
       <ScanCheck onContinue={sendPhoneHandler} />
     </div>
+    </>
   );
 };
 

@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Box, Container, Avatar, Typography, TextField, Button } from '@mui/material';
-import ScanBtn from '../../assets/Png/Scanme.png';
-import UserIcon from '../../assets/Png/userAvatar.png';
+import ScanBtn from '../../assets/svg/scanme.svg';
+import SoliqIcon from '../../assets/svg/soliq-icon.svg';
 import QRGenerator from '../QRGenerator/QRGenerator';
 import classes from './scanCheck.module.scss';
 import { useSelector } from 'react-redux';
 import { globalLocales } from '../../assets/locales';
+import { display } from '@mui/system';
 
 const ScanCheck = (props) => {
   const { selectedLang } = useSelector((state) => state.lang);
@@ -23,7 +24,7 @@ const ScanCheck = (props) => {
   return (
     <Container
       className={classes['registration__container']}
-      maxWidth="xl"
+      maxWidth="lg"
       disableGutters
     >
       <Box sx={{ flexGrow: 1 }}>
@@ -45,99 +46,69 @@ const ScanCheck = (props) => {
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-              justifyContent: 'start',
+              justifyContent: 'center',
               padding: '50px 0',
-              borderRight: ' 2px dashed rgba(50, 94, 205, 0.2)',
+              //borderRight: ' 2px dashed rgba(50, 94, 205, 0.2)',
             }}
           >
-            <Typography
-              sx={{
-                fontWeight: '600',
-                fontSize: '20px',
-                color: '#325ECD',
-                textAlign: 'center',
-              }}
-            >
-              Ro’yxatdan o’tish uchun Soliq ilova orqali <br />
-              Qr-kodni skaner qiling!
-            </Typography>
-            <Typography
-              sx={{
-                fontWeight: '600',
-                fontSize: '20px',
-                color: '#325ECD',
-                textAlign: 'center',
-                padding: '15px 0',
-              }}
-            >
-              Для подтверждения личности просим <br />
-              отсканировать QR код с помощью <br />
-              приложения Soliq
-            </Typography>
-            <QRGenerator qrCode={qrCode} />
-            <img src={ScanBtn} alt="scan-me" style={{
-              marginTop: "20px",
-              maxWidth: "450px",
-              height: "70px"
-            }}/>
+            
+            <div className={classes['qr__wrap']}>
+              <div className={classes['decorate']}></div>
+              <QRGenerator qrCode={qrCode} />
+              <img src={ScanBtn} alt="scan-me" style={{
+                
+                marginTop: "60px",
+                //maxHeight: "77px",
+                maxWidth: "166px"
+              }}/>
+            </div>
           </Box>
-          <Box sx={{ width: '50%', height: '500px', padding: '50px 0' }}>
-            <Avatar
-              src={UserIcon}
+          <Box sx={{ 
+            width: '50%', 
+            height: '500px', 
+            padding: '50px 0', 
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            textAlign: 'center'
+            }}>
+            <img
+              src={SoliqIcon}
               alt="user Icon"
+              className={classes['img']}
               sx={{
-                width: '164px',
-                height: '164px',
+                maxWidth: '264px',
+                //height: '164px',
                 display: 'block',
-                margin: ' 0 auto 25px',
+                margin: ' 0 auto 25px'
               }}
             />
             <Typography
               sx={{
+                paddingTop: '30px',
+                paddingBottom: '25px',
                 fontFamily: 'Nunito',
                 fontWeight: 700,
                 fontSize: '24px',
                 textAlign: 'center',
-                color: '#325ECD',
+                color: '#233259',
               }}
               dangerouslySetInnerHTML={{ __html: `${globalLocales.logIn.heading[selectedLang]}`}}
             >
             </Typography>
+            <span className={classes['secondary_text']}>
+              Shaxsingizni tasdqilash uchun mobil <br/>
+              ilova orqali QR-kodni skanerlang 
+            </span>
+            <span className={classes['secondary_text']}>
+              Through a mobile application to verify <br/>
+              your identity
+              scan the QR code 
+            </span>
 
-            <Container maxWidth="sm">
-              <TextField
-                type="number"
-                label={globalLocales.logIn.formLabel[selectedLang]}
-                variant="outlined"
-                value={phoneNumber}
-                onChange={(e) => phoneValidation(e.target.value)}
-                sx={{
-                  width: '100%',
-                  height: '56px',
-                  margin: '38px 0',
-                  '& fieldset': {
-                    borderRadius: '20px',
-                    backgroundColor: 'rgba(50, 94, 205, 0.05)',
-                  },
-                }}
-              />
-            </Container>
-            <Container maxWidth="sm">
-              <Button
-                variant="contained"
-                sx={{
-                  width: '100%',
-                  height: '56px',
-                  borderRadius: '25px',
-                  bgColor: '#325ECD',
-                  textTransform: 'none',
-                  fontSize: '18px'
-                }}
-                onClick={sendPhoneHandler}
-              >
-                {globalLocales.logIn.buttonLabel[selectedLang]}
-              </Button>
-            </Container>
+            
+            
           </Box>
         </Box>
       </Box>

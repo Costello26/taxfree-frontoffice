@@ -22,16 +22,17 @@ const UserKey = (props) => {
     >
       <Typography
         sx={{
-          fontFamily: 'Inter',
+          fontFamily: 'Nunito',
           fontWeight: 800,
           fontSize: '16px',
+          color: '#000'
         }}
       >
         {props.fullname}
       </Typography>
       <Typography
         sx={{
-          fontFamily: 'Roboto',
+          fontFamily: 'Nunito',
           fontWeight: '400',
           fontSize: '14px',
         }}
@@ -40,16 +41,17 @@ const UserKey = (props) => {
       </Typography>
       <Typography
         sx={{
-          fontFamily: 'Roboto',
+          fontFamily: 'Nunito',
           fontWeight: '400',
           fontSize: '14px',
+
         }}
       >
         <span style={{ color: 'gray' }}>{globalLocales.signIn.inn[selectedLang]}</span>:{props.stir}
       </Typography>
       <Typography
         sx={{
-          fontFamily: 'Roboto',
+          fontFamily: 'Nunito',
           fontWeight: '400',
           fontSize: '14px',
           color: '#D29404',

@@ -6,17 +6,25 @@ import ticket from '../../assets/Png/ticket.png';
 import Modal from '../../components/Modal/Modal';
 import { Box, Typography } from '@mui/material';
 import CheckBox from '../../assets/Png/CheckBox.png';
+import { UserBadge } from '../../components/UserBadge/UserBadge';
+import ScanTalon from '../../assets/Png/scan-ticket.png'
+import { useSelector } from 'react-redux';
+import { globalLocales } from '../../assets/locales';
+
 const Index = () => {
+  const { selectedLang } = useSelector(state => state.lang)
   const [modalActive , setModalActive] = useState(false)
   return (
     <div>
       <div className="container">
         {/* <AppBar /> */}
+        <UserBadge step={3}/>
         <div className={classes['card__content']}>
           <RegulaInfo
-            textUZ="Iltimos, bort taloningizni ko`rsating"
+            heading={globalLocales.ticketScan.heading[selectedLang]}
+            textUZ="Iltimos, parvoz taloningizni ko`rsating"
             textRU="Пожалуйста, предъявите ваш посадочный талон"
-            imgSrc={ticket}
+            imgSrc={ScanTalon}
           />
           <div className={classes['card__modal']}>
           
