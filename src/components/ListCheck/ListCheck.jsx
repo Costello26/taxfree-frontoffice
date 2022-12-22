@@ -7,13 +7,16 @@ import {
   Checkbox,
   Button,
   TextField,
+  FormControlLabel,
 } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { globalLocales } from '../../assets/locales';
 import { pink } from '@mui/material/colors';
+import { useState } from 'react';
 
 const ListCheck = (props) => {
-  const { selectedLang } = useSelector(state => state.lang)
+  const { selectedLang } = useSelector((state) => state.lang);
+  const [isChecked, setIsChecked] = useState(false);
   let head = {
     id: '№',
     name: globalLocales.infoPage.table.productName[selectedLang],
@@ -42,7 +45,7 @@ const ListCheck = (props) => {
   return (
     <Container maxWidth={false} disableGutters={true}>
       <TextField
-        defaultValue="123"
+        defaultValue=""
         id="outlined"
         label={globalLocales.infoPage.formLabel[selectedLang]}
         sx={{
@@ -79,30 +82,50 @@ const ListCheck = (props) => {
         <ListItem
           sx={{
             width: '100%',
-            border: '1px solid #D3E0FF',
             margin: '10px 0',
             padding: '5px 10px',
             borderRadius: '18px',
-            bgColor: '#F1F1F1',
+            fontWeight: 700,
+            backgroundColor: '#F1F1F1',
           }}
         >
           <Grid spacing={2} container columns={24}>
             <Grid item xs={2} sx={{ display: 'flex', alignItems: 'center' }}>
               <Checkbox {...label} /> {head.id}
             </Grid>
-            <Grid item xs={4} sx={{ display: 'flex', alignItems: 'center' }}>
-              {head.name}"
+            <Grid
+              item
+              xs={6}
+              sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+            >
+              {head.name}
             </Grid>
-            <Grid item xs={6} sx={{ display: 'flex', alignItems: 'center' }}>
+            <Grid
+              item
+              xs={4}
+              sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+            >
               {head.MXIK}
             </Grid>
-            <Grid item xs={2} sx={{ display: 'flex', alignItems: 'center' }}>
+            <Grid
+              item
+              xs={4}
+              sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+            >
               {head.price}
             </Grid>
-            <Grid item xs={2} sx={{ display: 'flex', alignItems: 'center' }}>
+            <Grid
+              item
+              xs={4}
+              sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+            >
               {head.taxFreeSumma}
             </Grid>
-            <Grid item xs={4} sx={{ display: 'flex', alignItems: 'center' }}>
+            <Grid
+              item
+              xs={4}
+              sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+            >
               {head.event}
             </Grid>
           </Grid>
@@ -114,6 +137,7 @@ const ListCheck = (props) => {
               sx={{
                 width: '100%',
                 border: '1px solid #D3E0FF',
+                backgroundColor: '#FFF',
                 margin: '10px 0',
                 padding: '5px 10px',
                 borderRadius: '18px',
@@ -125,56 +149,115 @@ const ListCheck = (props) => {
                 columns={24}
                 style={
                   vl.event
-                    ? {}
-                    : {
+                    ? {
                         color: 'red',
                         textDecorationLine: 'line-through',
                         textDecorationStyle: 'solid',
                       }
+                    : {}
                 }
               >
                 <Grid item xs={2} sx={{ display: 'flex', alignItems: 'center' }}>
-                  <Checkbox {...label} /> {vl.id}
+                  <Checkbox {...label} /> {ky + 1}
                 </Grid>
-                <Grid item xs={8} sx={{ display: 'flex', alignItems: 'center' }}>
+                <Grid
+                  item
+                  xs={6}
+                  sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                >
                   {vl.name}
                 </Grid>
-                <Grid item xs={6} sx={{ display: 'flex', alignItems: 'center' }}>
+                <Grid
+                  item
+                  xs={4}
+                  sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                >
                   {vl.productCode}
                 </Grid>
-                <Grid item xs={2} sx={{ display: 'flex', alignItems: 'center' }}>
+                <Grid
+                  item
+                  xs={4}
+                  sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                >
                   {vl.price}
                 </Grid>
-                <Grid item xs={2} sx={{ display: 'flex', alignItems: 'center' }}>
+                <Grid
+                  item
+                  xs={4}
+                  sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                >
                   {vl.taxFreeSumma}
                 </Grid>
-                <Grid item xs={4} sx={{ display: 'flex', alignItems: 'center' }}>
-                  {vl.event ? (
+                <Grid
+                  item
+                  xs={4}
+                  sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                >
+                  {
                     <>
-                      <Checkbox defaultChecked />
-                      <Checkbox
+                      <FormControlLabel
+                        value="bottom"
+                        control={
+                          <Checkbox
+                            sx={{
+                              color: '#233259',
+                              padding: '2px',
+                              borderRadius: '4px',
+                              '&.Mui-checked': {
+                                color: '#233259',
+                              },
+                            }}
+                          />
+                        }
+                        label={
+                          <span
+                            style={{
+                              fontSize: '12px',
+                              fontWeight: 300,
+                              lineHeight: '14px',
+                            }}
+                          >
+                            {'Bor'}
+                          </span>
+                        }
+                        labelPlacement="bottom"
                         sx={{
-                          color: pink[800],
-                          '&.Mui-checked': {
-                            color: pink[600],
-                          },
+                          fontSize: '10px',
+                        }}
+                      />
+                      <FormControlLabel
+                        value="bottom"
+                        control={
+                          <Checkbox
+                            sx={{
+                              color: '#CA0218',
+                              padding: '2px',
+                              borderRadius: '4px',
+                              '&.Mui-checked': {
+                                color: '#CA0218',
+                              },
+                            }}
+                          />
+                        }
+                        label={
+                          <span
+                            style={{
+                              fontSize: '12px',
+                              fontWeight: 300,
+                              lineHeight: '14px',
+                              fontFamily: 'Nunito',
+                            }}
+                          >
+                            {"Yo'q"}
+                          </span>
+                        }
+                        labelPlacement="bottom"
+                        sx={{
+                          fontSize: '10px',
                         }}
                       />
                     </>
-                  ) : (
-                    <>
-                      <Checkbox />
-                      <Checkbox
-                        defaultChecked
-                        sx={{
-                          color: pink[800],
-                          '&.Mui-checked': {
-                            color: pink[600],
-                          },
-                        }}
-                      />
-                    </>
-                  )}
+                  }
                 </Grid>
               </Grid>
             </ListItem>
