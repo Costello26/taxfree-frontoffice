@@ -11,7 +11,6 @@ import {
 } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { globalLocales } from '../../assets/locales';
-import { pink } from '@mui/material/colors';
 import { useState } from 'react';
 
 const ListCheck = (props) => {

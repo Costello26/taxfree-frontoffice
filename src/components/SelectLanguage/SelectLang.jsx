@@ -7,8 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { langActions } from '../../store/lang';
 
 const languages = [
-  { title: "O'ZB", idx: 0 },
-  { title: 'RU', idx: 1 },
+  { title: 'RU', idx: 0 },
+  { title: "O'ZB", idx: 1 },
   { title: 'ENG', idx: 2 },
 ];
 
