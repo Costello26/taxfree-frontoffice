@@ -1,40 +1,21 @@
 import React from 'react';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
 import {
   Container,
   Grid,
   List,
   ListItem,
-  ListSubheader,
   Checkbox,
-  TableSortLabel,
-  Button,
-  TextField,
-  FormControl,
-  InputAdornment,
-  Select,
-  MenuItem,
-  InputLabel,
   Stack,
   Pagination,
 } from '@mui/material';
 import { Box } from '@mui/system';
-import { pink } from '@mui/material/colors';
-import { AccountCircle, Search } from '@mui/icons-material';
 import Card from './Card';
 import StatisticsSearch from './StatisticsSearch';
-import Bar from './Bar';
 import { useSelector } from 'react-redux';
 import { globalLocales } from '../../assets/locales';
 
 const ListCheck = () => {
-  const { selectedLang } = useSelector(state => state.lang)
+  const { selectedLang } = useSelector((state) => state.lang);
   let head = {
     id: '№ ',
     name: globalLocales.stats.table.fio[selectedLang],
@@ -135,10 +116,9 @@ const ListCheck = () => {
   const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
   return (
     <>
-      <Bar />
       <Card />
       <StatisticsSearch />
-      <Container maxWidth="xl">
+      <Container maxWidth="xl" disableGutters={true}>
         <List
           sx={{ width: '100%', bgcolor: '' }}
           component="nav"
@@ -218,11 +198,10 @@ const ListCheck = () => {
           })}
         </List>
         <div>
-         <Stack sx={{mt:"5px", mb:"15px"}}>
-          <Pagination count={10} color="primary" shape="rounded" size='large'/>
-        </Stack> 
+          <Stack sx={{ mt: '5px', mb: '15px' }}>
+            <Pagination count={10} color="primary" shape="rounded" size="large" />
+          </Stack>
         </div>
-        
       </Container>
     </>
   );

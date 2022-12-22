@@ -15,8 +15,6 @@ import RightDashboard from '../../components/RightDashboard/RightDashboard';
 import user from '../../assets/Png/User.png';
 import { useLocation } from 'react-router-dom';
 
-
-
 const SideBar = () => {
   const location = useLocation();
   const { selectedLang } = useSelector((state) => state.lang);
@@ -35,12 +33,12 @@ const SideBar = () => {
           sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
         >
           <Link
-          to="/"
+            to="/"
             style={{
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center',
-              textDecoration: 'none'
+              textDecoration: 'none',
             }}
           >
             <img
@@ -103,7 +101,7 @@ const SideBar = () => {
                   Olimov Asqarali
                 </Typography>
                 <Typography sx={{ pl: 2, fontWeight: '400', fontSize: '16px' }}>
-                  {globalLocales.header.pinfl[selectedLang]}: 12345678901234
+                  {globalLocales.header.pinfl[selectedLang]} 12345678901234
                 </Typography>
               </Box>
             </Box>

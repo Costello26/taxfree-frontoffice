@@ -6,12 +6,18 @@ const QrCode = (props) => {
   return (
     <div className="qrcode__container">
       {!props.qrCode && (
-        <Box sx={{ display: 'flex' }}>
+        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <CircularProgress />
         </Box>
       )}
       {props.qrCode && (
-        <QRCodeCanvas id="qrCode" value={props.qrCode} size={200} level={'H'} fgColor="#233259" />
+        <QRCodeCanvas
+          id="qrCode"
+          value={props.qrCode}
+          size={200}
+          level={'H'}
+          fgColor="#233259"
+        />
       )}
     </div>
   );

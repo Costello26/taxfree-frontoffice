@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { langsList } from '../assets/locales';
 
 const initialLangState = {
-  selectedLang: 0 //0 ru, 1 uz, 2 en
+  selectedLang: 0, //0 ru, 1 uz, 2 en
 };
 
 const langSlice = createSlice({
@@ -11,7 +11,7 @@ const langSlice = createSlice({
   reducers: {
     setLang(state, { payload }) {
       const idx = langsList[payload];
-      if(idx === 0 || idx === 1 || idx === 2){
+      if (idx === 0 || idx === 1 || idx === 2) {
         state.selectedLang = idx;
       }
     },

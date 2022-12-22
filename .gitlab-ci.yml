@@ -30,7 +30,7 @@ deploy_staging:
             - build
     environment:
         name: development
-        url: https://dev-taxfree.soliq.uz
+        url: https://dev-taxfreeoffice.soliq.uz
     when: manual
     only:
         - master
@@ -62,7 +62,7 @@ deploy_prod:
             - build
     environment:
         name: production
-        url: https://taxfree.soliq.uz
+        url: https://taxfreeoffice.soliq.uz
     when: manual
     only:
         - production
