@@ -351,6 +351,11 @@ export const globalLocales = {
             "ПИНФЛ",
             "JShShIR",
             "PINI"
+        ],
+        list: [
+            "Реестр",
+            "Ro'yxat",
+            "Journal"
         ]
     },
     footer: {

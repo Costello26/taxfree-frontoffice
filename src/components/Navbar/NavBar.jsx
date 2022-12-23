@@ -112,6 +112,18 @@ const Navbar = () => {
           )}
           <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' }, alignItems: 'center' }}>
             <SelectLanguage />
+            <Link to='/users-formalization' style={{
+              backgroundColor: 'rgba(35, 50, 89, 1)',
+              padding: '10px 25px',
+              color: '#fff',
+              fontFamily: '"Inter", sans-serif',
+              display: 'inline-block',
+              borderRadius: '50px',
+              marginRight: '20px',
+              textDecoration: 'none',
+              boxShadow: '0px -1px 11px rgba(0, 0, 0, 0.15);',
+              height: '100%'
+            }}>{globalLocales.header.list[selectedLang]}</Link>
             <RightDashboard />
           </Box>
         </Toolbar>
