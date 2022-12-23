@@ -6,7 +6,7 @@ const UsersFormalition = () => {
   
   return (
     <div className="container">
-      <AppBar />
+      {/* <AppBar /> */}
       <TaxFreeStatisticsTable />
     </div>
   );

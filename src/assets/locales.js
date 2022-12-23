@@ -4,6 +4,12 @@ export const langsList = {
     "ENG": 2
 }
 
+const checkFebDaysCount = () => {
+    const year = new Date().getFullYear()
+    const leap = new Date(year, 1, 29).getDate() === 29;
+    return leap ? 29 : 28
+}
+
 export const globalLocales = {
     signIn: {
         header: [
@@ -160,6 +166,32 @@ export const globalLocales = {
         }
     },
     stats: {
+        interactive: {
+            download: [
+                "Скачать",
+                "Yuklash",
+                "Download"
+            ],
+            selectFormat: [
+                "Выберите формат",
+                "Formatni tanlang",
+                "Select format"
+            ]
+        },
+        months: [
+            { days: 31, month: ["Январь", "Yanvar", "January"] },
+            { days: checkFebDaysCount , month: ["Февраль", "Fevral", "February"] },
+            { days: 31, month: ["Март", "Mart", "March"] },
+            { days: 30, month: ["Апрель", "Aprel", "April"] },
+            { days: 31, month: ["Май", "May", "May"] },
+            { days: 30, month: ["Июнь", "Iyun", "June"] },
+            { days: 31, month: ["Июль", "Iyul", "July"] },
+            { days: 31, month: ["Август", "Avgust", "August"] },
+            { days: 30, month: ["Сентябрь", "Sentabr", "September"] },
+            { days: 31, month: ["Октябрь", "Oktabr", "October"] },
+            { days: 30, month: ["Ноябрь", "Noyabr", "November"] },
+            { days: 31, month: ["Декабрь", "Dekabr", "December"] }
+        ],
         sum: [
             "Сумма Tax Free",
             "Tax Free summasi",
@@ -172,23 +204,23 @@ export const globalLocales = {
         ],
         statuses: {
             all: [
-                "Итого TaxFree",
-                "Jami TaxFree",
+                "Итого введено",
+                "Jami rasmiylashtirilgan",
                 "Overall TaxFree"
             ],
             approved: [
-                "Подтверждено",
-                "Tasdiqlangan",
-                "Confirmed"
+                "Полностью подтверждено",
+                "To'liq tasdiqlangan",
+                "Fully confirmed"
             ],
             partly: [
-                "Подтверждено частично",
-                "Qisman tasdiqlangan",
+                "Процесс не завершен",
+                "Jarayon tugatilamagan",
                 "Partly confirmed"
             ],
             declined: [
-                "Отказано",
-                "Rad etilgan",
+                "Не подтверждено",
+                "Tasdig’ini topmaganlar",
                 "Declined"
             ],
             overdue: [
@@ -290,9 +322,9 @@ export const globalLocales = {
             "Help&Support"
         ],
         copyright: [
-            "© 2021 Государственный налоговый комитет.",
-            "© 2021 Davlat soliq qoʻmitasi.",
-            "© 2021 State Tax Committee."
+            `© ${new Date().getFullYear()} Государственный налоговый комитет.`,
+            `© ${new Date().getFullYear()} Davlat soliq qoʻmitasi.`,
+            `© ${new Date().getFullYear()} State Tax Committee.`
         ],
         description: [
             "Электронные налоговые услуги: портал электронных <br/> государственных услуг налоговых органов.",

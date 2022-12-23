@@ -1,35 +1,21 @@
-import React from 'react';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
+import React, { useState } from 'react';
+import cls from './TaxFreeStatisticsTable.module.scss';
 import {
   Container,
   Grid,
   List,
   ListItem,
-  ListSubheader,
   Checkbox,
-  TableSortLabel,
-  Button,
-  TextField,
-  FormControl,
-  InputAdornment,
-  Select,
-  MenuItem,
-  InputLabel,
   Stack,
   Pagination,
+  Select,
+  MenuItem,
+  TextField,
+  Button
 } from '@mui/material';
-import { Box } from '@mui/system';
-import { pink } from '@mui/material/colors';
-import { AccountCircle, Search } from '@mui/icons-material';
+import DownloadIcon from '../../assets/svg/download.svg'
 import Card from './Card';
 import StatisticsSearch from './StatisticsSearch';
-import Bar from './Bar';
 import { useSelector } from 'react-redux';
 import { globalLocales } from '../../assets/locales';
 
@@ -53,6 +39,7 @@ const ListCheck = () => {
       taxFreeSumma: 1256300,
       productCount: 126,
       event: 'new',
+      selected: false,
     },
     {
       id: '2',
@@ -62,6 +49,7 @@ const ListCheck = () => {
       taxFreeSumma: 1654789,
       productCount: 126,
       event: 'success',
+      selected: false,
     },
     {
       id: '2',
@@ -71,71 +59,63 @@ const ListCheck = () => {
       taxFreeSumma: 1654789,
       productCount: 126,
       event: 'doing',
+      selected: false,
+    },
+    {
+      id: '3',
+      name: 'Hellen Mirren',
+      MXIK: '+44-7871234567',
+      price: '4000 1234 5678 9010',
+      taxFreeSumma: 1256300,
+      productCount: 126,
+      event: 'new',
+      selected: false,
+    },
+    {
+      id: '4',
+      name: 'Olimov Asqarali Turg‘unovich',
+      MXIK: '8 800 444 55 55',
+      price: '4000 1234 5678 9010',
+      taxFreeSumma: 1654789,
+      productCount: 126,
+      event: 'success',
+      selected: false,
+    },
+    {
+      id: '5',
+      name: 'Olimov Asqarali Turg‘unovich',
+      MXIK: '8 800 444 55 55',
+      price: '4000 1234 5678 9010',
+      taxFreeSumma: 1654789,
+      productCount: 126,
+      event: 'doing',
+      selected: false,
     },
   ];
 
-  function Event(prams) {
-    if (prams.params.event === 'new') {
-      return (
-        <Box
-          sx={{
-            background: 'rgba(50, 94, 205, 0.25)',
-            borderRadius: '26px',
-            width: '100px',
-            height: '28px',
-            color: '#325ECD',
-            fontSize: '14px',
-            fontWeight: 600,
-            textAlign: 'center',
-            padding: '5px 15px',
-          }}
-        >
-          Yangi
-        </Box>
-      );
-    } else if (prams.params.event === 'doing') {
-      return (
-        <Box
-          sx={{
-            background: 'rgba(253, 151, 23, 0.25)',
-            borderRadius: '26px',
-            width: '100px',
-            height: '28px',
-            color: '#FD9717',
-            fontSize: '14px',
-            fontWeight: 600,
-            textAlign: 'center',
-            padding: '5px 15px',
-          }}
-        >
-          Jarayonda
-        </Box>
-      );
-    } else if (prams.params.event === 'success') {
-      return (
-        <Box
-          sx={{
-            background: 'rgba(18, 185, 3, 0.25)',
-            borderRadius: '26px',
-            width: '100px',
-            height: '28px',
-            color: '#12B903',
-            fontSize: '14px',
-            fontWeight: 600,
-            textAlign: 'center',
-            padding: '5px 15px',
-          }}
-        >
-          Tasdiqlangan
-        </Box>
-      );
-    }
+  const selectAll = (value) => {
+    const newState = tableItems.map(item => {
+      return {
+        ...item,
+        selected: value ? true : false,
+      }
+    })
+    setTableItems(newState)
   }
 
+  const changeItem = (key, val) => {
+    const items = [ ...tableItems ];
+    items[key].selected = val;
+    return setTableItems(items);
+  }
+
+
   const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+  const [ tableItems, setTableItems ] = useState(headCells);
+  
   return (
     <>
-      <Bar />
+      {/* <Bar /> */}
       <Card />
       <StatisticsSearch />
       <Container maxWidth="xl">
@@ -151,35 +131,36 @@ const ListCheck = () => {
               margin: '5px 0',
               padding: '5px 10px',
               borderRadius: '18px',
-              background: '#FFFFFF',
+              background: '#F1F1F1',
               boxShadow: '0px 0px 15px rgba(160, 160, 160, 0.1)',
             }}
           >
             <Grid spacing={2} container columns={20}>
               <Grid item xs={1} sx={{ display: 'flex', alignItems: 'center' }}>
-                <Checkbox {...label} /> {head.id}
+                <Checkbox {...label} onChange={(e) => selectAll(e.target.checked)} /> {head.id}
               </Grid>
-              <Grid item xs={4} sx={{ display: 'flex', alignItems: 'center' }}>
+              <Grid item xs={4} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 {head.name}
               </Grid>
-              <Grid item xs={3} sx={{ display: 'flex', alignItems: 'center' }}>
+              <Grid item xs={3} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 {head.MXIK}
               </Grid>
-              <Grid item xs={3} sx={{ display: 'flex', alignItems: 'center' }}>
+              <Grid item xs={3} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 {head.price}
               </Grid>
-              <Grid item xs={3} sx={{ display: 'flex', alignItems: 'center' }}>
+              <Grid item xs={3} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 {head.taxFreeSumma}
               </Grid>
-              <Grid item xs={3} sx={{ display: 'flex', alignItems: 'center' }}>
+              <Grid item xs={3} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 {head.productCount}
               </Grid>
-              <Grid item xs={3} sx={{ display: 'flex', alignItems: 'center' }}>
+              <Grid item xs={3} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 {head.event}
               </Grid>
             </Grid>
           </ListItem>
-          {headCells.map((vl, ky) => {
+          {tableItems.map((vl, key) => {
+            console.log('rerendered')
             return (
               <ListItem
                 sx={{
@@ -188,39 +169,59 @@ const ListCheck = () => {
                   margin: '10px 0',
                   padding: '5px 10px',
                   borderRadius: '18px',
+                  bgcolor: '#fff'
                 }}
               >
                 <Grid spacing={2} container columns={20}>
-                  <Grid item xs={1} sx={{ display: 'flex', alignItems: 'center' }}>
-                    <Checkbox {...label} /> {vl.id}
+                  <Grid item xs={1} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <Checkbox checked={ vl.selected } {...label} onChange={(e) => changeItem(key, e.target.checked)} /> {vl.id}
                   </Grid>
-                  <Grid item xs={4} sx={{ display: 'flex', alignItems: 'center' }}>
+                  <Grid item xs={4} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     {vl.name}
                   </Grid>
-                  <Grid item xs={3} sx={{ display: 'flex', alignItems: 'center' }}>
+                  <Grid item xs={3} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     {vl.MXIK}
                   </Grid>
-                  <Grid item xs={3} sx={{ display: 'flex', alignItems: 'center' }}>
+                  <Grid item xs={3} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     {vl.price}
                   </Grid>
-                  <Grid item xs={3} sx={{ display: 'flex', alignItems: 'center' }}>
+                  <Grid item xs={3} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     {vl.taxFreeSumma}
                   </Grid>
-                  <Grid item xs={3} sx={{ display: 'flex', alignItems: 'center' }}>
+                  <Grid item xs={3} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     {vl.productCount}
                   </Grid>
-                  <Grid item xs={3} sx={{ display: 'flex', alignItems: 'center' }}>
-                    <Event params={{ event: vl.event }} />
+                  <Grid item xs={3} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <a href='##' onClick={e => e.preventDefault()} className={cls['batafsil']}>Batafsil</a>
                   </Grid>
                 </Grid>
               </ListItem>
             );
           })}
         </List>
-        <div>
-         <Stack sx={{mt:"5px", mb:"15px"}}>
-          <Pagination count={10} color="primary" shape="rounded" size='large'/>
-        </Stack> 
+        <div className={cls['interactive']}>
+          <div className={cls['pagination__wrap']}>
+            <Stack sx={{mt:"5px", mb:"15px"}}>
+              <Pagination count={100} variant="outlined" shape="rounded" size='large'/>
+            </Stack> 
+          </div>
+          <div className={cls['controls__wrap']}>
+              <span>
+                <img src={DownloadIcon} alt="download-icon"/>
+                <span style={{ padding: '0px 7px', fontSize: '17px'}}>{globalLocales.stats.interactive.download[selectedLang]}: </span>
+              </span>
+              <TextField
+                sx={{width: '220px'}}
+                select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                label={`${globalLocales.stats.interactive.selectFormat[selectedLang]}...`}>
+                  <MenuItem value={10}>PDF</MenuItem>
+                  <MenuItem value={20}>XLS</MenuItem>
+                  <MenuItem value={30}>CSV</MenuItem>
+              </TextField>
+              <Button sx={{marginLeft: '10px'}} variant="outlined">{globalLocales.stats.interactive.download[selectedLang]}</Button>
+          </div>
         </div>
         
       </Container>
