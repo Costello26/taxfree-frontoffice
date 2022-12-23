@@ -8,7 +8,6 @@ import {
   Checkbox,
   Stack,
   Pagination,
-  Select,
   MenuItem,
   TextField,
   Button
@@ -20,7 +19,7 @@ import { useSelector } from 'react-redux';
 import { globalLocales } from '../../assets/locales';
 
 const ListCheck = () => {
-  const { selectedLang } = useSelector(state => state.lang)
+  const { selectedLang } = useSelector((state) => state.lang);
   let head = {
     id: '№ ',
     name: globalLocales.stats.table.fio[selectedLang],
@@ -118,7 +117,7 @@ const ListCheck = () => {
       {/* <Bar /> */}
       <Card />
       <StatisticsSearch />
-      <Container maxWidth="xl">
+      <Container maxWidth="xl" disableGutters={true}>
         <List
           sx={{ width: '100%', bgcolor: '' }}
           component="nav"
@@ -223,7 +222,6 @@ const ListCheck = () => {
               <Button sx={{marginLeft: '10px'}} variant="outlined">{globalLocales.stats.interactive.download[selectedLang]}</Button>
           </div>
         </div>
-        
       </Container>
     </>
   );

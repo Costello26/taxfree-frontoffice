@@ -1,6 +1,15 @@
 import { useState, useEffect } from 'react';
 import { Search } from '@mui/icons-material';
-import { Container, FormControl, Grid, InputAdornment, InputLabel, MenuItem, Select, TextField } from '@mui/material';
+import {
+  Container,
+  FormControl,
+  Grid,
+  InputAdornment,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+} from '@mui/material';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { globalLocales } from '../../assets/locales';

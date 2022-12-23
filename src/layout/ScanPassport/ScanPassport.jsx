@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-//import AppBar from '../../components/AppBar/AppBar';
 import RegulaInfo from '../../components/RegulaInfo/RegulaInfo';
 import classes from './ScanPassport.module.scss';
 import { useNavigate } from 'react-router-dom';
@@ -7,18 +6,15 @@ import { useSelector } from 'react-redux';
 import { regulaEventListener } from '../../service/regulaListener';
 import { UserBadge } from '../../components/UserBadge/UserBadge';
 import { globalLocales } from '../../assets/locales';
-import PassportScan from '../../assets/Png/passport-scan.png'
+import PassportScan from '../../assets/Png/passport-scan.png';
 
 const ScanPassport = () => {
   const navigate = useNavigate();
-  const { selectedLang } = useSelector((state) => state.lang)
+  const { selectedLang } = useSelector((state) => state.lang);
   const userId = useSelector((state) => state.passport.userId);
   const hasPassportSaved = useSelector((state) => state.auth.hasPassportSaved);
   useEffect(() => {
     console.log(userId);
-    // if (!userId) {
-    //   navigate('/login');
-    // }
     const initRegula = async () => {
       await regulaEventListener(selectedLang);
     };
@@ -31,8 +27,7 @@ const ScanPassport = () => {
   }, [navigate, hasPassportSaved]);
   return (
     <div className="container">
-      {/* <AppBar /> */}
-      <UserBadge step={2}/>
+      <UserBadge step={2} />
       <div className={classes['card__content']}>
         <RegulaInfo
           heading={globalLocales.passportScan.heading[selectedLang]}

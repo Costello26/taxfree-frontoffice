@@ -35,12 +35,12 @@ const Navbar = () => {
           sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
         >
           <Link
-          to="/"
+            to="/"
             style={{
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center',
-              textDecoration: 'none'
+              textDecoration: 'none',
             }}
           >
             <img

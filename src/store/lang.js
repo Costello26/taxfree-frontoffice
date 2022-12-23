@@ -11,7 +11,7 @@ const langSlice = createSlice({
   reducers: {
     setLang(state, { payload }) {
       const idx = langsList[payload];
-      if(idx === 0 || idx === 1 || idx === 2){
+      if (idx === 0 || idx === 1 || idx === 2) {
         state.selectedLang = idx;
       }
     },

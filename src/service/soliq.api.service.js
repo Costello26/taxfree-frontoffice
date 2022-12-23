@@ -2,7 +2,7 @@ import store from '../store';
 import { authActions } from '../store/auth';
 
 export default class ApiService {
-  static baseUrl = 'https://mobile.soliq.uz/my3-api/tax-free-api';
+  static baseUrl = 'https://mobile.soliq.uz/my3-api/tax-free-api/front';
 
   static async getQR() {
     try {

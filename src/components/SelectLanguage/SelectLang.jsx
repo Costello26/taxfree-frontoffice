@@ -6,11 +6,10 @@ import Select from '@mui/material/Select';
 import { useDispatch, useSelector } from 'react-redux';
 import { langActions } from '../../store/lang';
 
-
 const languages = [
   { title: 'RU', idx: 0 },
   { title: "O'ZB", idx: 1 },
-  { title: 'ENG', idx: 2 }, 
+  { title: 'ENG', idx: 2 },
 ];
 
 export default function SelectSmall() {
@@ -18,7 +17,7 @@ export default function SelectSmall() {
   const dispatch = useDispatch();
   //console.log(selectedLang)
   const handleChange = (event) => {
-    dispatch(langActions.setLang(event.target.value))
+    dispatch(langActions.setLang(event.target.value));
   };
 
   return (

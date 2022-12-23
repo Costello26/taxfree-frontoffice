@@ -1,39 +1,34 @@
-import { Box, Container, Grid, Typography } from '@mui/material';
+import { Container, Grid, Typography, Box } from '@mui/material';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { globalLocales } from '../../assets/locales';
 
-
 const Card = () => {
-  const { selectedLang } = useSelector(state => state.lang)
+  const { selectedLang } = useSelector((state) => state.lang);
 
   let cards = [
     {
       name: globalLocales.stats.statuses.all[selectedLang],
       src: './Images/All.png',
-      statistic: 1.5,
-      status: 'mlrd',
+      statistic: 5123,
       color: '#325ECD',
     },
     {
       name: globalLocales.stats.statuses.approved[selectedLang],
       src: './Images/Success.png',
-      statistic: 300.6,
-      status: 'mln',
+      statistic: 4500,
       color: '#12B903',
     },
     {
       name: globalLocales.stats.statuses.partly[selectedLang],
       src: './Images/chart.png',
-      statistic: 31.2,
-      status: 'mln',
+      statistic: 213,
       color: '#FD9717',
     },
     {
       name: globalLocales.stats.statuses.declined[selectedLang],
       src: './Images/Failed.png',
-      statistic: 1.5,
-      status: 'mlrd',
+      statistic: 210,
       color: '#CA0218',
     },
     // {
@@ -55,7 +50,7 @@ const Card = () => {
   return (
     <Container maxWidth="xl">
       <Grid container columns={8} justifyContent="space-between" sx={{paddingTop: '30px'}}>
-        {cards.map((arr, ky) => {
+      {cards.map((arr, ky) => {
           return (
             <Grid xs={1.8}>
               <Box
@@ -65,17 +60,20 @@ const Card = () => {
                   boxShadow: '0px 0px 15px rgba(160, 160, 160, 0.1)',
                   borderRadius: '20px',
                   color: arr.color,
-                  padding: '15px'
+                  backgroundColor: '#fff',
+                  padding: '16px',
+                  
                 }}
               >
-                <Box
-                  sx={{
-                    //height: '60px',
+                <div
+                  style={{
+                    height: '60px',
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'center',
-                    p: '0 10px',
                     width: '100%',
+                    display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'center'
                   }}
                 >
                   <img src={arr.src} alt="" style={{ width: '20px', height: '20px' }} />
@@ -89,7 +87,7 @@ const Card = () => {
                   >
                     {arr.name}
                   </Typography>
-                </Box>
+                </div>
                 <Typography
                   sx={{
                     fontWeight: 700,
@@ -99,7 +97,7 @@ const Card = () => {
                     fontSize: '25px'
                   }}
                 >
-                  {arr.statistic} {arr.status}
+                  {arr.statistic}
                 </Typography>
               </Box>
             </Grid>
