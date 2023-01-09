@@ -12,7 +12,7 @@ import { globalLocales } from '../../assets/locales';
 import SelectLanguage from '../SelectLanguage/SelectLang';
 import SoliqLogo from '../../assets/Png/SoliqLogo.png';
 import RightDashboard from '../RightDashboard/RightDashboard';
-import user from '../../assets/Png/User.png';
+import user from '../../assets/Png/3x4sm.webp';
 import { useLocation } from 'react-router-dom';
 
 
@@ -93,14 +93,14 @@ const Navbar = () => {
             <Box sx={{ flexGrow: 0, display: 'flex', alignItems: 'center' }}>
               <IconButton sx={{ p: 0 }}>
                 <Avatar
-                  alt="Olimov Asqarali"
+                  alt="John Doe"
                   src={user}
                   style={{ width: '56px', height: '56px' }}
                 />
               </IconButton>
               <Box>
                 <Typography sx={{ pl: 2, fontWeight: '600', fontSize: '16px', fontFamily: '"Nunito", sans-serif' }}>
-                  Olimov Asqarali
+                  John Doe  
                 </Typography>
                 <Typography sx={{ pl: 2, fontWeight: '400', fontSize: '16px', fontFamily: '"Nunito", sans-serif' }}>
                   {globalLocales.header.pinfl[selectedLang]}: 12345678901234

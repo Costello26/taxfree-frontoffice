@@ -13,7 +13,7 @@ import { useEffect } from 'react';
 import notificationsStyle from 'react-notifications/lib/notifications.css';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import Navbar from './components/Navbar/NavBar';
-import { globalLocales } from './assets/locales';
+//import { globalLocales } from './assets/locales';
 
 // const SOCKET_URL = 'ws://10.255.53.91:14069/tax-free-api/websocket-server';
 
@@ -23,6 +23,7 @@ function App() {
       NotificationManager.success('Вы успешно вошли в систему');
     }, 1500);
   }, []);
+
   return (
     <div className="App" style={notificationsStyle}>
       <Router>

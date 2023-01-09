@@ -17,31 +17,31 @@ export default function TemporaryDrawer() {
   });
   let data = [
     {
-      name: 'Bosh sahifa',
+      name: 'Authorization',
       link: '/',
     },
     {
-      name: 'Login',
+      name: 'User identification',
       link: '/login',
     },
     {
-      name: 'Passport skanerlash',
+      name: 'Passport scan',
       link: '/scan-passport',
     },
     {
-      name: 'Talon',
+      name: 'Boardpass scan',
       link: '/scan-talon',
     },
     {
-      name: 'Mahsulot rasmiylashtirish',
+      name: 'Products formalization',
       link: '/product-formalization',
     },
     {
-      name: 'Status',
+      name: 'Statistics',
       link: '/users-formalization',
     },
     {
-      name: 'Print check',
+      name: 'Invoice',
       link: '/printCheck',
     },
   ];
